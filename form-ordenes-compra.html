@@ -67,7 +67,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Alta Nuevo Producto</h1>
+                        <h1 class="mt-4">Alta Nueva Orden de Compra</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active fst-italic">Listados</li>
                             <li class="breadcrumb-item active fst-italic">Ordenes de Compra</li>
@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="form-group col-2">
                                             <label for="input-proveedor">Proveedor</label>
-                                            <select class="form-select" name="" id="">
+                                            <select class="form-select" name="" id="input-proveedor">
                                                 <option value="Juancito SRL">Juancito SRL</option>
                                                 <option value="Camila SA">Camila SA</option>
                                                 <option value="Pedro SA">Pedro SA</option>
@@ -108,20 +108,20 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-10">
-                                            <label for="input-desc">Productos</label>
-                                            <input type="text" class="form-control" name="" id="input-desc">
+                                            <label for="input-productos">Productos</label>
+                                            <input type="text" class="form-control" name="" id="input-productos">
                                         </div>
                                         <div class="form-group col-2">
-                                            <label for="input-precio">Total</label>
-                                            <input type="text" class="form-control" name="" id="input-precio">
+                                            <label for="input-total">Total</label>
+                                            <input type="number" class="form-control" name="" id="input-total">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             
                         </div>
-                        <a class="btn btn-success fw-bold btn-alta"><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</a>
-                        <a class="btn btn-danger fw-bold btn-baja"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+                        <a class="btn btn-success fw-bold" id="btn-alta"><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</a>
+                        <a class="btn btn-danger fw-bold" id="btn-cancel"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -136,5 +136,6 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/form-ordenes-compra.js"></script>
     </body>
 </html>

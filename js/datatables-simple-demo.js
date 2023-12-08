@@ -20,9 +20,9 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
     if(localStorage.getItem("ordenes")==null){
-        let ordenesDeCompra = [{"Número":"1","Emisión":"12/12/2012","Entrega Esperada":"19/02/2013","Dirección":"Calle 123","Proveedor":"Juancito SRL","Productos":["Remera Juancito","Remera Juancito"],"Total":20000},
-                                {"Número":"2","Emisión":"21/01/2017","Entrega Esperada":"09/10/2017","Dirección":"Calle 123","Proveedor":"Camila SA","Productos":["Control Remoto Universal","Joystick Gamer"],"Total":54000},
-                                {"Número":"3","Emisión":"29/02/2016","Entrega Esperada":"01/03/2016","Dirección":"Calle 123","Proveedor":"Camila SA","Productos":["Control Remoto Universal"],"Total":4000},
+        let ordenesDeCompra = [{"Número":"1","Emisión":"2012-12-12","Entrega Esperada":"2013-12-19","Dirección":"Calle 123","Proveedor":"Juancito SRL","Productos":["Remera Juancito","Remera Juancito"],"Total":20000},
+                                {"Número":"2","Emisión":"2017-01-21","Entrega Esperada":"2017-10-09","Dirección":"Calle 123","Proveedor":"Camila SA","Productos":["Control Remoto Universal","Joystick Gamer"],"Total":54000},
+                                {"Número":"3","Emisión":"2016-02-29","Entrega Esperada":"2016-03-01","Dirección":"Calle 123","Proveedor":"Camila SA","Productos":["Control Remoto Universal"],"Total":4000},
                             ];
         localStorage.setItem("ordenes",JSON.stringify(ordenesDeCompra));
     }
