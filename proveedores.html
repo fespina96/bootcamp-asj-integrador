@@ -95,7 +95,7 @@
                         </div>
                         <a class="btn btn-primary fw-bold btn-alta" href="form-proveedores.html"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
                         <a class="btn btn-secondary fw-bold btn-modif"><i class="fa fa-pencil" aria-hidden="true"></i> Modificar</a>
-                        <a class="btn btn-danger fw-bold btn-baja"><i class="fa fa-ban" aria-hidden="true"></i> Baja</a>
+                        <a class="btn btn-danger fw-bold btn-baja" data-bs-toggle="modal" data-bs-target="#modal-baja"><i class="fa fa-ban" aria-hidden="true"></i> Baja</a>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -107,47 +107,32 @@
                 </footer>
             </div>
         </div>
-<!--
-    <div class="modal" id="modal-info">
-        <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal" id="modal-baja">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                 <h4 class="modal-title">Baja Orden de Compra</h4>
+                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+         
+                <div class="modal-body">
+                    <form>
+                        <label for="modal-baja-input">Seleccione número de orden a borrar:
+                            Esto no se puede deshacer.
+                        </label>
+                        <input class="form-control" type="number" id="modal-baja-input">
+                        <a class="btn btn-danger m-2" id="modal-baja-btn">DAR DE BAJA ORDEN</a>
+                    </form>
+                </div>
+            
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
         
-            <div class="modal-header">
-             <h4 class="modal-title">Carrito</h4>
-             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-     
-            <div class="modal-body">
-                <article class="cart-list">
-                    <ul id="modal-cart-list">
-                    </ul>
-                    <br>
-                    <p>
-                        Total = <span id="total-carrito" class="fw-bold ">$0</span>
-                    </p>
-                    <div class="container d-flex justify-content-center">
-                        <a id="modal-cart-checkout-btn" class="btn btn-primary btn-comprar btn-comprar fw-bold d-flex justify-content-center m-1">
-                            <span class="material-symbols-outlined md-18">
-                                shopping_cart
-                            </span>
-                            COMPRAR</a>
-                        <a id="btn-cart-clear" class="btn btn-danger btn-comprar fw-bold d-flex justify-content-center m-1">
-                            <span class="material-symbols-outlined md-18">
-                                remove_shopping_cart
-                            </span>
-                            LIMPIAR</a>
-                    </div>
-                </article>
             </div>
-        
-            <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-    
         </div>
-        </div>
-    </div>
--->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>

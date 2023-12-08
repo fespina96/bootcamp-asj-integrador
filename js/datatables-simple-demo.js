@@ -107,3 +107,54 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
 });
+
+let storedArrayData = [];
+
+let listFlag = document.getElementById("list-title").innerText;
+const btnModalBaja = document.getElementById("modal-baja-btn");
+const inputModalBaja = document.getElementById("modal-baja-input");
+
+cargarBajaItem = (codigoItem) =>{
+    
+    switch(listFlag){
+        case "Ordenes":
+            storedArrayData = JSON.parse(localStorage.getItem("ordenes"));
+            for(let x=0;x<storedArrayData.length;x++){
+                if(codigoItem == storedArrayData[x]["Número"]){
+                    storedArrayData.splice(x,1);
+                }
+            }
+            localStorage.setItem('ordenes',JSON.stringify(storedArrayData));
+            break;
+        case "Proveedores":
+            storedArrayData = JSON.parse(localStorage.getItem("proveedores"));
+            for(let x=0;x<storedArrayData.length;x++){
+                if(codigoItem == storedArrayData[x]["Código"]){
+                    storedArrayData.splice(x,1);
+                }
+            }
+            localStorage.setItem('proveedores',JSON.stringify(storedArrayData));
+            break
+        case "Productos":
+            storedArrayData = JSON.parse(localStorage.getItem("productos"));
+            for(let x=0;x<storedArrayData.length;x++){
+                if(codigoItem == storedArrayData[x]["Código"]){
+                    storedArrayData.splice(x,1);
+                }
+            }
+            localStorage.setItem('productos',JSON.stringify(storedArrayData));
+            break;
+        default:
+            alert("Flag error.");
+            location.reload();
+            break;
+    }
+    alert('Item borrado correctamente.')
+    location.reload();
+}
+
+cargarBotones = () =>{
+    btnModalBaja.addEventListener('click',()=>cargarBajaItem(inputModalBaja.value));
+}
+
+cargarBotones();
