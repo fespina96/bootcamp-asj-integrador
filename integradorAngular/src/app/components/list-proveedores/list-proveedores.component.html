@@ -1,0 +1,62 @@
+<h1 class="mt-4">Listado de Proveedores</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item ">Proveedores</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header" id="list-title">
+        <i class="fas fa-building me-1"></i>
+        Proveedores
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Razón Social</th>
+                    <th>Rubro</th>
+                    <th>Dirección</th>
+                    <th>Contacto</th>
+                    <th>Datos Fiscales</th>
+                    <th>Referencia Contacto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Código</th>
+                    <th>Razón Social</th>
+                    <th>Rubro</th>
+                    <th>Dirección</th>
+                    <th>Contacto</th>
+                    <th>Datos Fiscales</th>
+                    <th>Referencia Contacto</th>
+                    <th>Acciones</th>
+                </tr>
+            </tfoot>
+            <tbody id='table-list-body' >
+                <tr *ngFor="let item of proveedoresList;index as i;">
+                    <td>{{item.cod}}</td>
+                    <td>{{item.raz_social}}</td>
+                    <td>{{item.rubro}}</td>
+                    <td>{{item.address.country}}<br>
+                        {{item.address.state}}<br>
+                        {{item.address.street}}<br>
+                        {{item.address.zip_code}}</td>
+                    <td>{{item.contact.phone}}<br>
+                        {{item.contact.email}}<br>
+                        {{item.contact.website}}</td>
+                    <td>{{item.datos_fiscales.cuit}}<br>
+                        {{item.datos_fiscales.condition}}</td>
+                    <td>{{item.ref_contact.name}}
+                        {{item.ref_contact.surname}}<br>
+                        {{item.ref_contact.email}}<br>
+                        {{item.ref_contact.phone}}<br>
+                        {{item.ref_contact.role}}</td>
+                    <td><a class="btn btn-secondary "><i class="fas fa-pencil"></i></a><a class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<a class="btn btn-primary fw-bold btn-alta" routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>

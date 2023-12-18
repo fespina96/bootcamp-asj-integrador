@@ -11,6 +11,10 @@ import { HomeComponent } from './components/home/home.component';
 import { Error404Component } from './components/error-404/error-404.component';
 import { ListProductosComponent } from './components/list-productos/list-productos.component';
 import { FormProductosComponent } from './components/form-productos/form-productos.component';
+import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
+import { ListProveedoresComponent } from './components/list-proveedores/list-proveedores.component';
+import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.component';
+import { FormProveedoresComponent } from './components/form-proveedores/form-proveedores.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { FormProductosComponent } from './components/form-productos/form-product
     HomeComponent,
     Error404Component,
     ListProductosComponent,
-    FormProductosComponent
+    FormProductosComponent,
+    ListOrdenesComponent,
+    ListProveedoresComponent,
+    FormOrdenesComponent,
+    FormProveedoresComponent
   ],
   imports: [
     BrowserModule,

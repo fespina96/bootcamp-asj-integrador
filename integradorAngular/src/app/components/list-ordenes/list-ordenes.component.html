@@ -1,0 +1,52 @@
+<h1 class="mt-4">Listado de Productos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item ">Productos</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header" id="list-title">
+        <i class="fas fa-shopping-bag me-1"></i>
+        Productos
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Nº Orden</th>
+                    <th>Dirección</th>
+                    <th>Emisión</th>
+                    <th>Entrega estimada</th>
+                    <th>Productos</th>
+                    <th>Proveedor</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Nº Orden</th>
+                    <th>Dirección</th>
+                    <th>Emisión</th>
+                    <th>Entrega estimada</th>
+                    <th>Productos</th>
+                    <th>Proveedor</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </tfoot>
+            <tbody id='table-list-body' >
+                <tr *ngFor="let item of ordenesList;index as i;">
+                    <td>{{item.number}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.emision}}</td>
+                    <td>{{item.entrega_estimada}}</td>
+                    <td>{{item.products}}</td>
+                    <td>{{item.proveedor}}</td>
+                    <td>${{item.total}},00</td>
+                    <td><a class="btn btn-secondary "><i class="fas fa-pencil"></i></a><a class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<a class="btn btn-primary fw-bold btn-alta" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
