@@ -100,11 +100,27 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     }
 
+    let newData = {
+        type: "html",
+        heading: "Acciones",
+        data: [],
+    };
+
+    
+    for(x=0;x<obj.data.length;x++){
+
+        newData.data.push(
+            '<a class="btn btn-secondary">Editar</a> <a class="btn btn-danger">Borrar</a>'
+            )
+    }
+
     const datatablesSimple = document.getElementById('datatablesSimple');
     if (datatablesSimple) {
         datatable = new simpleDatatables.DataTable(datatablesSimple,{data: obj});
-    }
 
+        let columnas = datatable.columns;
+        columnas.add(newData);
+    }
 
 });
 
