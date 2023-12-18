@@ -1,0 +1,49 @@
+<h1 class="mt-4">Listado de Productos</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item ">Productos</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header" id="list-title">
+        <i class="fas fa-shopping-bag me-1"></i>
+        Productos
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Proveedor</th>
+                    <th>Categoría</th>
+                    <th>Nombre del Producto</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Código</th>
+                    <th>Proveedor</th>
+                    <th>Categoría</th>
+                    <th>Nombre del Producto</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </tfoot>
+            <tbody id='table-list-body' >
+                <tr *ngFor="let item of productList;index as i;">
+                    <td>{{item.cod}}</td>
+                    <td>{{item.prov}}</td>
+                    <td>{{item.cat}}</td>
+                    <td>{{item.name_prod}}</td>
+                    <td>{{item.desc}}</td>
+                    <td>${{item.price}},00</td>
+                    <td><a class="btn btn-secondary "><i class="fas fa-pencil"></i></a><a class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<a class="btn btn-primary fw-bold btn-alta" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
