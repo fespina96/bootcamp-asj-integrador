@@ -14,6 +14,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'productos' , component: ListProductosComponent},
     { path: 'form-productos' , component: FormProductosComponent},
+    { path: 'form-productos/:editId' , component: FormProductosComponent},
     { path: 'proveedores' , component: ListProveedoresComponent},
     { path: 'form-proveedores' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},

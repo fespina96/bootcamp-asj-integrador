@@ -1,4 +1,6 @@
-export const productos = [
+import { Producto } from "../interfaces/producto";
+
+export const productosData:Array<Producto> = [
         {cod:1,prov:"Juancito SRL",cat:"Indumentaria",name_prod:"Remera Juancito",desc:"Remera Marca Juancito",price:10000},
         {cod:2,prov:"Juancito SRL",cat:"Indumentaria",name_prod:"Gorra Juancito",desc:"Gorra Marca Juancito",price:12000},
         {cod:3,prov:"Camila SA",cat:"Tecnología",name_prod:"Control Remoto Universal",desc:"Control Remoto Universal Serie CRU-1234",price:4000},

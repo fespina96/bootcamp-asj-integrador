@@ -9,16 +9,16 @@
         <i class="fas fa-building me-1"></i>
         Información Nuevo Producto
     </div>
-    <div class="card-body">
-        <form >
+    <div class="card-body shadow">
+        <form #productForm="ngForm" (ngSubmit)="formProcedure()">
             <div class="form-row">
                 <div class="form-group col-2">
                     <label for="input-codigo">Codigo</label>
-                    <input type="number" class="form-control" name="" id="input-codigo">
+                    <input type="number" class="form-control" name="input-codigo" id="input-codigo" [(ngModel)]="productFormInput.cod">
                 </div>
                 <div class="form-group col-2">
                     <label for="input-proveedor">Proveedor</label>
-                    <select class="form-select" name="" id="input-proveedor">
+                    <select class="form-select" name="input-proveedor" id="input-proveedor" [(ngModel)]="productFormInput.prov">
                         <option value="Juancito SRL">Juancito SRL</option>
                         <option value="Camila SA">Camila SA</option>
                         <option value="Pedro SA">Pedro SA</option>
@@ -26,26 +26,27 @@
                 </div>
                 <div class="form-group col-2">
                     <label for="input-categoria">Categoría</label>
-                    <input type="text" class="form-control" name="" id="input-categoria">
+                    <input type="text" class="form-control" name="input-categoria" id="input-categoria" [(ngModel)]="productFormInput.cat">
                 </div>
                 <div class="form-group col-6">
                     <label for="input-product-name">Nombre Producto</label>
-                    <input type="email" class="form-control" name="" id="input-product-name">
+                    <input type="email" class="form-control" name="input-product-name" id="input-product-name" [(ngModel)]="productFormInput.name_prod">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-10">
                     <label for="input-desc">Descripción</label>
-                    <input type="text" class="form-control" name="" id="input-desc">
+                    <input type="text" class="form-control" name="input-desc" id="input-desc" [(ngModel)]="productFormInput.desc">
                 </div>
                 <div class="form-group col-2">
                     <label for="input-precio">Precio</label>
-                    <input type="text" class="form-control" name="" id="input-precio">
+                    <input type="text" class="form-control" name="input-precio" id="input-precio" [(ngModel)]="productFormInput.price">
                 </div>
             </div>
+            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
         </form>
     </div>
     
 </div>
-<a class="btn btn-success fw-bold" id="btn-alta"><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</a>
-<a class="btn btn-danger fw-bold" id="btn-cancel"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
