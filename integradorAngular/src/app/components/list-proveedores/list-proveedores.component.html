@@ -3,13 +3,13 @@
     <li class="breadcrumb-item active fst-italic">Listados</li>
     <li class="breadcrumb-item ">Proveedores</li>
 </ol>
-<div class="card mb-4">
+<div class="card mb-4 shadow">
     <div class="card-header" id="list-title">
         <i class="fas fa-building me-1"></i>
         Proveedores
     </div>
     <div class="card-body">
-        <table id="datatablesSimple">
+        <table class="table table-hover text-center">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -22,20 +22,8 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Código</th>
-                    <th>Razón Social</th>
-                    <th>Rubro</th>
-                    <th>Dirección</th>
-                    <th>Contacto</th>
-                    <th>Datos Fiscales</th>
-                    <th>Referencia Contacto</th>
-                    <th>Acciones</th>
-                </tr>
-            </tfoot>
-            <tbody id='table-list-body' >
-                <tr *ngFor="let item of proveedoresList;index as i;">
+            <tbody>
+                <tr *ngFor="let item of provList;index as i;">
                     <td>{{item.cod}}</td>
                     <td>{{item.raz_social}}</td>
                     <td>{{item.rubro}}</td>
@@ -53,7 +41,10 @@
                         {{item.ref_contact.email}}<br>
                         {{item.ref_contact.phone}}<br>
                         {{item.ref_contact.role}}</td>
-                    <td><a class="btn btn-secondary "><i class="fas fa-pencil"></i></a><a class="btn btn-danger"><i class="fas fa-trash"></i></a></td>
+                    <td>
+                        <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-proveedores/{{item.cod}}"><i class="fas fa-pencil"></i></a>
+                        <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.cod)"><i class="fas fa-trash"></i></a>
+                    </td>
                 </tr>
             </tbody>
         </table>

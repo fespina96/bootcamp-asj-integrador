@@ -18,10 +18,8 @@
                 </div>
                 <div class="form-group col-2">
                     <label for="input-proveedor">Proveedor</label>
-                    <select class="form-select" name="input-proveedor" id="input-proveedor" [(ngModel)]="productFormInput.prov">
-                        <option value="Juancito SRL">Juancito SRL</option>
-                        <option value="Camila SA">Camila SA</option>
-                        <option value="Pedro SA">Pedro SA</option>
+                    <select class="form-select" name="input-proveedor" id="input-proveedor" [(ngModel)]="productFormInput.prov_id">
+                        <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
                 </div>
                 <div class="form-group col-2">

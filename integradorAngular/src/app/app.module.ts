@@ -16,6 +16,8 @@ import { ListProveedoresComponent } from './components/list-proveedores/list-pro
 import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.component';
 import { FormProveedoresComponent } from './components/form-proveedores/form-proveedores.component';
 
+import { ProveedorPipe } from './pipes/proveedor.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { FormProveedoresComponent } from './components/form-proveedores/form-pro
     ListOrdenesComponent,
     ListProveedoresComponent,
     FormOrdenesComponent,
-    FormProveedoresComponent
+    FormProveedoresComponent,
+    ProveedorPipe
   ],
   imports: [
     BrowserModule,

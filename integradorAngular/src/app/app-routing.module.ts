@@ -17,6 +17,7 @@ const routes: Routes = [
     { path: 'form-productos/:editId' , component: FormProductosComponent},
     { path: 'proveedores' , component: ListProveedoresComponent},
     { path: 'form-proveedores' , component: FormProveedoresComponent},
+    { path: 'form-proveedores/:editId' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},
     { path: 'form-ordenes' , component: FormOrdenesComponent},
 

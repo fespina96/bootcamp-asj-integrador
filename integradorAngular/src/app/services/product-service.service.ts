@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { productosData } from '../data/productos';
 import { Producto } from '../interfaces/producto';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-    constructor() { }
+    constructor(private router:Router) { }
 
     prodList = productosData;
 
     errorProduct:Producto = {
         cod:0,
-        prov:"",
+        prov_id:0,
         cat:"",
         name_prod:"",
         desc:"",
@@ -38,19 +39,30 @@ export class ProductService {
             alert('El codigo debe ser único.')
         }else{
             this.prodList.push(productoNuevo);
+            alert('Producto añadido correctamente.');
+            this.router.navigateByUrl('/productos');
         }
     }
 
     public editProducto(productEditInput:Producto,id:any){
+        let flag = false;
         for(let x=0;x<this.prodList.length;x++){
             if(this.prodList[x].cod == id){
                 this.prodList[x] = productEditInput;
+                flag=true;
                 break;
             }
+        }
+        if(flag=true){
+            alert('Producto editado correctamente.');
+            this.router.navigateByUrl('/productos');
+        }else{
+            alert('Error al editar producto.');
         }
     }
 
     public deleteProducto(id:any){
         this.prodList = this.prodList.filter(item=>item.cod!=id);
+        alert('Producto eliminado correctamente.');
     }
 }

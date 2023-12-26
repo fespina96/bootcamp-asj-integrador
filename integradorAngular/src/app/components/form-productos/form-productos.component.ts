@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../services/product-service.service';
 import { Producto } from '../../interfaces/producto';
+import { ProveedoresService } from '../../services/proveedores-service.service';
 
 @Component({
   selector: 'app-form-productos',
@@ -12,14 +13,16 @@ import { Producto } from '../../interfaces/producto';
 export class FormProductosComponent implements OnInit{
     productFormInput:Producto = {
         cod:0,
-        prov:"",
+        prov_id:1,
         cat:"",
         name_prod:"",
         desc:"",
         price:0,
     };
 
-    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router){}
+    provList:any = [];
+
+    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private provService:ProveedoresService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -33,6 +36,7 @@ export class FormProductosComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
+        this.provList = this.provService.getProveedores();
     }
 
     formProcedure(){
@@ -43,8 +47,6 @@ export class FormProductosComponent implements OnInit{
         }else{
             //AÑADO PRODUCTO
             this.productService.addProducto(this.productFormInput);
-            alert('Producto añadido correctamente.');
-            this.router.navigateByUrl('/productos');
         }
     }
 

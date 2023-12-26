@@ -24,7 +24,6 @@ export class ListProductosComponent implements OnInit{
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el producto codigo ${id}?`)){
             this.productService.deleteProducto(id);
-            alert('Producto eliminado satisfactoriamente.');
             this.loadList();
         }
     }

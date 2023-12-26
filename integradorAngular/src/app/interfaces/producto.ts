@@ -1,6 +1,6 @@
 export interface Producto{
     cod:number;
-    prov:string;
+    prov_id:number;
     cat:string;
     name_prod:string;
     desc:string;
