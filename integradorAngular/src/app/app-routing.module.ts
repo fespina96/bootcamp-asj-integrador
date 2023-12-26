@@ -20,12 +20,13 @@ const routes: Routes = [
     { path: 'form-proveedores/:editId' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},
     { path: 'form-ordenes' , component: FormOrdenesComponent},
+    { path: 'form-ordenes/:editId' , component: FormOrdenesComponent},
 
     { path: '**' , component: Error404Component},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

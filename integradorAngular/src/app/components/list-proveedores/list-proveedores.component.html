@@ -9,7 +9,7 @@
         Proveedores
     </div>
     <div class="card-body">
-        <table class="table table-hover text-center">
+        <table class="table table-hover text-center" *ngIf="provList.length!=0">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -27,8 +27,8 @@
                     <td>{{item.cod}}</td>
                     <td>{{item.raz_social}}</td>
                     <td>{{item.rubro}}</td>
-                    <td>{{item.address.country}}<br>
-                        {{item.address.state}}<br>
+                    <td>{{item.address.country_id|country}}<br>
+                        {{item.address.state_id|state}}<br>
                         {{item.address.street}}<br>
                         {{item.address.zip_code}}</td>
                     <td>{{item.contact.phone}}<br>
@@ -48,6 +48,7 @@
                 </tr>
             </tbody>
         </table>
+        <div class="alert alert-danger fw-bold text-center h5" *ngIf="provList.length==0">Listado vacio, agregue un nuevo item.</div>
     </div>
 </div>
 <a class="btn btn-primary fw-bold btn-alta" routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>

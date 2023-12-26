@@ -1,56 +1,54 @@
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Alta Nueva Orden de Compra</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active fst-italic">Listados</li>
-        <li class="breadcrumb-item active fst-italic">Ordenes de Compra</li>
-        <li class="breadcrumb-item ">Alta</li>
-    </ol>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-building me-1"></i>
-            Información Nueva Orden de Compra
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-row">
-                    <div class="form-group col-2">
-                        <label for="input-numero">Número Orden de Compra</label>
-                        <input type="number" class="form-control" name="" id="input-numero">
-                    </div>
-                    <div class="form-group col-2">
-                        <label for="input-proveedor">Proveedor</label>
-                        <select class="form-select" name="" id="input-proveedor">
-                            <option value="Juancito SRL">Juancito SRL</option>
-                            <option value="Camila SA">Camila SA</option>
-                            <option value="Pedro SA">Pedro SA</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-2">
-                        <label for="input-direccion">Dirección</label>
-                        <input type="text" class="form-control" name="" id="input-direccion">
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="input-emision">Fecha Emisión</label>
-                        <input type="date" class="form-control" name="" id="input-emision">
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="input-entrega">Fecha Entrega Esperada</label>
-                        <input type="date" class="form-control" name="" id="input-entrega">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-10">
-                        <label for="input-productos">Productos</label>
-                        <input type="text" class="form-control" name="" id="input-productos">
-                    </div>
-                    <div class="form-group col-2">
-                        <label for="input-total">Total</label>
-                        <input type="number" class="form-control" name="" id="input-total">
-                    </div>
-                </div>
-            </form>
-        </div>
-        
+<h1 class="mt-4">Alta Nueva Orden de Compra</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Ordenes de Compra</li>
+    <li class="breadcrumb-item ">Alta</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-building me-1"></i>
+        Información Nueva Orden de Compra
     </div>
-    <a class="btn btn-success fw-bold" id="btn-alta"><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</a>
-    <a class="btn btn-danger fw-bold" id="btn-cancel"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</a>
+    <div class="card-body">
+        <form #orderForm="ngForm" (ngSubmit)="formProcedure()">
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label for="input-numero">Número Orden de Compra</label>
+                    <input type="number" class="form-control" name="input-numero" id="input-numero" [(ngModel)]="orderFormInput.order_num">
+                </div>
+                <div class="form-group col-2">
+                    <label for="input-proveedor">Proveedor</label>
+                    <select class="form-select" name="input-proveedor" id="input-proveedor" [(ngModel)]="orderFormInput.prov_id">
+                        <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-2">
+                    <label for="input-direccion">Dirección</label>
+                    <input type="text" class="form-control" name="input-direccion" id="input-direccion" [(ngModel)]="orderFormInput.address">
+                </div>
+                <div class="form-group col-3">
+                    <label for="input-emision">Fecha Emisión</label>
+                    <input type="date" class="form-control" name="input-emision" id="input-emision" [(ngModel)]="orderFormInput.emision">
+                </div>
+                <div class="form-group col-3">
+                    <label for="input-entrega">Fecha Entrega Esperada</label>
+                    <input type="date" class="form-control" name="input-entrega" id="input-entrega" [(ngModel)]="orderFormInput.entrega_estimada">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-10">
+                    <label for="input-productos">Productos</label>
+                    <input type="text" class="form-control" name="input-productos" id="input-productos" [(ngModel)]="orderFormInput.products">
+                </div>
+                <div class="form-group col-2">
+                    <label for="input-total">Total</label>
+                    <input type="number" class="form-control" name="input-total" id="input-total" [(ngModel)]="orderFormInput.total">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+        </form>
+    </div>
+    
+</div>

@@ -9,7 +9,7 @@
         Productos
     </div>
     <div class="card-body">
-        <table class="table table-hover text-center">
+        <table class="table table-hover text-center" *ngIf="productList.length!=0">
             <thead>
                 <tr>
                     <th>Código</th>
@@ -36,6 +36,7 @@
                 </tr>
             </tbody>
         </table>
+        <div class="alert alert-danger fw-bold text-center h5" *ngIf="productList.length==0">Listado vacio, agregue un nuevo item.</div>
     </div>
 </div>
 <a class="btn btn-primary fw-bold btn-alta shadow" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>

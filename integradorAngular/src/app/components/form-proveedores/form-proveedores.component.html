@@ -1,100 +1,108 @@
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Alta Nuevo Proveedor</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active fst-italic">Listados</li>
-        <li class="breadcrumb-item active fst-italic">Proveedores</li>
-        <li class="breadcrumb-item ">Alta</li>
-    </ol>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-building me-1"></i>
-            Información Nuevo Proveedor
-        </div>
-        <div class="card-body">
-            <form #productForm="ngForm" (ngSubmit)="formProcedure()">
-                <div class="form-row">
-                    <div class="form-group col-2">
-                        <label for="input-codigo">Codigo</label>
-                        <input type="number" class="form-control" name="input-codigo" id="input-codigo" [(ngModel)]="provFormInput.cod">
-                    </div>
-                    <div class="form-group col-8">
-                        <label for="input-razon-social">Razon Social</label>
-                        <input type="text" class="form-control" name="input-razon-social" id="input-razon-social" [(ngModel)]="provFormInput.raz_social">
-                    </div>
-                    <div class="form-group col-2">
-                        <label for="input-rubro">Rubro</label>
-                        <input type="text" class="form-control" name="input-rubro" id="input-rubro" [(ngModel)]="provFormInput.rubro">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="input-sitio-web">Sitio Web</label>
-                        <input type="text" class="form-control" name="input-sitio-web" id="input-sitio-web" [(ngModel)]="provFormInput.contact.website">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="input-email">Email</label>
-                        <input type="email" class="form-control" name="input-email" id="input-email" [(ngModel)]="provFormInput.contact.email">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="input-telefono">Teléfono</label>
-                        <input type="email" class="form-control" name="input-telefono" id="input-telefono" [(ngModel)]="provFormInput.contact.phone">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="input-calle">Calle y Altura</label>
-                        <input type="text" class="form-control" name="input-calle" id="input-calle" [(ngModel)]="provFormInput.address.street">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="input-codigo-postal">Codigo Postal</label>
-                        <input type="text" class="form-control" name="input-codigo-postal" id="input-codigo-postal" [(ngModel)]="provFormInput.address.zip_code">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="input-provincia">Provincia</label>
-                        <input type="text" class="form-control" name="input-provincia" id="input-provincia" [(ngModel)]="provFormInput.address.state">
-                    </div>
-                    <div class="form-pais col-4">
-                        <label for="input-pais">País</label>
-                        <input type="text" class="form-control" name="input-pais" id="input-pais" [(ngModel)]="provFormInput.address.country">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-6">
-                        <label for="input-cuit">CUIT</label>
-                        <input type="text" class="form-control" name="input-cuit" id="input-cuit" [(ngModel)]="provFormInput.datos_fiscales.cuit">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="input-condicion">Condición</label>
-                        <input type="text" class="form-control" name="input-condicion" id="input-condicion" [(ngModel)]="provFormInput.datos_fiscales.condition">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-4">
-                        <label for="input-nombre-contacto">Nombre</label>
-                        <input type="text" class="form-control" name="input-nombre-contacto" id="input-nombre-contacto" [(ngModel)]="provFormInput.ref_contact.name">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="input-apellido-contacto">Apellido</label>
-                        <input type="text" class="form-control" name="input-apellido-contacto" id="input-apellido-contacto" [(ngModel)]="provFormInput.ref_contact.surname">
-                    </div>
-                    <div class="form-group col-1">
-                        <label for="input-telefono-contacto">Teléfono</label>
-                        <input type="text" class="form-control" name="input-telefono-contacto" id="input-telefono-contacto" [(ngModel)]="provFormInput.ref_contact.phone">
-                    </div>
-                    <div class="form-email-contacto col-2">
-                        <label for="input-email-contacto">E-Mail</label>
-                        <input type="text" class="form-control" name="input-email-contacto" id="input-email-contacto" [(ngModel)]="provFormInput.ref_contact.email">
-                    </div>
-                    <div class="form-group col-1">
-                        <label for="input-rol-contacto">Rol</label>
-                        <input type="text" class="form-control" name="input-rol-contacto" id="input-rol-contacto" [(ngModel)]="provFormInput.ref_contact.role">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
-                <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
-                <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
-            </form>
-        </div>
-        
+<h1 class="mt-4">Alta Nuevo Proveedor</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Proveedores</li>
+    <li class="breadcrumb-item ">Alta</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-building me-1"></i>
+        Información Nuevo Proveedor
     </div>
+    <div class="card-body">
+        <form #proveedorForm="ngForm" (ngSubmit)="formProcedure()">
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label for="input-codigo">Codigo</label>
+                    <input type="number" class="form-control" name="input-codigo" id="input-codigo" [(ngModel)]="provFormInput.cod">
+                </div>
+                <div class="form-group col-8">
+                    <label for="input-razon-social">Razon Social</label>
+                    <input type="text" class="form-control" name="input-razon-social" id="input-razon-social" [(ngModel)]="provFormInput.raz_social">
+                </div>
+                <div class="form-group col-2">
+                    <label for="input-rubro">Rubro</label>
+                    <input type="text" class="form-control" name="input-rubro" id="input-rubro" [(ngModel)]="provFormInput.rubro">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-sitio-web">Sitio Web</label>
+                    <input type="text" class="form-control" name="input-sitio-web" id="input-sitio-web" [(ngModel)]="provFormInput.contact.website">
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-email">Email</label>
+                    <input type="email" class="form-control" name="input-email" id="input-email" [(ngModel)]="provFormInput.contact.email">
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-telefono">Teléfono</label>
+                    <input type="email" class="form-control" name="input-telefono" id="input-telefono" [(ngModel)]="provFormInput.contact.phone">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-pais col-4">
+                    <label for="input-pais">País</label>
+                    <select class="form-control" name="input-pais" id="input-pais" [(ngModel)]="provFormInput.address.country_id" (ngModelChange)="countryChange()">
+                        <option *ngFor="let country of countryList" value="{{country.id}}" >{{country.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-provincia">Provincia</label>
+                    <select class="form-control" name="input-provincia" id="input-provincia" [(ngModel)]="provFormInput.address.state_id">
+                        <option *ngFor="let state of stateList" value="{{state.id}}" >{{state.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-calle">Calle y Altura</label>
+                    <input type="text" class="form-control" name="input-calle" id="input-calle" [(ngModel)]="provFormInput.address.street">
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-codigo-postal">Codigo Postal</label>
+                    <input type="text" class="form-control" name="input-codigo-postal" id="input-codigo-postal" [(ngModel)]="provFormInput.address.zip_code">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="input-cuit">CUIT</label>
+                    <input type="text" class="form-control" name="input-cuit" id="input-cuit" [(ngModel)]="provFormInput.datos_fiscales.cuit">
+                </div>
+                <div class="form-group col-6">
+                    <label for="input-condicion">Condición</label>
+                    <input type="text" class="form-control" name="input-condicion" id="input-condicion" [(ngModel)]="provFormInput.datos_fiscales.condition">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-nombre-contacto">Nombre</label>
+                    <input type="text" class="form-control" name="input-nombre-contacto" id="input-nombre-contacto" [(ngModel)]="provFormInput.ref_contact.name">
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-apellido-contacto">Apellido</label>
+                    <input type="text" class="form-control" name="input-apellido-contacto" id="input-apellido-contacto" [(ngModel)]="provFormInput.ref_contact.surname">
+                </div>
+                <div class="form-group col-1">
+                    <label for="input-telefono-contacto">Teléfono</label>
+                    <input type="text" class="form-control" name="input-telefono-contacto" id="input-telefono-contacto" [(ngModel)]="provFormInput.ref_contact.phone">
+                </div>
+                <div class="form-email-contacto col-2">
+                    <label for="input-email-contacto">E-Mail</label>
+                    <input type="text" class="form-control" name="input-email-contacto" id="input-email-contacto" [(ngModel)]="provFormInput.ref_contact.email">
+                </div>
+                <div class="form-group col-1">
+                    <label for="input-rol-contacto">Rol</label>
+                    <input type="text" class="form-control" name="input-rol-contacto" id="input-rol-contacto" [(ngModel)]="provFormInput.ref_contact.role">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/proveedores" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+        </form>
+    </div>
+    
+</div>

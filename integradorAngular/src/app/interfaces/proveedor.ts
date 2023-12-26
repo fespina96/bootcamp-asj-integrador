@@ -17,8 +17,8 @@ export interface contact{
 export interface address{
     street:string,
     zip_code:string,
-    state:string,
-    country:string
+    state_id:number,
+    country_id:number
 }
 
 export interface datos_fiscales{

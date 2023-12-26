@@ -24,8 +24,8 @@ export class ProveedoresService {
         address:{
             street:"",
             zip_code:"",
-            state:"",
-            country:""
+            state_id:0,
+            country_id:0
         },
         datos_fiscales:{
             cuit:"",

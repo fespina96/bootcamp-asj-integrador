@@ -17,6 +17,8 @@ import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.com
 import { FormProveedoresComponent } from './components/form-proveedores/form-proveedores.component';
 
 import { ProveedorPipe } from './pipes/proveedor.pipe';
+import { CountryPipe } from './pipes/country.pipe';
+import { StatePipe } from './pipes/state.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProveedorPipe } from './pipes/proveedor.pipe';
     ListProveedoresComponent,
     FormOrdenesComponent,
     FormProveedoresComponent,
-    ProveedorPipe
+    ProveedorPipe,
+    CountryPipe,
+    StatePipe
   ],
   imports: [
     BrowserModule,

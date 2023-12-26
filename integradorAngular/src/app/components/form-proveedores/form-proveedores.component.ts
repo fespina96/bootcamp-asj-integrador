@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proveedor } from '../../interfaces/proveedor';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProveedoresService } from '../../services/proveedores-service.service';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-form-proveedores',
@@ -9,6 +10,9 @@ import { ProveedoresService } from '../../services/proveedores-service.service';
   styleUrl: './form-proveedores.component.css'
 })
 export class FormProveedoresComponent implements OnInit{
+
+    constructor(private route:ActivatedRoute, private provService:ProveedoresService, private router:Router, private countriesService:CountriesService){}
+
     provFormInput:Proveedor = {
         cod:0,
         raz_social:"",
@@ -21,8 +25,8 @@ export class FormProveedoresComponent implements OnInit{
         address:{
             street:"",
             zip_code:"",
-            state:"",
-            country:""
+            state_id:0,
+            country_id:0
         },
         datos_fiscales:{
             cuit:"",
@@ -37,10 +41,16 @@ export class FormProveedoresComponent implements OnInit{
         }
     };
 
-    constructor(private route:ActivatedRoute, private provService:ProveedoresService, private router:Router){}
+    countryList:any = [];
+
+    stateList:any = [];
 
     ngOnInit(): void {
         this.loadForm();
+    }
+
+    countryChange():void{
+        this.stateList = this.countriesService.getStates(this.provFormInput.address.country_id);
     }
 
     loadForm(){
@@ -51,6 +61,7 @@ export class FormProveedoresComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
+        this.countryList = this.countriesService.getCountries();
     }
 
     formProcedure(){
