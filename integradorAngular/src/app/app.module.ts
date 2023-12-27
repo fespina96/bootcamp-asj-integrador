@@ -19,6 +19,8 @@ import { FormProveedoresComponent } from './components/form-proveedores/form-pro
 import { ProveedorPipe } from './pipes/proveedor.pipe';
 import { CountryPipe } from './pipes/country.pipe';
 import { StatePipe } from './pipes/state.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +39,14 @@ import { StatePipe } from './pipes/state.pipe';
     FormProveedoresComponent,
     ProveedorPipe,
     CountryPipe,
-    StatePipe
+    StatePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

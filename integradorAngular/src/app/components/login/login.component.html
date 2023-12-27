@@ -1,0 +1,44 @@
+<div class="modal-header bg-primary text-white ">
+	<h4 class="modal-title">Bienvenido</h4>
+</div>
+<div class="modal-body">
+    <form #loginForm="ngForm" (ngSubmit)="formProcedure(loginForm)">
+        <div class="form-floating mb-3">
+            <input class="form-control" id="inputEmail" type="email" name="email" placeholder="" [(ngModel)]="loginInput.email" #email="ngModel" required ngModel [email]="true"/>
+            <label for="inputEmail">E-Mail</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="inputPassword" type="password" name="password" placeholder="" [(ngModel)]="loginInput.password" #password="ngModel" required/>
+            <label for="inputPassword">Contraseña</label>
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" id="inputRememberPassword" type="checkbox" name="remember" value="" [(ngModel)]="loginInput.remember"/>
+            <label class="form-check-label" for="inputRememberPassword">Recordarme</label>
+        </div>
+
+        <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert alert-danger"
+        >
+            <div *ngIf="email.errors?.['required']">E-Mail requerido.</div>
+            <div *ngIf="email.errors?.['email']">Formato E-Mail incorrecto.</div>
+        </div>
+
+        <div
+        *ngIf="!email.invalid && password.invalid && (password.dirty || password.touched)"
+        class="alert alert-danger"
+        >
+            <div *ngIf="password.errors?.['required']">Contraseña requerida.</div>
+        </div>
+        
+        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+            <a class="small" >Recuperar contraseña</a>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+    </form>
+</div>
+<div class="modal-footer ">
+    <div class="card-footer text-center">
+        <div class="small">¿Aún no tiene usuario? <a class="btn btn-secondary btn-sm">Registrarse</a></div>
+    </div>
+</div>
