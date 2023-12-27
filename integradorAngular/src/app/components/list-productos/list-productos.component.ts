@@ -19,6 +19,11 @@ export class ListProductosComponent implements OnInit{
 
     loadList(){
         this.productList = this.productService.getProductos();
+        this.productList.sort(function(a, b) {
+            var textA = a.name_prod.toUpperCase();
+            var textB = b.name_prod.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        })
     }
 
     deleteListItem(id:any){

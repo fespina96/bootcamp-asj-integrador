@@ -21,6 +21,7 @@ import { CountryPipe } from './pipes/country.pipe';
 import { StatePipe } from './pipes/state.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
+import { CategoriaPipe } from './pipes/categoria.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoginComponent } from './components/login/login.component';
     ProveedorPipe,
     CountryPipe,
     StatePipe,
-    LoginComponent
+    LoginComponent,
+    CategoriaPipe
   ],
   imports: [
     BrowserModule,

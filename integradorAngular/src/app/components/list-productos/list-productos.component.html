@@ -25,7 +25,7 @@
                 <tr *ngFor="let item of productList;index as i;">
                         <td>{{item.cod_sku}}</td>
                         <td>{{item.prov_id | proveedor}}</td>
-                        <td>{{item.cat}}</td>
+                        <td>{{item.cat_id | categoria}}</td>
                         <td>{{item.name_prod}}</td>
                         <td>{{item.desc}}</td>
                         <td>{{item.price | currency : '$'}}</td>

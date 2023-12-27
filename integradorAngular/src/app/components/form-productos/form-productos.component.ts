@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ProductService } from '../../services/product-service.service';
 import { Producto } from '../../interfaces/producto';
 import { ProveedoresService } from '../../services/proveedores-service.service';
-
+import { categoriasData } from '../../data/categorias';
 @Component({
     selector: 'app-form-productos',
     templateUrl: './form-productos.component.html',
@@ -14,13 +14,15 @@ export class FormProductosComponent implements OnInit{
     productFormInput:Producto = {
         cod_sku:"",
         prov_id:"",
-        cat:"",
+        cat_id:"",
         name_prod:"",
         desc:"",
         price:"",
     };
 
     provList:any = [];
+
+    catList:any = [];
 
     constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private provService:ProveedoresService){}
 
@@ -37,6 +39,7 @@ export class FormProductosComponent implements OnInit{
             //LOGICA FORM AÑADIR
         }
         this.provList = this.provService.getProveedores();
+        this.catList = categoriasData;
     }
 
     formProcedure(formInput:NgForm){

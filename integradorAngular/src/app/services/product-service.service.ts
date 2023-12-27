@@ -4,7 +4,7 @@ import { Producto } from '../interfaces/producto';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ProductService {
 
@@ -15,7 +15,7 @@ export class ProductService {
     errorProduct:Producto = {
         cod_sku:"",
         prov_id:"",
-        cat:"",
+        cat_id:"",
         name_prod:"",
         desc:"",
         price:"",
