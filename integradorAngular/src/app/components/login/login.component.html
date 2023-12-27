@@ -4,11 +4,32 @@
 <div class="modal-body">
     <form #loginForm="ngForm" (ngSubmit)="formProcedure(loginForm)">
         <div class="form-floating mb-3">
-            <input class="form-control" id="inputEmail" type="email" name="email" placeholder="" [(ngModel)]="loginInput.email" #email="ngModel" required ngModel [email]="true"/>
+            <input 
+                class="form-control" 
+                [ngClass]="{'border-danger-subtle bg-danger-subtle':email.invalid && (email.dirty || email.touched)}" 
+                id="inputEmail" 
+                type="email" 
+                name="email" 
+                placeholder="" 
+                [(ngModel)]="loginInput.email" 
+                #email="ngModel" 
+                required 
+                ngModel [email]="true"
+            />
             <label for="inputEmail">E-Mail</label>
         </div>
         <div class="form-floating mb-3">
-            <input class="form-control" id="inputPassword" type="password" name="password" placeholder="" [(ngModel)]="loginInput.password" #password="ngModel" required/>
+            <input 
+                class="form-control" 
+                [ngClass]="{'border-danger-subtle bg-danger-subtle':!email.invalid && password.invalid && (password.dirty || password.touched)}" 
+                id="inputPassword" 
+                type="password" 
+                name="password" 
+                placeholder="" 
+                [(ngModel)]="loginInput.password" 
+                #password="ngModel" 
+                required
+            />
             <label for="inputPassword">Contraseña</label>
         </div>
         <div class="form-check mb-3">

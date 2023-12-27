@@ -13,12 +13,12 @@ export class ProductService {
     prodList = productosData;
 
     errorProduct:Producto = {
-        cod:0,
-        prov_id:0,
+        cod_sku:"",
+        prov_id:"",
         cat:"",
         name_prod:"",
         desc:"",
-        price:0,
+        price:"",
     }
 
     public getProductos(){
@@ -27,7 +27,7 @@ export class ProductService {
 
     public getProductosById(id:any){
         if(id>0){
-            return this.prodList.filter(item=>item.cod==id)[0];
+            return this.prodList.filter(item=>item.cod_sku==id)[0];
         }else{
             alert('Error al cargar producto.')
             return this.errorProduct;
@@ -35,8 +35,8 @@ export class ProductService {
     }
 
     public addProducto(productoNuevo:Producto){
-        if(this.prodList.find(item=>item.cod==productoNuevo.cod)){
-            alert('El codigo debe ser único.')
+        if(this.prodList.find(item=>item.cod_sku==productoNuevo.cod_sku)){
+            alert('El cod_skuigo debe ser único.')
         }else{
             this.prodList.push(productoNuevo);
             alert('Producto añadido correctamente.');
@@ -47,7 +47,7 @@ export class ProductService {
     public editProducto(productEditInput:Producto,id:any){
         let flag = false;
         for(let x=0;x<this.prodList.length;x++){
-            if(this.prodList[x].cod == id){
+            if(this.prodList[x].cod_sku == id){
                 this.prodList[x] = productEditInput;
                 flag=true;
                 break;
@@ -62,7 +62,7 @@ export class ProductService {
     }
 
     public deleteProducto(id:any){
-        this.prodList = this.prodList.filter(item=>item.cod!=id);
+        this.prodList = this.prodList.filter(item=>item.cod_sku!=id);
         alert('Producto eliminado correctamente.');
     }
 }

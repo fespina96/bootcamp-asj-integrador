@@ -12,7 +12,7 @@
         <table class="table table-hover text-center" *ngIf="productList.length!=0">
             <thead>
                 <tr>
-                    <th>Código</th>
+                    <th>Código SKU</th>
                     <th>Proveedor</th>
                     <th>Categoría</th>
                     <th>Nombre del Producto</th>
@@ -23,15 +23,15 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of productList;index as i;">
-                        <td>{{item.cod}}</td>
+                        <td>{{item.cod_sku}}</td>
                         <td>{{item.prov_id | proveedor}}</td>
                         <td>{{item.cat}}</td>
                         <td>{{item.name_prod}}</td>
                         <td>{{item.desc}}</td>
                         <td>{{item.price | currency : '$'}}</td>
                         <td>
-                            <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-productos/{{item.cod}}"><i class="fas fa-pencil"></i></a>
-                            <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.cod)"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-productos/{{item.cod_sku}}"><i class="fas fa-pencil"></i></a>
+                            <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.cod_sku)"><i class="fas fa-trash"></i></a>
                         </td>
                 </tr>
             </tbody>

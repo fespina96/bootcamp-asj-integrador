@@ -6,18 +6,18 @@ import { Producto } from '../../interfaces/producto';
 import { ProveedoresService } from '../../services/proveedores-service.service';
 
 @Component({
-  selector: 'app-form-productos',
-  templateUrl: './form-productos.component.html',
-  styleUrl: './form-productos.component.css'
+    selector: 'app-form-productos',
+    templateUrl: './form-productos.component.html',
+    styleUrl: './form-productos.component.css'
 })
 export class FormProductosComponent implements OnInit{
     productFormInput:Producto = {
-        cod:0,
-        prov_id:1,
+        cod_sku:"",
+        prov_id:"",
         cat:"",
         name_prod:"",
         desc:"",
-        price:0,
+        price:"",
     };
 
     provList:any = [];
@@ -39,16 +39,17 @@ export class FormProductosComponent implements OnInit{
         this.provList = this.provService.getProveedores();
     }
 
-    formProcedure(){
-        let routeSnapshot = this.route.snapshot.paramMap.get('editId');
-        if(routeSnapshot){
-            //EDITO PRODUCTO
-            this.productService.editProducto(this.productFormInput,routeSnapshot);
-        }else{
-            //AÑADO PRODUCTO
-            this.productService.addProducto(this.productFormInput);
+    formProcedure(formInput:NgForm){
+        if(formInput.valid){
+            let routeSnapshot = this.route.snapshot.paramMap.get('editId');
+            if(routeSnapshot){
+                //EDITO PRODUCTO
+                this.productService.editProducto(this.productFormInput,routeSnapshot);
+            }else{
+                //AÑADO PRODUCTO
+                this.productService.addProducto(this.productFormInput);
+            }
         }
     }
-
 
 }

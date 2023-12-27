@@ -1,8 +1,8 @@
 export interface Producto{
-    cod:number,
-    prov_id:number,
+    cod_sku:string,
+    prov_id:number|"",
     cat:string,
     name_prod:string,
     desc:string,
-    price:number,
+    price:number|"",
 }
