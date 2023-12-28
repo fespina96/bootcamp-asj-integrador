@@ -13,28 +13,58 @@
         <form #orderForm="ngForm" (ngSubmit)="formProcedure(orderForm)">
             <div class="form-row">
                 <div class="form-group col-2">
-                    <label for="input-numero">Número Orden de Compra</label>
-                    <input type="number" class="form-control" name="input-numero" id="input-numero" [(ngModel)]="orderFormInput.order_num">
+                    <label for="input-numero" [ngClass]="{'text-danger':orderNum.invalid && (orderNum.dirty || orderNum.touched)}">Número Orden de Compra</label>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        name="input-numero" 
+                        id="input-numero" 
+                        [(ngModel)]="orderFormInput.order_num"
+                        #orderNum="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':orderNum.invalid && (orderNum.dirty || orderNum.touched)}"
+                    >
+                    <div *ngIf="orderNum.invalid && (orderNum.dirty || orderNum.touched)" class="alert alert-danger small ">
+                        <div *ngIf="orderNum.errors?.['required']">Número de orden requerido.</div>
+                    </div>
                 </div>
                 <div class="form-group col-2">
-                    <label for="input-proveedor">Proveedor</label>
+                    <label for="input-proveedor" [ngClass]="{'text-danger':provSelect.invalid && (provSelect.dirty || provSelect.touched)}">Proveedor</label>
                     <select 
                         class="form-select" 
                         name="input-proveedor" 
                         id="input-proveedor" 
                         [(ngModel)]="orderFormInput.prov_id"
                         (change)="changeProveedor()"
+                        #provSelect="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':provSelect.invalid && (provSelect.dirty || provSelect.touched)}"
                         >
                         <option value="" selected disabled>Seleccione un proveedor</option>
                         <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
+                    <div *ngIf="provSelect.invalid && (provSelect.dirty || provSelect.touched)" class="alert alert-danger small ">
+                        <div *ngIf="provSelect.errors?.['required']">Proveedor requerido.</div>
+                    </div>
                 </div>
                 <div class="form-group col-2">
-                    <label for="input-direccion">Dirección</label>
-                    <input type="text" class="form-control" name="input-direccion" id="input-direccion" [(ngModel)]="orderFormInput.address">
+                    <label for="input-direccion" [ngClass]="{'text-danger':orderAddress.invalid && (orderAddress.dirty || orderAddress.touched)}">Dirección</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-direccion" 
+                        id="input-direccion" 
+                        [(ngModel)]="orderFormInput.address"
+                        #orderAddress="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':orderAddress.invalid && (orderAddress.dirty || orderAddress.touched)}"
+                    >
+                    <div *ngIf="orderAddress.invalid && (orderAddress.dirty || orderAddress.touched)" class="alert alert-danger small ">
+                        <div *ngIf="orderAddress.errors?.['required']">Dirección requerida.</div>
+                    </div>
                 </div>
                 <div class="form-group col-3">
-                    <label for="input-emision">Fecha Emisión</label>
+                    <label for="input-emision" [ngClass]="{'text-danger':emisionDate.invalid && (emisionDate.dirty || emisionDate.touched)}">Fecha Emisión</label>
                     <input 
                         type="date" 
                         class="form-control" 
@@ -42,10 +72,17 @@
                         id="input-emision" 
                         [(ngModel)]="orderFormInput.emision"
                         (change)="emisionChange()"
+                        required
+                        #emisionDate="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':emisionDate.invalid && (emisionDate.dirty || emisionDate.touched)}"
                     >
+                    <div *ngIf="emisionDate.invalid && (emisionDate.dirty || emisionDate.touched)" class="alert alert-danger small ">
+                        <div *ngIf="emisionDate.errors?.['required']">Fecha de Emisión requerida.</div>
+                    </div>
                 </div>
                 <div class="form-group col-3">
-                    <label for="input-entrega">Fecha Entrega Esperada</label>
+                    <label for="input-entrega" [ngClass]="{'text-danger':deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)}">Fecha Entrega Estimada</label>
                     <input 
                         type="date" 
                         class="form-control" 
@@ -53,7 +90,14 @@
                         id="input-entrega" 
                         [(ngModel)]="orderFormInput.entrega_estimada"
                         [min]="minDate"
+                        required
+                        #deliveryDate="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)}"
                     >
+                    <div *ngIf="deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)" class="alert alert-danger small ">
+                        <div *ngIf="deliveryDate.errors?.['required']">Fecha de Entrega requerida.</div>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
@@ -98,8 +142,20 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-2">
-                    <label for="input-total">Total</label>
-                    <input type="number" class="form-control" name="input-total" id="input-total" [(ngModel)]="orderFormInput.total">
+                    <label for="input-total" [ngClass]="{'text-danger':orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)}">Total</label>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        name="input-total" 
+                        id="input-total" 
+                        [(ngModel)]="orderFormInput.total"
+                        #orderTotal="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)}"
+                    >
+                    <div *ngIf="orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)" class="alert alert-danger small ">
+                        <div *ngIf="orderTotal.errors?.['required']">Total requerido.</div>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
