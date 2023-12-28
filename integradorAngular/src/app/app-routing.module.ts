@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'form-proveedores' , component: FormProveedoresComponent},
     { path: 'form-proveedores/:editId' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},
-    { path: 'order/:id' , component: OrderViewComponent},
+    { path: 'orden/:id' , component: OrderViewComponent},
     { path: 'form-ordenes' , component: FormOrdenesComponent},
     { path: 'form-ordenes/:editId' , component: FormOrdenesComponent},
 

@@ -27,6 +27,7 @@ import { CondicionPipe } from './pipes/condicion.pipe';
 import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
 import { ProductoPipe } from './pipes/producto.pipe';
 import { OrderViewComponent } from './components/order-view/order-view.component';
+import { EstadoPipe } from './pipes/estado.pipe';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { OrderViewComponent } from './components/order-view/order-view.component
         CondicionPipe,
         ProveedorViewComponent,
         ProductoPipe,
-        OrderViewComponent
+        OrderViewComponent,
+        EstadoPipe
     ],
     imports: [
         BrowserModule,
