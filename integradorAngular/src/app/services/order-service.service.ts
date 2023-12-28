@@ -40,9 +40,14 @@ export class OrderService {
         if(this.orderList.find(item=>item.order_num==orderNueva.order_num)){
             alert('El número debe ser único.')
         }else{
-            this.orderList.push(orderNueva);
-            alert('Orden añadido correctamente.');
-            this.router.navigateByUrl('/ordenes');
+            if(orderNueva.products.length!=0){
+                this.orderList.push(orderNueva);
+                alert('Orden añadido correctamente.');
+                this.router.navigateByUrl('/ordenes');
+            }else{
+                alert('Orden vacía.')
+            }
+
         }
     }
 

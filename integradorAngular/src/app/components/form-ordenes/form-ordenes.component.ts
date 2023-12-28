@@ -4,6 +4,9 @@ import { OrderService } from '../../services/order-service.service';
 import { ProveedoresService } from '../../services/proveedores-service.service';
 import { Orden } from '../../interfaces/orden';
 import { NgForm } from '@angular/forms';
+import { ItemOrden } from '../../interfaces/item-orden';
+import { ProductService } from '../../services/product-service.service';
+import { Producto } from '../../interfaces/producto';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -28,7 +31,12 @@ export class FormOrdenesComponent {
 
     minDate = "";
 
-    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:ProveedoresService){}
+    prodList:Array<Producto> = [];
+
+    selectedProduct = "";
+    selectedProductQty = "";
+
+    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:ProveedoresService, private prodService:ProductService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -68,5 +76,30 @@ export class FormOrdenesComponent {
         estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
         this.orderFormInput.entrega_estimada = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`
         this.minDate = this.orderFormInput.entrega_estimada;
+    }
+
+    changeProveedor(){
+        this.selectedProduct = "";
+        this.orderFormInput.products = [];
+        this.prodList = this.prodService.getProductosByProvId(this.orderFormInput.prov_id);
+    }
+
+    addProductToOrder(prodId:string,prodQty:any){
+        if(prodQty>0 && prodId!=""){
+                let item = this.orderFormInput.products.find(item=>item.prod_id==prodId);
+                item? item.qty+=prodQty:this.orderFormInput.products.push({prod_id:prodId,qty:prodQty});
+                alert("Producto añadido correctamente.")
+        }
+    }
+
+    deleteOrderProduct(id:any){
+        if(id.length>=4){
+            this.orderFormInput.products = this.orderFormInput.products.filter(item=>item.prod_id!=id);
+        }
+    }
+
+    clearOrder(){
+        this.orderFormInput.products = [];
+        this.prodList = [];
     }
 }

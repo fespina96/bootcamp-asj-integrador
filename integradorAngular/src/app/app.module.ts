@@ -25,6 +25,7 @@ import { CategoriaPipe } from './pipes/categoria.pipe';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CondicionPipe } from './pipes/condicion.pipe';
 import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
+import { ProductoPipe } from './pipes/producto.pipe';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import { ProveedorViewComponent } from './components/proveedor-view/proveedor-vi
         CategoriaPipe,
         ProductViewComponent,
         CondicionPipe,
-        ProveedorViewComponent
+        ProveedorViewComponent,
+        ProductoPipe
     ],
     imports: [
         BrowserModule,

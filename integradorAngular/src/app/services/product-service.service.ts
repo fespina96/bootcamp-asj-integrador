@@ -66,4 +66,13 @@ export class ProductService {
         this.prodList = this.prodList.filter(item=>item.cod_sku!=id);
         alert('Producto eliminado correctamente.');
     }
+
+    public getProductosByProvId(id:any){
+        if(id.length>=4){
+            return this.prodList.filter(item=>item.prov_id==id);
+        }else{
+            alert('Error al cargar productos.');
+            return [];
+        }
+    }
 }

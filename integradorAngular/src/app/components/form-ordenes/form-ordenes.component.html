@@ -4,7 +4,7 @@
     <li class="breadcrumb-item active fst-italic">Ordenes de Compra</li>
     <li class="breadcrumb-item ">Alta</li>
 </ol>
-<div class="card mb-4">
+<div class="card shadow mb-4">
     <div class="card-header">
         <i class="fas fa-building me-1"></i>
         Información Nueva Orden de Compra
@@ -18,7 +18,14 @@
                 </div>
                 <div class="form-group col-2">
                     <label for="input-proveedor">Proveedor</label>
-                    <select class="form-select" name="input-proveedor" id="input-proveedor" [(ngModel)]="orderFormInput.prov_id">
+                    <select 
+                        class="form-select" 
+                        name="input-proveedor" 
+                        id="input-proveedor" 
+                        [(ngModel)]="orderFormInput.prov_id"
+                        (change)="changeProveedor()"
+                        >
+                        <option value="" selected disabled>Seleccione un proveedor</option>
                         <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
                 </div>
@@ -50,17 +57,53 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-10">
-                    <label for="input-productos">Productos</label>
-                    <input type="text" class="form-control" name="input-productos" id="input-productos" [(ngModel)]="orderFormInput.products">
+                <div class="card w-100 ">
+                    <div class="card-header">
+                        <div>Productos de la orden</div>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of orderFormInput.products">
+                                    <td>{{item.prod_id|producto}}</td>
+                                    <td>{{item.qty}}</td>
+                                    <td><a class="btn btn-sm btn-danger" (click)="deleteOrderProduct(item.prod_id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div *ngIf="orderFormInput.products.length==0" class="alert alert-danger text-center"><h5>Ingrese un producto a la orden.</h5></div>
+                        <div class="form-row">
+                            <div class="form-group col-8">
+                                <label for="productSelect">Producto</label>
+                                <select class="form-select " id="productSelect" name="productSelect" [(ngModel)]="selectedProduct">
+                                    <option value="" selected disabled>Elija un producto</option>
+                                    <option *ngFor="let item of prodList" value="{{item.cod_sku}}">{{item.name_prod}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-4">
+                                <label for="productQty">Cantidad</label>
+                                <input class="form-control" type="number" id="productQty" name="productQty" [(ngModel)]="selectedProductQty">
+                            </div>
+                            <a class="btn btn-sm btn-primary " (click)="addProductToOrder(selectedProduct,selectedProductQty)"><i class="fa fa-plus" aria-hidden="true"></i> Añadir a la orden</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-2">
                     <label for="input-total">Total</label>
                     <input type="number" class="form-control" name="input-total" id="input-total" [(ngModel)]="orderFormInput.total">
                 </div>
             </div>
             <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
-            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" (click)="clearOrder()" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
             <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
         </form>
     </div>
