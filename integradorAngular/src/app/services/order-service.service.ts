@@ -18,7 +18,7 @@ export class OrderService {
         entrega_estimada:"",
         address:"",
         prov_id:"",
-        products:"",
+        products:[],
         total:"",
         estado:true
     }

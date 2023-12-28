@@ -17,7 +17,7 @@ export class FormOrdenesComponent {
         entrega_estimada:"",
         address:"",
         prov_id:"",
-        products:"",
+        products:[],
         total:"",
         estado:true
     };
