@@ -1,0 +1,35 @@
+<h1 class="mt-4">Detalle Orden Nº{{orderDetail.order_num}}</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Productos</li>
+    <li class="breadcrumb-item ">Detalle</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-shopping-bag me-1"></i>
+        Información Orden Nº {{orderDetail.order_num}}
+    </div>
+    <div class="card-body shadow">
+        <div><span class="fw-bold ">Número de Orden:</span> {{orderDetail.order_num}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{orderDetail.prov_id|proveedor}}</div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of orderDetail.products">
+                        <th>{{item.prod_id|producto}}</th>
+                        <th>{{item.qty}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div><span class="fw-bold ">Total:</span> {{orderDetail.total|currency:"$"}}</div>
+
+        <a class="btn btn-danger" (click)="cancelarOrden(orderDetail.order_num)"><i class="fas fa-times"></i>Cancelar Orden</a>
+    </div>
+</div>

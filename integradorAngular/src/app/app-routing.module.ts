@@ -10,6 +10,7 @@ import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.com
 import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
+import { OrderViewComponent } from './components/order-view/order-view.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -23,6 +24,7 @@ const routes: Routes = [
     { path: 'form-proveedores' , component: FormProveedoresComponent},
     { path: 'form-proveedores/:editId' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},
+    { path: 'order/:id' , component: OrderViewComponent},
     { path: 'form-ordenes' , component: FormOrdenesComponent},
     { path: 'form-ordenes/:editId' , component: FormOrdenesComponent},
 
