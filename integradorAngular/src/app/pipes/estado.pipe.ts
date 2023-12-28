@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EstadoPipe implements PipeTransform {
 
-    transform(value: any, ...args: unknown[]): unknown {
-        let estado = "";
-        if(value=="true"){
+    transform(value: boolean, ...args: unknown[]): unknown {
+        let estado:string = "";
+        if(value){
             estado = "Normal";
         }else{
             estado = "Cancelado";
