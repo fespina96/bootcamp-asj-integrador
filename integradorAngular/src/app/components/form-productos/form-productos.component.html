@@ -26,7 +26,7 @@
                     >
                     <div *ngIf="codigo_sku.invalid && (codigo_sku.dirty || codigo_sku.touched)" class="alert alert-danger small ">
                         <div *ngIf="codigo_sku.errors?.['required']">Codigo SKU requerido.</div>
-                        <div *ngIf="codigo_sku.errors?.['minlength']">El largo del codigo debe ser 4 o más.</div>
+                        <div *ngIf="codigo_sku.errors?.['minlength']">El largo del codigo debe ser 4 caracteres o más.</div>
                     </div>
                 </div>
                 <div class="form-group col-2">
@@ -115,6 +115,26 @@
                     >
                     <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger small">
                         <div *ngIf="price.errors?.['required']">Precio requerido.</div>
+                    </div>
+                </div>
+                <div class="form-group col-12">
+                    <label for="input-img-url" [ngClass]="{'text-danger':img_url.invalid && (img_url.dirty || img_url.touched)}">URL Imagen</label>
+                    <input 
+                    type="text"
+                    class="form-control" 
+                    name="input-img-url" 
+                    id="input-img-url" 
+                    [(ngModel)]="productFormInput.img_url" 
+                    #img_url="ngModel" 
+                    required
+                    [ngClass]="{'border-danger-subtle bg-danger-subtle':img_url.invalid && (img_url.dirty || img_url.touched)}"
+                    >
+                    <div *ngIf="img_url.invalid && (img_url.dirty || img_url.touched)" class="alert alert-danger small">
+                        <div *ngIf="img_url.errors?.['required']">Imagen requerida.</div>
+                    </div>
+                    <div *ngIf="!img_url.invalid && (img_url.dirty || img_url.touched)">
+                        <div>Imagen ingresada:</div>
+                        <img src="{{img_url.value}}" alt="Error al cargar imagen." style="height: 200px;">
                     </div>
                 </div>
             </div>

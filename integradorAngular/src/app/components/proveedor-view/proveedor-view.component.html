@@ -1,0 +1,49 @@
+<h1 class="mt-4">Detalle {{proveedorDetail.raz_social}}</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Productos</li>
+    <li class="breadcrumb-item ">Detalle</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-building me-1"></i>
+        Información Proveedor {{proveedorDetail.cod}}
+    </div>
+    <div class="card-body shadow">
+        <div><span class="fw-bold ">Codigo:</span> {{proveedorDetail.cod}}</div>
+        <div><span class="fw-bold ">Nombre Proveedor:</span> {{proveedorDetail.raz_social}}</div>
+        <div><span class="fw-bold ">Rubro:</span> {{proveedorDetail.rubro}}</div>
+        <div class="fw-bold ">Logo del Proveedor:</div>
+        <div><img src="{{proveedorDetail.logo_img_url}}" alt="" style="height: 100px;"></div>
+        <hr>
+        <div>
+            <div class="fw-bold ">Informacion de contacto</div>
+            <div><span class="fw-bold ">E-Mail: </span>{{proveedorDetail.contact.email}}</div>
+            <div><span class="fw-bold ">Teléfono: </span>{{proveedorDetail.contact.phone}}</div>
+            <div><span class="fw-bold ">Página Web: </span>{{proveedorDetail.contact.website}}</div>
+        </div>
+        <hr>
+        <div>
+            <div class="fw-bold ">Informacion Postal</div>
+            <div><span class="fw-bold ">Calle: </span>{{proveedorDetail.address.street}} <span>Codigo Postal: </span>{{proveedorDetail.address.zip_code}}</div>
+            <div><span class="fw-bold ">Provincia: </span>{{proveedorDetail.address.state_id|state}}</div>
+            <div><span class="fw-bold ">País: </span>{{proveedorDetail.address.country_id|country}}</div>
+        </div>
+        <hr>
+        <div>
+            <div class="fw-bold ">Datos Fiscales</div>
+            <div><span class="fw-bold ">CUIT: </span>{{proveedorDetail.datos_fiscales.cuit}} <span>Codigo Postal: </span>{{proveedorDetail.datos_fiscales.cod_condicion|condicion}}</div>
+        </div>
+        <hr>
+        <div>
+            <div class="fw-bold ">Informacion Contacto de Referencia</div>
+            <div><span class="fw-bold ">Rol: </span>{{proveedorDetail.ref_contact.role}}</div>
+            <div><span class="fw-bold ">Nombre: </span>{{proveedorDetail.ref_contact.surname}}, {{proveedorDetail.ref_contact.name}}</div>
+            <div><span class="fw-bold ">E-Mail: </span>{{proveedorDetail.ref_contact.email}}</div>
+            <div><span class="fw-bold ">Teléfono: </span>{{proveedorDetail.ref_contact.phone}}</div>
+        </div>
+        <hr>
+        <a class="btn btn-secondary me-2" routerLink="/form-productos/{{proveedorDetail.cod}}"><i class="fas fa-pencil"></i>Editar</a>
+        <a class="btn btn-danger" (click)="deleteListItem(proveedorDetail.cod)"><i class="fas fa-trash"></i>Eliminar</a>
+    </div>
+</div>

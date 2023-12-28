@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit{
 
     loggedIn = false;
 
-    constructor(private loginService:LoginService, private modalCall:NgbModal){}
+    constructor(private loginService:LoginService, private modalCall:NgbModal, private route:Router){}
 
 
     ngOnInit(): void {
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit{
             this.modalCall.activeInstances.subscribe(
                 (Error)=>{
                     this.checkForUser();
+                    this.route.navigateByUrl('/home');
                 }
                 )
         }

@@ -13,9 +13,10 @@ export class ProveedoresService {
     provList = proveedoresData;
 
     errorProveedor:Proveedor = {
-        cod:0,
+        cod:"",
         raz_social:"",
         rubro:"",
+        logo_img_url:"",
         contact:{
             website:"",
             email:"",
@@ -24,12 +25,12 @@ export class ProveedoresService {
         address:{
             street:"",
             zip_code:"",
-            state_id:0,
-            country_id:0
+            state_id:"",
+            country_id:""
         },
         datos_fiscales:{
             cuit:"",
-            condition:""
+            cod_condicion:""
         },
         ref_contact:{
             name:"",
@@ -45,7 +46,7 @@ export class ProveedoresService {
     }
 
     getProovedorById(id:any){
-        if(id>0){
+        if(id.length>=1){
             return this.provList.filter(item=>item.cod==id)[0];
         }else{
             alert('Error al cargar proveedor.')

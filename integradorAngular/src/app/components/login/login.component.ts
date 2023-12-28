@@ -23,7 +23,7 @@ export class LoginComponent {
     }
 
     formProcedure(formInput:NgForm){
-        if(formInput.valid){
+        if(formInput.valid && formInput.touched){
             this.loginService.login(formInput.value.email,formInput.value.password,formInput.value.remember);
         }else{
             alert("Ingrese sus credenciales.");

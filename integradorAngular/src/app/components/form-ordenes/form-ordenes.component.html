@@ -10,7 +10,7 @@
         Información Nueva Orden de Compra
     </div>
     <div class="card-body">
-        <form #orderForm="ngForm" (ngSubmit)="formProcedure()">
+        <form #orderForm="ngForm" (ngSubmit)="formProcedure(orderForm)">
             <div class="form-row">
                 <div class="form-group col-2">
                     <label for="input-numero">Número Orden de Compra</label>
@@ -28,11 +28,25 @@
                 </div>
                 <div class="form-group col-3">
                     <label for="input-emision">Fecha Emisión</label>
-                    <input type="date" class="form-control" name="input-emision" id="input-emision" [(ngModel)]="orderFormInput.emision">
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        name="input-emision" 
+                        id="input-emision" 
+                        [(ngModel)]="orderFormInput.emision"
+                        (change)="emisionChange()"
+                    >
                 </div>
                 <div class="form-group col-3">
                     <label for="input-entrega">Fecha Entrega Esperada</label>
-                    <input type="date" class="form-control" name="input-entrega" id="input-entrega" [(ngModel)]="orderFormInput.entrega_estimada">
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        name="input-entrega" 
+                        id="input-entrega" 
+                        [(ngModel)]="orderFormInput.entrega_estimada"
+                        [min]="minDate"
+                    >
                 </div>
             </div>
             <div class="form-row">

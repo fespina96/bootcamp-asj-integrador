@@ -13,13 +13,13 @@ export class OrderService {
     orderList = ordenesData;
 
     errorOrder:Orden = {
-        order_num:0,
-        emision:new Date,
-        entrega_estimada:new Date,
+        order_num:"",
+        emision:"",
+        entrega_estimada:"",
         address:"",
-        prov_id:1,
+        prov_id:"",
         products:"",
-        total:0,
+        total:"",
         estado:true
     }
 

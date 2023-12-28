@@ -18,6 +18,7 @@ export class FormProductosComponent implements OnInit{
         name_prod:"",
         desc:"",
         price:"",
+        img_url:""
     };
 
     provList:any = [];
@@ -43,7 +44,7 @@ export class FormProductosComponent implements OnInit{
     }
 
     formProcedure(formInput:NgForm){
-        if(formInput.valid){
+        if(formInput.valid && formInput.touched){
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO PRODUCTO

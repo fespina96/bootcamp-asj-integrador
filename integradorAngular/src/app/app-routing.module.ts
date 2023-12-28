@@ -8,14 +8,18 @@ import { ListProveedoresComponent } from './components/list-proveedores/list-pro
 import { FormProveedoresComponent } from './components/form-proveedores/form-proveedores.component';
 import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';
 import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'productos' , component: ListProductosComponent},
+    { path: 'producto/:id' , component: ProductViewComponent},
     { path: 'form-productos' , component: FormProductosComponent},
     { path: 'form-productos/:editId' , component: FormProductosComponent},
     { path: 'proveedores' , component: ListProveedoresComponent},
+    { path: 'proveedor/:id' , component: ProveedorViewComponent},
     { path: 'form-proveedores' , component: FormProveedoresComponent},
     { path: 'form-proveedores/:editId' , component: FormProveedoresComponent},
     { path: 'ordenes' , component: ListOrdenesComponent},

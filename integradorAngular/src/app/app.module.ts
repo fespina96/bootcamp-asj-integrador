@@ -22,35 +22,41 @@ import { StatePipe } from './pipes/state.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { CategoriaPipe } from './pipes/categoria.pipe';
+import { ProductViewComponent } from './components/product-view/product-view.component';
+import { CondicionPipe } from './pipes/condicion.pipe';
+import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    SideNavComponent,
-    SideNavContentComponent,
-    FooterComponent,
-    HomeComponent,
-    Error404Component,
-    ListProductosComponent,
-    FormProductosComponent,
-    ListOrdenesComponent,
-    ListProveedoresComponent,
-    FormOrdenesComponent,
-    FormProveedoresComponent,
-    ProveedorPipe,
-    CountryPipe,
-    StatePipe,
-    LoginComponent,
-    CategoriaPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        SideNavComponent,
+        SideNavContentComponent,
+        FooterComponent,
+        HomeComponent,
+        Error404Component,
+        ListProductosComponent,
+        FormProductosComponent,
+        ListOrdenesComponent,
+        ListProveedoresComponent,
+        FormOrdenesComponent,
+        FormProveedoresComponent,
+        ProveedorPipe,
+        CountryPipe,
+        StatePipe,
+        LoginComponent,
+        CategoriaPipe,
+        ProductViewComponent,
+        CondicionPipe,
+        ProveedorViewComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        NgbModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,6 +19,7 @@ export class ProductService {
         name_prod:"",
         desc:"",
         price:"",
+        img_url:""
     }
 
     public getProductos(){
@@ -26,7 +27,7 @@ export class ProductService {
     }
 
     public getProductosById(id:any){
-        if(id>0){
+        if(id.length>=4){
             return this.prodList.filter(item=>item.cod_sku==id)[0];
         }else{
             alert('Error al cargar producto.')

@@ -1,0 +1,25 @@
+<h1 class="mt-4">Detalle {{productDetail.name_prod}}</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Productos</li>
+    <li class="breadcrumb-item ">Detalle</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-shopping-bag me-1"></i>
+        Información Producto {{productDetail.cod_sku}}
+    </div>
+    <div class="card-body shadow">
+        <div><span class="fw-bold ">Codigo SKU:</span> {{productDetail.cod_sku}}</div>
+        <div><span class="fw-bold ">Nombre Producto:</span> {{productDetail.name_prod}}</div>
+        <div><span class="fw-bold ">Categoría:</span> {{productDetail.cat_id|categoria}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{productDetail.prov_id|proveedor}}</div>
+        <div class="fw-bold ">Imagen del Producto:</div>
+        <div><img src="{{productDetail.img_url}}" alt="" style="height: 300px;"></div>
+        <div><span class="fw-bold ">Precio:</span> {{productDetail.price|currency:"$"}}</div>
+        <div class="fw-bold ">Descripción:</div>
+        <div>{{productDetail.desc}}</div>
+        <a class="btn btn-secondary me-2" routerLink="/form-productos/{{productDetail.cod_sku}}"><i class="fas fa-pencil"></i>Editar</a>
+        <a class="btn btn-danger" (click)="deleteListItem(productDetail.cod_sku)"><i class="fas fa-trash"></i>Eliminar</a>
+    </div>
+</div>

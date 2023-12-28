@@ -8,7 +8,7 @@ export class StatePipe implements PipeTransform {
 
     constructor(private countryService:CountriesService){}
 
-    transform(value: number, ...args: unknown[]): unknown {
+    transform(value: number|"", ...args: unknown[]): unknown {
         let state = this.countryService.getStateById(value);
         return state.name;
     }

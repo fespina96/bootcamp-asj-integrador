@@ -1,7 +1,8 @@
 export interface Proveedor {
-    cod:number,
+    cod:string,
     raz_social:string,
     rubro:string,
+    logo_img_url:string,
     contact:contact,
     address:address,
     datos_fiscales:datos_fiscales,
@@ -17,13 +18,13 @@ export interface contact{
 export interface address{
     street:string,
     zip_code:string,
-    state_id:number,
-    country_id:number
+    state_id:number|"",
+    country_id:number|""
 }
 
 export interface datos_fiscales{
     cuit:string,
-    condition:string
+    cod_condicion:number|""
 }
 
 export interface ref_contact{

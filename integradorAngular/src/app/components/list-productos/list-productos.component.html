@@ -9,27 +9,28 @@
         Productos
     </div>
     <div class="card-body">
-        <table class="table table-hover text-center" *ngIf="productList.length!=0">
+        <table class="table table-hover text-center align-middle " *ngIf="productList.length!=0">
             <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Código SKU</th>
                     <th>Proveedor</th>
                     <th>Categoría</th>
                     <th>Nombre del Producto</th>
-                    <th>Descripción</th>
                     <th>Precio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let item of productList;index as i;">
+                        <td><img src="{{item.img_url}}" alt="Imagen {{item.name_prod}}" style="height: 100px;"></td>
                         <td>{{item.cod_sku}}</td>
                         <td>{{item.prov_id | proveedor}}</td>
                         <td>{{item.cat_id | categoria}}</td>
                         <td>{{item.name_prod}}</td>
-                        <td>{{item.desc}}</td>
                         <td>{{item.price | currency : '$'}}</td>
                         <td>
+                            <a class="btn btn-primary me-2 btn-sm" routerLink="/producto/{{item.cod_sku}}"><i class="fas fa-eye"></i></a>
                             <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-productos/{{item.cod_sku}}"><i class="fas fa-pencil"></i></a>
                             <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.cod_sku)"><i class="fas fa-trash"></i></a>
                         </td>

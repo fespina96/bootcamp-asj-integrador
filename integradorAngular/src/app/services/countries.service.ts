@@ -8,11 +8,11 @@ export class CountriesService {
 
     constructor() { }
 
-    getStates(countryId:number){
+    getStates(countryId:number|""){
         return statesData.filter((item:any)=>item.country_id==countryId);
     }
 
-    getStateById(stateId:number){
+    getStateById(stateId:number|""){
         return statesData.filter((item:any)=>item.id==stateId)[0];
     }
 
@@ -20,7 +20,7 @@ export class CountriesService {
         return countriesData;
     }
 
-    getCountryById(countryId:number){
+    getCountryById(countryId:number|""){
         return countriesData.filter((item:any)=>item.id==countryId)[0];
     }
 }
