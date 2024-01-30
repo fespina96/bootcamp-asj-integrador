@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ordenesData } from '../../data/ordenes';
 import { OrderService } from '../../services/order-service.service';
-import { Orden } from '../../interfaces/orden';
+import { Order } from '../../interfaces/orden';
 @Component({
   selector: 'app-list-ordenes',
   templateUrl: './list-ordenes.component.html',
@@ -10,7 +10,7 @@ import { Orden } from '../../interfaces/orden';
 export class ListOrdenesComponent implements OnInit{
     constructor(private orderService:OrderService){}
 
-    orderList:Array<Orden> = []
+    orderList:Array<Order> = []
 
     ngOnInit(): void {
         this.loadList();

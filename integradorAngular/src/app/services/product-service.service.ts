@@ -1,78 +1,39 @@
 import { Injectable } from '@angular/core';
-import { productosData } from '../data/productos';
-import { Producto } from '../interfaces/producto';
+import { Product } from '../interfaces/product';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductService {
 
-    constructor(private router:Router) { }
+    productUrl = "http://localhost:8080/product"
 
-    prodList = productosData;
+    constructor(private http:HttpClient) { }
 
-    errorProduct:Producto = {
-        cod_sku:"",
-        prov_id:"",
-        cat_id:"",
-        name_prod:"",
-        desc:"",
-        price:"",
-        img_url:""
+    getProducts():Observable<any>{
+        return this.http.get(this.productUrl);
     }
 
-    public getProductos(){
-        return this.prodList;
+    getProductById(id:any):Observable<any>{
+        return this.http.get(this.productUrl+"/"+id);
     }
 
-    public getProductosById(id:any){
-        if(id.length>=4){
-            return this.prodList.filter(item=>item.cod_sku==id)[0];
-        }else{
-            alert('Error al cargar producto.')
-            return this.errorProduct;
-        }
+    addProduct(productoNuevo:Product):Observable<any>{
+        return this.http.post(this.productUrl,productoNuevo);
     }
 
-    public addProducto(productoNuevo:Producto){
-        if(this.prodList.find(item=>item.cod_sku==productoNuevo.cod_sku)){
-            alert('El cod_skuigo debe ser único.')
-        }else{
-            this.prodList.push(productoNuevo);
-            alert('Producto añadido correctamente.');
-            this.router.navigateByUrl('/productos');
-        }
+    editProduct(id:any,productEditInput:Product):Observable<any>{
+        return this.http.put(this.productUrl+"/"+id,productEditInput);
     }
 
-    public editProducto(productEditInput:Producto,id:any){
-        let flag = false;
-        for(let x=0;x<this.prodList.length;x++){
-            if(this.prodList[x].cod_sku == id){
-                this.prodList[x] = productEditInput;
-                flag=true;
-                break;
-            }
-        }
-        if(flag=true){
-            alert('Producto editado correctamente.');
-            this.router.navigateByUrl('/productos');
-        }else{
-            alert('Error al editar producto.');
-        }
+    deleteProduct(id:any):Observable<any>{
+        return this.http.delete(this.productUrl+"/"+id);
     }
 
-    public deleteProducto(id:any){
-        this.prodList = this.prodList.filter(item=>item.cod_sku!=id);
-        alert('Producto eliminado correctamente.');
-    }
-
-    public getProductosByProvId(id:any){
-        if(id.length>=4){
-            return this.prodList.filter(item=>item.prov_id==id);
-        }else{
-            alert('Error al cargar productos.');
-            return [];
-        }
+    getSupplierProductsById(id:any):Observable<any>{
+        return this.http.get(this.productUrl+"/"+id+"/products")
     }
 }

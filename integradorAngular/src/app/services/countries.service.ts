@@ -1,26 +1,29 @@
 import { Injectable } from '@angular/core';
-import statesData from '../data/states.json';
-import countriesData from '../data/countries.json';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
 export class CountriesService {
 
-    constructor() { }
+    statesUrl = "http://localhost:8080/state";
+    countriesUrl = "http://localhost:8080/country";
 
-    getStates(countryId:number|""){
-        return statesData.filter((item:any)=>item.country_id==countryId);
+    constructor(private http:HttpClient) { }
+
+    getCountryStatesById(id:number):Observable<any>{
+        return this.http.get(this.countriesUrl+"/"+id+"/states");
     }
 
-    getStateById(stateId:number|""){
-        return statesData.filter((item:any)=>item.id==stateId)[0];
+    getStateById(id:number){
+        return this.http.get(this.statesUrl+"/"+id);
     }
 
-    getCountries(){
-        return countriesData;
+    getCountries():Observable<any>{
+        return this.http.get(this.countriesUrl);
     }
 
-    getCountryById(countryId:number|""){
-        return countriesData.filter((item:any)=>item.id==countryId)[0];
+    getCountryById(id:number){
+        return this.http.get(this.countriesUrl+"/"+id);
     }
 }

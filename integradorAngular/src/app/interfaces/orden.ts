@@ -1,12 +1,10 @@
-import { ItemOrden } from "./item-orden"
-
-export interface Orden {
-    order_num:number|"",
-    emision:string,
-    entrega_estimada:string,
+export interface Order {
+    id:number|"",
+    emision_date:Date|"",
+    estimated_delivery_date:Date|"",
+    delivery_date:Date|"",
     address:string,
-    prov_id:string,
-    products:Array<ItemOrden>,
+    supplier_id:string,
     total:number|"",
     estado:boolean
 }

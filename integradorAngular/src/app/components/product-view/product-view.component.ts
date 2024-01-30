@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product-service.service';
-import { Producto } from '../../interfaces/producto';
+import { Product } from '../../interfaces/product';
 
 @Component({
     selector: 'app-product-view',
@@ -11,7 +11,7 @@ import { Producto } from '../../interfaces/producto';
 export class ProductViewComponent implements OnInit{
     constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router){}
 
-    productDetail:Producto = {
+    productDetail:Product = {
         cod_sku:"",
         prov_id:"",
         cat_id:"",

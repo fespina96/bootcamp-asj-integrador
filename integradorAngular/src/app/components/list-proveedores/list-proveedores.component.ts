@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { proveedoresData } from '../../data/proveedores';
-import { Proveedor } from '../../interfaces/proveedor';
-import { ProveedoresService } from '../../services/proveedores-service.service';
+import { Supplier } from '../../interfaces/supplier';
+import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-list-proveedores',
@@ -10,21 +10,21 @@ import { ProveedoresService } from '../../services/proveedores-service.service';
 })
 export class ListProveedoresComponent implements OnInit{
     
-    constructor(private provService:ProveedoresService){}
+    constructor(private provService:SupplierService){}
 
-    provList:Array<Proveedor> = []
+    provList:Array<Supplier> = []
 
     ngOnInit(): void {
         this.loadList();
     }
 
     loadList(){
-        this.provList = this.provService.getProveedores();
+        this.provList = this.provService.getSuppliers();
     }
 
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el proveedor codigo ${id}?`)){
-            this.provService.deleteProveedor(id);
+            this.provService.deleteSupplier(id);
             this.loadList();
         }
     }

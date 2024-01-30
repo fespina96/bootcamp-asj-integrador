@@ -16,18 +16,13 @@ import { ListProveedoresComponent } from './components/list-proveedores/list-pro
 import { FormOrdenesComponent } from './components/form-ordenes/form-ordenes.component';
 import { FormProveedoresComponent } from './components/form-proveedores/form-proveedores.component';
 
-import { ProveedorPipe } from './pipes/proveedor.pipe';
-import { CountryPipe } from './pipes/country.pipe';
-import { StatePipe } from './pipes/state.pipe';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
-import { CategoriaPipe } from './pipes/categoria.pipe';
 import { ProductViewComponent } from './components/product-view/product-view.component';
-import { CondicionPipe } from './pipes/condicion.pipe';
 import { ProveedorViewComponent } from './components/proveedor-view/proveedor-view.component';
-import { ProductoPipe } from './pipes/producto.pipe';
 import { OrderViewComponent } from './components/order-view/order-view.component';
-import { EstadoPipe } from './pipes/estado.pipe';
+import { FormCategoryComponent } from './components/form-category/form-category.component';
 
 @NgModule({
     declarations: [
@@ -44,17 +39,11 @@ import { EstadoPipe } from './pipes/estado.pipe';
         ListProveedoresComponent,
         FormOrdenesComponent,
         FormProveedoresComponent,
-        ProveedorPipe,
-        CountryPipe,
-        StatePipe,
         LoginComponent,
-        CategoriaPipe,
         ProductViewComponent,
-        CondicionPipe,
         ProveedorViewComponent,
-        ProductoPipe,
         OrderViewComponent,
-        EstadoPipe
+        FormCategoryComponent
     ],
     imports: [
         BrowserModule,

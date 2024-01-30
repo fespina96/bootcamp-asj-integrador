@@ -1,7 +1,0 @@
-import { Proveedor } from "../interfaces/proveedor";
-
-export const proveedoresData:Array<Proveedor> = [
-    {cod:"A000",raz_social:"Juancito SRL",rubro:"Indumentaria",logo_img_url:"https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png",contact:{website:"www.juancito.com.ar",email:"contact@juancito.com.ar",phone:"11 1234-5678",},address:{street:"Calle Falsa 1234",zip_code:"1001",state_id:3656,country_id:11,},datos_fiscales:{cuit:"12-34567890-1",cod_condicion:1,},ref_contact:{name:"Juan Jose",surname:"Perez",phone:"11 1234-5678",email:"jjp@juancito.com.ar",role:"CEO"}},
-    {cod:"B000",raz_social:"Camila SA",rubro:"Tecnología",logo_img_url:"https://st2.depositphotos.com/4035913/6124/i/450/depositphotos_61243831-stock-photo-letter-s-logo.jpg",contact:{website:"www.camila.com.ar",email:"contact@camila.com.ar",phone:"11 2345-6789",},address:{street:"Calle 100% Real 4321",zip_code:"4001",state_id:3641,country_id:11,},datos_fiscales:{cuit:"32-12345123-3",cod_condicion:1,},ref_contact:{name:"Jose",surname:"Alegre",phone:"11 6547-4235",email:"ose.alegre@camila.com.ar",role:"Empleado"}},
-    {cod:"C000",raz_social:"Pedro SA",rubro:"Carpintería",logo_img_url:"https://www.logodesign.net/images/nature-logo.png",contact:{website:"www.pedro.com.ar",email:"contact@pedro.com.ar",phone:"11 0123-4567",},address:{street:"Av. Acá A La Vuelta 123",zip_code:"2222",state_id:3642,country_id:11,},datos_fiscales:{cuit:"16-12315553-7",cod_condicion:1,},ref_contact:{name:"Ana María",surname:"Gomez",phone:"11 5135-1235",email:"amgomez@pedro.com.ar",role:"Jefa"}},
-];

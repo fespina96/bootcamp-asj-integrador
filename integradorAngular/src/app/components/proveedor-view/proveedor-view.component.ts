@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProveedoresService } from '../../services/proveedores-service.service';
-import { Proveedor } from '../../interfaces/proveedor';
+import { SupplierService } from '../../services/supplier.service';
+import { Supplier } from '../../interfaces/supplier';
 @Component({
   selector: 'app-proveedor-view',
   templateUrl: './proveedor-view.component.html',
   styleUrl: './proveedor-view.component.css'
 })
 export class ProveedorViewComponent {
-    constructor(private route:ActivatedRoute, private proveedorService:ProveedoresService, private router:Router){}
+    constructor(private route:ActivatedRoute, private proveedorService:SupplierService, private router:Router){}
 
-    proveedorDetail:Proveedor = {
+    proveedorDetail:Supplier = {
         cod:"",
         raz_social:"",
         rubro:"",
@@ -49,7 +49,7 @@ export class ProveedorViewComponent {
 
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el proveedor codigo ${id}?`)){
-            this.proveedorService.deleteProveedor(id);
+            this.proveedorService.deleteSupplier(id);
             this.router.navigateByUrl("/proveedores");
         }
     }

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../services/order-service.service';
-import { ProveedoresService } from '../../services/proveedores-service.service';
-import { Orden } from '../../interfaces/orden';
+import { SupplierService } from '../../services/supplier.service';
+import { Order } from '../../interfaces/orden';
 import { NgForm } from '@angular/forms';
-import { ItemOrden } from '../../interfaces/item-orden';
+import { ItemOrder } from '../../interfaces/item-order';
 import { ProductService } from '../../services/product-service.service';
-import { Producto } from '../../interfaces/producto';
+import { Product } from '../../interfaces/product';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -14,7 +14,7 @@ import { Producto } from '../../interfaces/producto';
     styleUrl: './form-ordenes.component.css'
 })
 export class FormOrdenesComponent {
-    orderFormInput:Orden = {
+    orderFormInput:Order = {
         order_num:"",
         emision:"",
         entrega_estimada:"",
@@ -31,12 +31,12 @@ export class FormOrdenesComponent {
 
     minDate = "";
 
-    prodList:Array<Producto> = [];
+    prodList:Array<Product> = [];
 
     selectedProduct = "";
     selectedProductQty = "";
 
-    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:ProveedoresService, private prodService:ProductService){}
+    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:SupplierService, private prodService:ProductService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -55,7 +55,7 @@ export class FormOrdenesComponent {
             this.orderFormInput.entrega_estimada = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`
             this.minDate = this.orderFormInput.entrega_estimada;
         }
-        this.provList = this.provService.getProveedores();
+        this.provList = this.provService.getSuppliers();
     }
 
     formProcedure(form:NgForm){

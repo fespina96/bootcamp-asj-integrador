@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../services/order-service.service';
-import { Orden } from '../../interfaces/orden';
+import { Order } from '../../interfaces/orden';
 @Component({
     selector: 'app-order-view',
     templateUrl: './order-view.component.html',
@@ -10,7 +10,7 @@ import { Orden } from '../../interfaces/orden';
 export class OrderViewComponent {
     constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router){}
 
-    orderDetail:Orden = {
+    orderDetail:Order = {
         order_num:"",
         emision:"",
         entrega_estimada:"",

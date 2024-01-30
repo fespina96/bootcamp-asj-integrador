@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Proveedor } from '../../interfaces/proveedor';
+import { Supplier } from '../../interfaces/supplier';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProveedoresService } from '../../services/proveedores-service.service';
+import { SupplierService } from '../../services/supplier.service';
 import { CountriesService } from '../../services/countries.service';
 import { condicionData } from '../../data/condicion';
 import { NgForm } from '@angular/forms';
@@ -13,9 +13,9 @@ import { NgForm } from '@angular/forms';
 })
 export class FormProveedoresComponent implements OnInit{
 
-    constructor(private route:ActivatedRoute, private provService:ProveedoresService, private router:Router, private countriesService:CountriesService){}
+    constructor(private route:ActivatedRoute, private provService:SupplierService, private router:Router, private countriesService:CountriesService){}
 
-    provFormInput:Proveedor = {
+    provFormInput:Supplier = {
         cod:"",
         raz_social:"",
         rubro:"",
@@ -76,7 +76,7 @@ export class FormProveedoresComponent implements OnInit{
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO PRODUCTO
-                this.provService.editProveedor(this.provFormInput,routeSnapshot);
+                this.provService.editSupplier(this.provFormInput,routeSnapshot);
             }else{
                 //AÑADO PRODUCTO
                 this.provService.addProveedor(this.provFormInput);

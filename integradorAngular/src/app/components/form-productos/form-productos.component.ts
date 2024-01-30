@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../services/product-service.service';
-import { Producto } from '../../interfaces/producto';
-import { ProveedoresService } from '../../services/proveedores-service.service';
-import { categoriasData } from '../../data/categorias';
+import { Product } from '../../interfaces/product';
+import { SupplierService } from '../../services/supplier.service';
+import { categoryData } from '../../data/categories';
 @Component({
     selector: 'app-form-productos',
     templateUrl: './form-productos.component.html',
     styleUrl: './form-productos.component.css'
 })
 export class FormProductosComponent implements OnInit{
-    productFormInput:Producto = {
+    productFormInput:Product = {
         cod_sku:"",
         prov_id:"",
         cat_id:"",
@@ -25,7 +25,7 @@ export class FormProductosComponent implements OnInit{
 
     catList:any = [];
 
-    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private provService:ProveedoresService){}
+    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private provService:SupplierService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -39,8 +39,8 @@ export class FormProductosComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
-        this.provList = this.provService.getProveedores();
-        this.catList = categoriasData;
+        this.provList = this.provService.getSuppliers();
+        this.catList = categoryData;
     }
 
     formProcedure(formInput:NgForm){
@@ -56,4 +56,7 @@ export class FormProductosComponent implements OnInit{
         }
     }
 
+    addCategoryModal(){
+        alert("nueva categoria");
+    }
 }
