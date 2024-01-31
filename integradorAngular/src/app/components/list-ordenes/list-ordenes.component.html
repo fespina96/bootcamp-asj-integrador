@@ -21,11 +21,11 @@
             </thead>
             <tbody >
                 <tr *ngFor="let item of orderList;index as i;">
-                    <td *ngIf="item.order_state_id">{{item.id}}</td>
-                    <td *ngIf="item.order_state_id">{{item.supplier_id}}</td>
-                    <td *ngIf="item.order_state_id">{{item.emision_date}}</td>
-                    <td *ngIf="item.order_state_id">{{item.total|currency:'$'}}</td>
-                    <td *ngIf="item.order_state_id">
+                    <td *ngIf="item.orderStateId">{{item.id}}</td>
+                    <td *ngIf="item.orderStateId">{{item.supplierId}}</td>
+                    <td *ngIf="item.orderStateId">{{item.emisionDate}}</td>
+                    <td *ngIf="item.orderStateId">{{item.total|currency:'$'}}</td>
+                    <td *ngIf="item.orderStateId">
                         <a class="btn btn-sm btn-secondary me-2" routerLink="/orden/{{item.id}}"><i class="fas fa-eye"></i></a>
                         <a class="btn btn-sm btn-danger" (click)="deleteListItem(item.id)"><i class="fas fa-times"></i></a>
                     </td>        
