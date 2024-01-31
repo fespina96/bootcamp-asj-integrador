@@ -1,0 +1,347 @@
+<h1 class="mt-4">Alta Nuevo Proveedor</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Proveedores</li>
+    <li class="breadcrumb-item ">Alta</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-building me-1"></i>
+        Información Nuevo Proveedor
+    </div>
+    <div class="card-body">
+        <form #supplierForm="ngForm" (ngSubmit)="formProcedure(supplierForm)">
+            <div class="form-row">
+                <div class="form-group col-2">
+                    <label for="input-code" [ngClass]="{'text-danger':supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)}">Código</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-code" 
+                        id="input-code" 
+                        [(ngModel)]="suppFormInput.code"
+                        #supp_cod="ngModel" 
+                        minlength="4"
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)}"
+                    >
+                    <div *ngIf="supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)" class="alert alert-danger small">
+                        <div *ngIf="supp_cod.errors?.['required']">Código requerido.</div>
+                        <div *ngIf="supp_cod.errors?.['minlength']">El largo del código debe ser 4 caracteres o más.</div>
+                    </div>
+                </div>
+                <div class="form-group col-8">
+                    <label for="input-" [ngClass]="{'text-danger':supplierName.invalid && (supplierName.dirty || supplierName.touched)}">Razón Social</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-" 
+                        id="input-" 
+                        [(ngModel)]="suppFormInput.name"
+                        #supplierName="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierName.invalid && (supplierName.dirty || supplierName.touched)}"
+                    >
+                    <div *ngIf="supplierName.invalid && (supplierName.dirty || supplierName.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierName.errors?.['required']">Razón social requerida.</div>
+                    </div>
+                </div>
+                <div class="form-group col-2">
+                    <label for="input-supplier-category" [ngClass]="{'text-danger':supplierCategory.invalid && (supplierCategory.dirty || supplierCategory.touched)}">Rubro</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-supplier-category" 
+                        id="input-supplier-category" 
+                        [(ngModel)]="suppFormInput.supplier_category_id"
+                        #supplierCategory="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCategory.invalid && (supplierCategory.dirty || supplierCategory.touched)}"
+                    >
+                    <div *ngIf="supplierCategory.invalid && (supplierCategory.dirty || supplierCategory.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierCategory.errors?.['required']">Rubro requerido.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-website" [ngClass]="{'text-danger':supplierWebsite.invalid && (supplierWebsite.dirty || supplierWebsite.touched)}">Sitio Web</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-website" 
+                        id="input-website" 
+                        [(ngModel)]="suppFormInput.website"
+                        #supplierWebsite="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierWebsite.invalid && (supplierWebsite.dirty || supplierWebsite.touched)}"
+                    >
+                    <div *ngIf="supplierWebsite.invalid && (supplierWebsite.dirty || supplierWebsite.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierWebsite.errors?.['required']">Sitio web requerido.</div>
+                    </div>
+                </div>
+                <div class="form-group col-4" [ngClass]="{'text-danger':supplierEmail.invalid && (supplierEmail.dirty || supplierEmail.touched)}">
+                    <label for="input-email">E-mail</label>
+                    <input 
+                        type="email" 
+                        class="form-control" 
+                        name="input-email" 
+                        id="input-email" 
+                        [(ngModel)]="suppFormInput.email"
+                        #supplierEmail="ngModel" 
+                        required
+                        ngModel email
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierEmail.invalid && (supplierEmail.dirty || supplierEmail.touched)}"
+                    >
+                    <div *ngIf="supplierEmail.invalid && (supplierEmail.dirty || supplierEmail.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierEmail.errors?.['required']">E-mail requerido.</div>
+                        <div *ngIf="supplierEmail.errors?.['email']">Formato E-mail incorrecto.</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-phone" [ngClass]="{'text-danger':supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)}">Teléfono</label>
+                    <input 
+                        class="form-control" 
+                        name="input-phone" 
+                        id="input-phone" 
+                        [(ngModel)]="suppFormInput.phone"
+                        #supplierPhone="ngModel" 
+                        required
+                        minlength="7"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)}"
+                    >
+                    <div *ngIf="supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierPhone.errors?.['required']">Teléfono requerido.</div>
+                        <div *ngIf="supplierPhone.errors?.['minlength']">Teléfono demasiado corto.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-pais col-4">
+                    <label for="input-country" [ngClass]="{'text-danger':supplierCountry.invalid && (supplierCountry.dirty || supplierCountry.touched)}">País</label>
+                    <select 
+                        class="form-select" 
+                        name="input-country" 
+                        id="input-country" 
+                        [(ngModel)]="suppFormInput.country_id" 
+                        (ngModelChange)="countryChange()"
+                        #supplierCountry="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCountry.invalid && (supplierCountry.dirty || supplierCountry.touched)}"
+                    >
+                        <option value="" disabled selected>Seleccione un país</option>
+                        <option *ngFor="let country of countryList" value="{{country.id}}" >{{country.name}}</option>
+                    </select>
+                    <div *ngIf="supplierCountry.invalid && (supplierCountry.dirty || supplierCountry.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierCountry.errors?.['required']">País requerido.</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-state" [ngClass]="{'text-danger':supplierState.invalid && (supplierState.dirty || supplierState.touched)}">Provincia</label>
+                    <select 
+                        class="form-select" 
+                        name="input-state" 
+                        id="input-state" 
+                        [(ngModel)]="suppFormInput.state_id"
+                        #supplierState="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierState.invalid && (supplierState.dirty || supplierState.touched)}"
+                    >
+                        <option value="" disabled selected>Seleccione una provincia</option>
+                        <option *ngFor="let state of stateList" value="{{state.id}}" >{{state.name}}</option>
+                    </select>
+                    <div *ngIf="supplierState.invalid && (supplierState.dirty || supplierState.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierState.errors?.['required']">Provincia requerida.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-address" [ngClass]="{'text-danger':supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)}">Calle y Altura</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-address" 
+                        id="input-address" 
+                        [(ngModel)]="suppFormInput.address"
+                        #supplierAddress="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)}"
+                    >
+                    <div *ngIf="supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierAddress.errors?.['required']">Dirección requerida.</div>
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-zip-code" [ngClass]="{'text-danger':zipCode.invalid && (zipCode.dirty || zipCode.touched)}">Codigo Postal</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-zip-code" 
+                        id="input-zip-code" 
+                        [(ngModel)]="suppFormInput.zip_code"
+                        #zipCode="ngModel" 
+                        minlength="4"
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierAddress.invalid && (zipCode.dirty || zipCode.touched)}"
+                    >
+                    <div *ngIf="zipCode.invalid && (zipCode.dirty || zipCode.touched)" class="alert alert-danger small">
+                        <div *ngIf="zipCode.errors?.['required']">Codigo Postal requerido.</div>
+                        <div *ngIf="zipCode.errors?.['minlength']">Codigo Postal demasiado corto.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="input-cuit" [ngClass]="{'text-danger':supplierCuit.invalid && (supplierCuit.dirty || supplierCuit.touched)}">CUIT</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-cuit" 
+                        id="input-cuit" 
+                        [(ngModel)]="suppFormInput.cuit"
+                        #supplierCuit="ngModel" 
+                        minlength="10"
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCuit.invalid && (supplierCuit.dirty || supplierCuit.touched)}"
+                    >
+                    <div *ngIf="supplierCuit.invalid && (supplierCuit.dirty || supplierCuit.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierCuit.errors?.['required']">CUIT requerido.</div> 
+                        <div *ngIf="supplierCuit.errors?.['minlength']">CUIT demasiado corto.</div>
+                    </div>
+                </div>
+                <div class="form-group col-6">
+                    <label for="input-condition" [ngClass]="{'text-danger':supplierCondition.invalid && (supplierCondition.dirty || supplierCondition.touched)}">Condición</label>
+                    <select 
+                        class="form-select" 
+                        name="input-condition" 
+                        id="input-condition" 
+                        [(ngModel)]="suppFormInput.condition_id"
+                        #supplierCondition="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCondition.invalid && (supplierCondition.dirty || supplierCondition.touched)}"
+                    >
+                        <option value="" disabled selected>Seleccione una condición</option>
+                        <option *ngFor="let item of conditionList" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+                    <div *ngIf="supplierCondition.invalid && (supplierCondition.dirty || supplierCondition.touched)" class="alert alert-danger small">
+                        <div *ngIf="supplierCondition.errors?.['required']">Condición requerida.</div> 
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-4">
+                    <label for="input-contact-name" [ngClass]="{'text-danger':contactName.invalid && (contactName.dirty || contactName.touched)}">Nombre</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-contact-name" 
+                        id="input-contact-name" 
+                        [(ngModel)]="suppFormInput.contact_name"
+                        #contactName="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':contactName.invalid && (contactName.dirty || contactName.touched)}"
+                    >
+                    <div *ngIf="contactName.invalid && (contactName.dirty || contactName.touched)" class="alert alert-danger small">
+                        <div *ngIf="contactName.errors?.['required']">Nombre de contacto requerido.</div> 
+                    </div>
+                </div>
+                <div class="form-group col-4">
+                    <label for="input-contact-name" [ngClass]="{'text-danger':contactSurname.invalid && (contactSurname.dirty || contactSurname.touched)}">Apellido</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-contact-name" 
+                        id="input-contact-name" 
+                        [(ngModel)]="suppFormInput.contact_surname"
+                        #contactSurname="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':contactSurname.invalid && (contactSurname.dirty || contactSurname.touched)}"
+                    >
+                    <div *ngIf="contactSurname.invalid && (contactSurname.dirty || contactSurname.touched)" class="alert alert-danger small">
+                        <div *ngIf="contactSurname.errors?.['required']">Apellido de contacto requerido.</div> 
+                    </div>
+                </div>
+                <div class="form-group col-1">
+                    <label for="input-contact-phone" [ngClass]="{'text-danger':contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)}">Teléfono</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-contact-phone" 
+                        id="input-contact-phone" 
+                        [(ngModel)]="suppFormInput.contact_phone"
+                        #contactPhone="ngModel" 
+                        required
+                        minlength="7"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)}"
+                    >
+                    <div *ngIf="contactPhone.invalid && (contactPhone.dirty || contactPhone.touched)" class="alert alert-danger small">
+                        <div *ngIf="contactPhone.errors?.['required']">Telefono de contacto requerido.</div> 
+                        <div *ngIf="contactPhone.errors?.['minlength']">Telefono de contacto demasiado corto.</div> 
+                    </div>
+                </div>
+                <div class="form-email-contacto col-2">
+                    <label for="input-contact-phone" [ngClass]="{'text-danger':contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)}">E-Mail</label>
+                    <input 
+                        type="email" 
+                        class="form-control" 
+                        name="input-contact-phone" 
+                        id="input-contact-phone" 
+                        [(ngModel)]="suppFormInput.contact_email"
+                        ngModel email
+                        #contactEmail="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)}"
+                    >
+                    <div *ngIf="contactEmail.invalid && (contactEmail.dirty || contactEmail.touched)" class="alert alert-danger small">
+                        <div *ngIf="contactEmail.errors?.['required']">E-Mail de contacto requerido.</div> 
+                        <div *ngIf="contactEmail.errors?.['email']">Formato E-Mail invalido.</div> 
+                    </div>
+                </div>
+                <div class="form-group col-1">
+                    <label for="input-contact-role" [ngClass]="{'text-danger':contactRole.invalid && (contactRole.dirty || contactRole.touched)}">Rol</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="input-contact-role" 
+                        id="input-contact-role" 
+                        [(ngModel)]="suppFormInput.contact_role"
+                        #contactRole="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':contactRole.invalid && (contactRole.dirty || contactRole.touched)}"
+                    >
+                    <div *ngIf="contactRole.invalid && (contactRole.dirty || contactRole.touched)" class="alert alert-danger small">
+                        <div *ngIf="contactRole.errors?.['required']">Rol del contacto requerido.</div> 
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-12">
+                <label for="input-logo-img-url" [ngClass]="{'text-danger':logoImgUrl.invalid && (logoImgUrl.dirty || logoImgUrl.touched)}">URL Imagen</label>
+                <input 
+                type="text"
+                class="form-control" 
+                name="input-logo-img-url" 
+                id="input-logo-img-url" 
+                [(ngModel)]="suppFormInput.logo_image_url" 
+                #logoImgUrl="ngModel" 
+                required
+                [ngClass]="{'border-danger-subtle bg-danger-subtle':logoImgUrl.invalid && (logoImgUrl.dirty || logoImgUrl.touched)}"
+                >
+                <div *ngIf="logoImgUrl.invalid && (logoImgUrl.dirty || logoImgUrl.touched)" class="alert alert-danger small">
+                    <div *ngIf="logoImgUrl.errors?.['required']">Logo requerido.</div>
+                </div>
+                <div *ngIf="!logoImgUrl.invalid && (logoImgUrl.dirty || logoImgUrl.touched)">
+                    <div>Imagen ingresada:</div>
+                    <img src="{{logoImgUrl.value}}" alt="Error al cargar imagen." style="height: 200px;">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/proveedores" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+        </form>
+    </div>
+    
+</div>

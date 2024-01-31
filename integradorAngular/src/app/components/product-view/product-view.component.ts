@@ -12,26 +12,32 @@ export class ProductViewComponent implements OnInit{
     constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router){}
 
     productDetail:Product = {
-        cod_sku:"",
-        prov_id:"",
-        cat_id:"",
-        name_prod:"",
-        desc:"",
+        id:"",
+        sku_code:"",
+        supplier_id:"",
+        product_category_id:"",
+        name:"",
+        description:"",
         price:"",
-        img_url:""
+        image_url:"",
+        created_at:"",
+        updated_at:"",
+        deleted_at:""
     }
 
     ngOnInit(): void {
-        this.cargarProducto();
+        this.loadProduct();
     }
 
-    cargarProducto(){
-        this.productDetail = this.productService.getProductosById(this.route.snapshot.paramMap.get("id"));
+    loadProduct(){
+        this.productService.getProductById(this.route.snapshot.paramMap.get("id")).subscribe(
+            (res)=>this.productDetail=res
+        );
     }
 
     deleteListItem(id:any){
-        if(confirm(`Esta seguro que desea eliminar el producto codigo ${id}?`)){
-            this.productService.deleteProducto(id);
+        if(confirm(`Esta seguro que desea eliminar el producto?`)){
+            this.productService.deleteProduct(id);
             this.router.navigateByUrl("/productos");
         }
     }

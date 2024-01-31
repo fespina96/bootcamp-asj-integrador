@@ -11,6 +11,8 @@ export class SupplierService {
 
     supplierUrl = "http://localhost:8080/supplier";
 
+    conditionUrl = "http://localhost:8080/condition";
+
     constructor(private http:HttpClient) { }
 
     getSuppliers():Observable<any>{
@@ -31,5 +33,13 @@ export class SupplierService {
 
     deleteSupplier(id:any):Observable<any>{
         return this.http.delete(this.supplierUrl+"/"+id);
+    }
+
+    getConditions():Observable<any>{
+        return this.http.get(this.conditionUrl);
+    }
+
+    getConditionById(id:any):Observable<any>{
+        return this.http.get(this.conditionUrl+"/"+id);
     }
 }

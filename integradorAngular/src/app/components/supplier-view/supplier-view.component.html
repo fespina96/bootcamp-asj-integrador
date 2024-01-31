@@ -1,0 +1,68 @@
+<h1 class="mt-4">Detalle {{supplierDetail.name}}</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item active fst-italic">Productos</li>
+    <li class="breadcrumb-item ">Detalle</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-building me-1"></i>
+        Información Proveedor {{supplierDetail.code}}
+    </div>
+    <div class="card-body shadow d-flex flex-column ">
+        <div class="row">
+        <div class="card col-3 m-2">
+            <div class="fw-bold card-header  ">Informacion del proveedor</div>
+            <div class="card-body ">
+                <div><span class="fw-bold ">Codigo:</span> {{supplierDetail.code}}</div>
+                <div><span class="fw-bold ">Nombre Proveedor:</span> {{supplierDetail.name}}</div>
+                <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplier_category_id}}</div>
+                <div class="fw-bold ">Logo del Proveedor:</div>
+                <div><img src="{{supplierDetail.logo_image_url}}" alt="" style="height: 100px;"></div>
+            </div>
+        </div>
+
+        <div class="card col-3 m-2">
+            <div class="fw-bold card-header ">Informacion de contacto</div>
+            <div class="card-body ">
+                <div><span class="fw-bold ">E-Mail: </span>{{supplierDetail.email}}</div>
+                <div><span class="fw-bold ">Teléfono: </span>{{supplierDetail.phone}}</div>
+                <div><span class="fw-bold ">Página Web: </span>{{supplierDetail.website}}</div>
+            </div>
+        </div>
+
+        <div class="card col-3 m-2">
+            <div class="fw-bold card-header ">Informacion Postal</div>
+            <div class="card-body ">            
+                <div><span class="fw-bold ">Calle: </span>{{supplierDetail.address}}</div>
+                <div><span class="fw-bold ">Codigo Postal: </span>{{supplierDetail.zip_code}}</div>
+                <div><span class="fw-bold ">Provincia: </span>{{supplierDetail.state_id}}</div>
+                <div><span class="fw-bold ">País: </span>{{supplierDetail.country_id}}</div>
+            </div>
+        </div>
+
+        <div class="card col-3 m-2">
+            <div class="fw-bold card-header ">Datos Fiscales</div>
+            <div class="card-body ">
+                <div><span class="fw-bold ">CUIT: </span>{{supplierDetail.cuit}}</div>
+                <div><span class="fw-bold ">Condición IVA: </span>{{supplierDetail.condition_id}}</div>
+            </div>
+
+        </div>
+
+        <div class="card col-3 m-2">
+            <div class="fw-bold card-header ">Informacion Contacto de Referencia</div>
+            <div class="card-body ">
+                <div><span class="fw-bold ">Rol: </span>{{supplierDetail.contact_role}}</div>
+                <div><span class="fw-bold ">Nombre: </span>{{supplierDetail.contact_surname}}, {{supplierDetail.contact_name}}</div>
+                <div><span class="fw-bold ">E-Mail: </span>{{supplierDetail.contact_email}}</div>
+                <div><span class="fw-bold ">Teléfono: </span>{{supplierDetail.contact_phone}}</div>
+            </div>
+        </div>
+        </div>
+        <div class="col">
+            <a class="btn btn-secondary me-2" routerLink="/form-productos/{{supplierDetail.id}}"><i class="fas fa-pencil"></i>Editar</a>
+            <a class="btn btn-danger" (click)="deleteListItem(supplierDetail.id)"><i class="fas fa-trash"></i>Eliminar</a>
+        </div>
+    </div>
+</div>

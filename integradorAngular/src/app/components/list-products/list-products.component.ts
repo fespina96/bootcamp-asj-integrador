@@ -3,11 +3,11 @@ import { ProductService } from '../../services/product-service.service';
 import { Product } from '../../interfaces/product';
 
 @Component({
-  selector: 'app-list-productos',
-  templateUrl: './list-productos.component.html',
-  styleUrl: './list-productos.component.css'
+  selector: 'app-list-products',
+  templateUrl: './list-products.component.html',
+  styleUrl: './list-products.component.css'
 })
-export class ListProductosComponent implements OnInit{
+export class ListProductsComponent implements OnInit{
     
     constructor(private productService:ProductService){}
 
@@ -18,17 +18,19 @@ export class ListProductosComponent implements OnInit{
     }
 
     loadList(){
-        this.productList = this.productService.getProductos();
+        this.productService.getProducts().subscribe(
+            (res)=>this.productList=res
+        );
         this.productList.sort(function(a, b) {
-            var textA = a.name_prod.toUpperCase();
-            var textB = b.name_prod.toUpperCase();
+            var textA = a.name.toUpperCase();
+            var textB = b.name.toUpperCase();
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         })
     }
 
     deleteListItem(id:any){
-        if(confirm(`Esta seguro que desea eliminar el producto codigo ${id}?`)){
-            this.productService.deleteProducto(id);
+        if(confirm(`Esta seguro que desea eliminar el producto?`)){
+            this.productService.deleteProduct(id);
             this.loadList();
         }
     }

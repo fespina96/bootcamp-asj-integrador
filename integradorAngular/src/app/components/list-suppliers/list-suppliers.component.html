@@ -1,0 +1,53 @@
+<h1 class="mt-4">Listado de Proveedores</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active fst-italic">Listados</li>
+    <li class="breadcrumb-item ">Proveedores</li>
+</ol>
+<div class="card mb-4 shadow">
+    <div class="card-header" id="list-title">
+        <i class="fas fa-building me-1"></i>
+        Proveedores
+    </div>
+    <div class="card-body">
+        <table class="table table-hover text-center align-middle " *ngIf="suppList.length!=0">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Código</th>
+                    <th>Razón Social</th>
+                    <th>Razón Social</th>
+                    <th>Contacto</th>
+                    <th>Contacto Interno</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of suppList;index as i;">
+                    <td><img src="{{item.logo_image_url}}" alt="Logo {{item.name}}" style="height: 80px;"></td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.country_id}}<br>
+                        {{item.state_id}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver">
+                            {{item.website}}<br>
+                            {{item.email}}<br>
+                            {{item.phone}}
+                        </button>
+                    </td>
+                    <td>{{item.contact_name}}
+                        {{item.contact_surname}}<br>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary  me-2 btn-sm" routerLink="/proveedor/{{item.id}}"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-proveedores/{{item.id}}"><i class="fas fa-pencil"></i></a>
+                        <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.id)"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-danger fw-bold text-center h5" *ngIf="suppList.length==0">Listado vacio, agregue un nuevo item.</div>
+    </div>
+</div>
+<a class="btn btn-primary fw-bold btn-alta" routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
