@@ -6,5 +6,8 @@ export interface Order {
     address:string,
     supplier_id:string,
     total:number|"",
-    estado:boolean
+    order_state_id:number|"",
+    created_at:Date|"",
+    updated_at:Date|"",
+    deleted_at:Date|""
 }

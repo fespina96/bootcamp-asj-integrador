@@ -23,16 +23,16 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of productList;index as i;">
-                        <td><img src="{{item.img_url}}" alt="Imagen {{item.name_prod}}" style="height: 100px;"></td>
-                        <td>{{item.cod_sku}}</td>
-                        <td>{{item.prov_id | proveedor}}</td>
-                        <td>{{item.cat_id | category}}</td>
-                        <td>{{item.name_prod}}</td>
+                        <td><img src="{{item.image_url}}" alt="Imagen {{item.name}}" style="height: 100px;"></td>
+                        <td>{{item.sku_code}}</td>
+                        <td>{{item.supplier_id}}</td>
+                        <td>{{item.product_category_id}}</td>
+                        <td>{{item.name}}</td>
                         <td>{{item.price | currency : '$'}}</td>
                         <td>
-                            <a class="btn btn-primary me-2 btn-sm" routerLink="/producto/{{item.cod_sku}}"><i class="fas fa-eye"></i></a>
-                            <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-productos/{{item.cod_sku}}"><i class="fas fa-pencil"></i></a>
-                            <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.cod_sku)"><i class="fas fa-trash"></i></a>
+                            <a class="btn btn-primary me-2 btn-sm" routerLink="/producto/{{item.id}}"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-secondary me-2 btn-sm" routerLink="/form-productos/{{item.id}}"><i class="fas fa-pencil"></i></a>
+                            <a class="btn btn-danger btn-sm" (click)="deleteListItem(item.id)"><i class="fas fa-trash"></i></a>
                         </td>
                 </tr>
             </tbody>

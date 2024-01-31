@@ -13,47 +13,31 @@
         <form #orderForm="ngForm" (ngSubmit)="formProcedure(orderForm)">
             <div class="form-row">
                 <div class="form-group col-2">
-                    <label for="input-numero" [ngClass]="{'text-danger':orderNum.invalid && (orderNum.dirty || orderNum.touched)}">Número Orden de Compra</label>
-                    <input 
-                        type="number" 
-                        class="form-control" 
-                        name="input-numero" 
-                        id="input-numero" 
-                        [(ngModel)]="orderFormInput.order_num"
-                        #orderNum="ngModel" 
-                        required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':orderNum.invalid && (orderNum.dirty || orderNum.touched)}"
-                    >
-                    <div *ngIf="orderNum.invalid && (orderNum.dirty || orderNum.touched)" class="alert alert-danger small ">
-                        <div *ngIf="orderNum.errors?.['required']">Número de orden requerido.</div>
-                    </div>
-                </div>
-                <div class="form-group col-2">
-                    <label for="input-proveedor" [ngClass]="{'text-danger':provSelect.invalid && (provSelect.dirty || provSelect.touched)}">Proveedor</label>
+                    <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
                     <select 
                         class="form-select" 
-                        name="input-proveedor" 
-                        id="input-proveedor" 
-                        [(ngModel)]="orderFormInput.prov_id"
-                        (change)="changeProveedor()"
-                        #provSelect="ngModel" 
+                        name="input-supplier" 
+                        id="input-supplier" 
+                        [(ngModel)]="orderFormInput.supplier_id"
+                        (change)="changeSupplier()"
+                        #supplierSelect="ngModel" 
                         required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':provSelect.invalid && (provSelect.dirty || provSelect.touched)}"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
                         >
                         <option value="" selected disabled>Seleccione un proveedor</option>
                         <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
-                    <div *ngIf="provSelect.invalid && (provSelect.dirty || provSelect.touched)" class="alert alert-danger small ">
-                        <div *ngIf="provSelect.errors?.['required']">Proveedor requerido.</div>
+                    <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
+                        <div *ngIf="supplierSelect.errors?.['required']">Proveedor requerido.</div>
                     </div>
                 </div>
                 <div class="form-group col-2">
-                    <label for="input-direccion" [ngClass]="{'text-danger':orderAddress.invalid && (orderAddress.dirty || orderAddress.touched)}">Dirección</label>
+                    <label for="input-address" [ngClass]="{'text-danger':orderAddress.invalid && (orderAddress.dirty || orderAddress.touched)}">Dirección</label>
                     <input 
                         type="text" 
                         class="form-control" 
-                        name="input-direccion" 
-                        id="input-direccion" 
+                        name="input-address" 
+                        id="input-address" 
                         [(ngModel)]="orderFormInput.address"
                         #orderAddress="ngModel" 
                         required
@@ -64,13 +48,13 @@
                     </div>
                 </div>
                 <div class="form-group col-3">
-                    <label for="input-emision" [ngClass]="{'text-danger':emisionDate.invalid && (emisionDate.dirty || emisionDate.touched)}">Fecha Emisión</label>
+                    <label for="input-emision-date" [ngClass]="{'text-danger':emisionDate.invalid && (emisionDate.dirty || emisionDate.touched)}">Fecha Emisión</label>
                     <input 
                         type="date" 
                         class="form-control" 
-                        name="input-emision" 
-                        id="input-emision" 
-                        [(ngModel)]="orderFormInput.emision"
+                        name="input-emision-date" 
+                        id="input-emision-date" 
+                        [(ngModel)]="orderFormInput.emision_date"
                         (change)="emisionChange()"
                         required
                         #emisionDate="ngModel" 
@@ -82,21 +66,21 @@
                     </div>
                 </div>
                 <div class="form-group col-3">
-                    <label for="input-entrega" [ngClass]="{'text-danger':deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)}">Fecha Entrega Estimada</label>
+                    <label for="input-estimated-delivery-date" [ngClass]="{'text-danger':estimatedDeliveryDate.invalid && (estimatedDeliveryDate.dirty || estimatedDeliveryDate.touched)}">Fecha Entrega Estimada</label>
                     <input 
                         type="date" 
                         class="form-control" 
-                        name="input-entrega" 
-                        id="input-entrega" 
-                        [(ngModel)]="orderFormInput.entrega_estimada"
+                        name="input-estimated-delivery-date" 
+                        id="input-estimated-delivery-date" 
+                        [(ngModel)]="orderFormInput.estimated_delivery_date"
                         [min]="minDate"
                         required
-                        #deliveryDate="ngModel" 
+                        #estimatedDeliveryDate="ngModel" 
                         required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)}"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':estimatedDeliveryDate.invalid && (estimatedDeliveryDate.dirty || estimatedDeliveryDate.touched)}"
                     >
-                    <div *ngIf="deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)" class="alert alert-danger small ">
-                        <div *ngIf="deliveryDate.errors?.['required']">Fecha de Entrega requerida.</div>
+                    <div *ngIf="estimatedDeliveryDate.invalid && (estimatedDeliveryDate.dirty || estimatedDeliveryDate.touched)" class="alert alert-danger small ">
+                        <div *ngIf="estimatedDeliveryDate.errors?.['required']">Fecha de Entrega requerida.</div>
                     </div>
                 </div>
             </div>
@@ -115,20 +99,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of orderFormInput.products">
-                                    <td>{{item.prod_id|producto}}</td>
-                                    <td>{{item.qty}}</td>
-                                    <td><a class="btn btn-sm btn-danger" (click)="deleteOrderProduct(item.prod_id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                <tr *ngFor="let item of prodList">
+                                    <td>{{item.product_id}}</td>
+                                    <td>{{item.quantity}}</td>
+                                    <td><a class="btn btn-sm btn-danger" (click)="deleteOrderProduct(item.product_id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div *ngIf="orderFormInput.products.length==0" class="alert alert-danger text-center"><h5>Ingrese un producto a la orden.</h5></div>
+                        <div *ngIf="prodList.length==0" class="alert alert-danger text-center"><h5>Ingrese un producto a la orden.</h5></div>
                         <div class="form-row">
                             <div class="form-group col-8">
                                 <label for="productSelect">Producto</label>
                                 <select class="form-select " id="productSelect" name="productSelect" [(ngModel)]="selectedProduct">
                                     <option value="" selected disabled>Elija un producto</option>
-                                    <option *ngFor="let item of prodList" value="{{item.cod_sku}}">{{item.name_prod}}</option>
+                                    <option *ngFor="let item of prodList" value="{{item.product_id}}">{{item.product_id}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-4">

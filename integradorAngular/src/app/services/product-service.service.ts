@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
 
-    productUrl = "http://localhost:8080/product"
+    private productCategoryUrl = "http://localhost:8080/product-category"
+
+    private productUrl = "http://localhost:8080/product"
 
     constructor(private http:HttpClient) { }
 
@@ -33,7 +35,15 @@ export class ProductService {
         return this.http.delete(this.productUrl+"/"+id);
     }
 
-    getSupplierProductsById(id:any):Observable<any>{
-        return this.http.get(this.productUrl+"/"+id+"/products")
+    getProductsBySupplierId(id:any):Observable<any>{
+        return this.http.get(this.productUrl+"/supplier/"+id);
+    }
+
+    getProductCategories():Observable<any>{
+        return this.http.get(this.productCategoryUrl);
+    }
+
+    getProductCategoryById(id:any):Observable<any>{
+        return this.http.get(this.productCategoryUrl+"/"+id);
     }
 }

@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 })
 export class CountriesService {
 
-    statesUrl = "http://localhost:8080/state";
-    countriesUrl = "http://localhost:8080/country";
+    private statesUrl = "http://localhost:8080/state";
+    private countriesUrl = "http://localhost:8080/country";
 
     constructor(private http:HttpClient) { }
 

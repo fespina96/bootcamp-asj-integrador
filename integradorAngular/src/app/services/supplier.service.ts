@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class SupplierService {
 
-    supplierUrl = "http://localhost:8080/supplier";
+    private supplierUrl = "http://localhost:8080/supplier";
 
-    conditionUrl = "http://localhost:8080/condition";
+    private conditionUrl = "http://localhost:8080/condition";
 
     constructor(private http:HttpClient) { }
 

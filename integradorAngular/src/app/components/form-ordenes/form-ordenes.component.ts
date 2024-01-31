@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../../services/order-service.service';
 import { SupplierService } from '../../services/supplier.service';
-import { Order } from '../../interfaces/orden';
+import { Order } from '../../interfaces/order';
 import { NgForm } from '@angular/forms';
-import { ItemOrder } from '../../interfaces/item-order';
 import { ProductService } from '../../services/product-service.service';
-import { Product } from '../../interfaces/product';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -15,23 +13,26 @@ import { Product } from '../../interfaces/product';
 })
 export class FormOrdenesComponent {
     orderFormInput:Order = {
-        order_num:"",
-        emision:"",
-        entrega_estimada:"",
+        id:"",
+        emision_date:"",
+        estimated_delivery_date:"",
+        delivery_date:"",
         address:"",
-        prov_id:"",
-        products:[],
+        supplier_id:"",
         total:"",
-        estado:true
+        order_state_id:"",
+        created_at:"",
+        updated_at:"",
+        deleted_at:""
     };
 
     provList:any = [];
 
     currentDay = new Date();
 
-    minDate = "";
+    minDate = new Date();
 
-    prodList:Array<Product> = [];
+    prodList:{ order_id:any; product_id: any; quantity:any }[]=[];
 
     selectedProduct = "";
     selectedProductQty = "";
@@ -46,14 +47,16 @@ export class FormOrdenesComponent {
         let routeSnapshot = this.route.snapshot.paramMap.get('editId');
         if(routeSnapshot){
             //LOGICA FORM EDITAR
-            this.orderFormInput = this.orderService.getOrderById(routeSnapshot);
+            this.orderService.getOrderById(routeSnapshot).subscribe(
+                (res)=>this.orderFormInput = res
+            );
         }else{
             //LOGICA FORM AÑADIR
-            this.orderFormInput.emision = `${this.currentDay.getFullYear()}-${('0' + (this.currentDay.getMonth()+1)).slice(-2)}-${('0' + this.currentDay.getDate()).slice(-2)}`
-            let estimatedDateMin = new Date(this.orderFormInput.emision);
+            this.orderFormInput.emision_date = new Date(`${this.currentDay.getFullYear()}-${('0' + (this.currentDay.getMonth()+1)).slice(-2)}-${('0' + this.currentDay.getDate()).slice(-2)}`);
+            let estimatedDateMin = new Date(this.orderFormInput.emision_date);
             estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-            this.orderFormInput.entrega_estimada = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`
-            this.minDate = this.orderFormInput.entrega_estimada;
+            this.orderFormInput.estimated_delivery_date = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+            this.minDate = this.orderFormInput.estimated_delivery_date;
         }
         this.provList = this.provService.getSuppliers();
     }
@@ -63,7 +66,7 @@ export class FormOrdenesComponent {
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO ORDEN
-                this.orderService.editOrder(this.orderFormInput,routeSnapshot);
+                this.orderService.editOrder(routeSnapshot,this.orderFormInput);
             }else{
                 //AÑADO ORDEN
                 this.orderService.addOrder(this.orderFormInput);
@@ -72,34 +75,36 @@ export class FormOrdenesComponent {
     }
 
     emisionChange(){
-        let estimatedDateMin = new Date(this.orderFormInput.emision);
+        let estimatedDateMin = new Date(this.orderFormInput.emision_date);
         estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-        this.orderFormInput.entrega_estimada = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`
-        this.minDate = this.orderFormInput.entrega_estimada;
+        this.orderFormInput.estimated_delivery_date = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+        this.minDate = this.orderFormInput.estimated_delivery_date;
     }
 
-    changeProveedor(){
+    changeSupplier(){
         this.selectedProduct = "";
-        this.orderFormInput.products = [];
-        this.prodList = this.prodService.getProductosByProvId(this.orderFormInput.prov_id);
+        this.prodList = [];
+        this.prodService.getProductsBySupplierId(this.orderFormInput.supplier_id).subscribe(
+            (res)=>this.prodList = res
+        );
     }
 
     addProductToOrder(prodId:string,prodQty:any){
         if(prodQty>0 && prodId!=""){
-                let item = this.orderFormInput.products.find(item=>item.prod_id==prodId);
-                item? item.qty+=prodQty:this.orderFormInput.products.push({prod_id:prodId,qty:prodQty});
+                let item = this.prodList.find(item=>item.product_id==prodId);
+                item? item.quantity+=prodQty:this.prodList.push({order_id:"",product_id:prodId,quantity:prodQty});
                 alert("Producto añadido correctamente.")
         }
     }
 
     deleteOrderProduct(id:any){
         if(id.length>=4){
-            this.orderFormInput.products = this.orderFormInput.products.filter(item=>item.prod_id!=id);
+            this.prodList = this.prodList.filter(item=>item.product_id!=id);
         }
     }
 
     clearOrder(){
-        this.orderFormInput.products = [];
+        this.prodList = [];
         this.prodList = [];
     }
 }

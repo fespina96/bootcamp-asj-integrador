@@ -13,39 +13,39 @@
         <form #productForm="ngForm" (ngSubmit)="formProcedure(productForm)">
             <div class="form-row">
                 <div class="form-group col-2 me-1">
-                    <label for="input-codigo-sku" [ngClass]="{'text-danger':codigo_sku.invalid && (codigo_sku.dirty || codigo_sku.touched)}">Codigo SKU</label>
+                    <label for="input-sku-code" [ngClass]="{'text-danger':skuCode.invalid && (skuCode.dirty || skuCode.touched)}">Codigo SKU</label>
                     <input 
                         class="form-control" 
-                        name="input-codigo-sku" 
-                        id="input-codigo-sku" 
-                        [(ngModel)]="productFormInput.cod_sku" 
-                        #codigo_sku="ngModel" 
+                        name="input-sku-code" 
+                        id="input-sku-code" 
+                        [(ngModel)]="productFormInput.sku_code" 
+                        #skuCode="ngModel" 
                         minlength="4" 
                         required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':codigo_sku.invalid && (codigo_sku.dirty || codigo_sku.touched)}"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':skuCode.invalid && (skuCode.dirty || skuCode.touched)}"
                     >
-                    <div *ngIf="codigo_sku.invalid && (codigo_sku.dirty || codigo_sku.touched)" class="alert alert-danger small ">
-                        <div *ngIf="codigo_sku.errors?.['required']">Codigo SKU requerido.</div>
-                        <div *ngIf="codigo_sku.errors?.['minlength']">El largo del codigo debe ser 4 caracteres o más.</div>
+                    <div *ngIf="skuCode.invalid && (skuCode.dirty || skuCode.touched)" class="alert alert-danger small ">
+                        <div *ngIf="skuCode.errors?.['required']">Codigo SKU requerido.</div>
+                        <div *ngIf="skuCode.errors?.['minlength']">El largo del codigo debe ser 4 caracteres o más.</div>
                     </div>
                 </div>
                 <div class="form-group col-2 me-1">
-                    <label for="input-proveedor" [ngClass]="{'text-danger':proveedor.invalid && (proveedor.dirty || proveedor.touched)}">Proveedor</label>
+                    <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">supplierSelect</label>
                     <select 
                         class="form-select" 
-                        name="input-proveedor" 
-                        id="input-proveedor" 
-                        [(ngModel)]="productFormInput.prov_id" 
+                        name="input-supplier" 
+                        id="input-supplier" 
+                        [(ngModel)]="productFormInput.supplier_id" 
                         required
                         minlength="1"
-                        #proveedor="ngModel"
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':proveedor.invalid && (proveedor.dirty || proveedor.touched)}"
+                        #supplierSelect="ngModel"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
                     >
-                        <option value="" selected disabled>Seleccione un proveedor</option>
+                        <option value="" selected disabled>Seleccione un supplierSelect</option>
                         <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
-                    <div *ngIf="proveedor.invalid && (proveedor.dirty || proveedor.touched)" class="alert alert-danger small ">
-                        <div *ngIf="proveedor.errors?.['required']">Proveedor requerido.</div>
+                    <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
+                        <div *ngIf="supplierSelect.errors?.['required']">supplierSelect requerido.</div>
                     </div>
                 </div>
                 <div class="form-group col-2">
@@ -56,7 +56,7 @@
                         class="form-select" 
                         name="input-category" 
                         id="input-category" 
-                        [(ngModel)]="productFormInput.cat_id" 
+                        [(ngModel)]="productFormInput.product_category_id" 
                         required
                         minlength="1"
                         #category="ngModel"
@@ -80,7 +80,7 @@
                         class="form-control" 
                         name="input-product-name" 
                         id="input-product-name" 
-                        [(ngModel)]="productFormInput.name_prod" 
+                        [(ngModel)]="productFormInput.name" 
                         required
                         #productName="ngModel"
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':productName.invalid && (productName.dirty || productName.touched)}"
@@ -98,7 +98,7 @@
                         class="form-control" 
                         name="input-desc" 
                         id="input-desc" 
-                        [(ngModel)]="productFormInput.desc" 
+                        [(ngModel)]="productFormInput.description" 
                         #description="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':description.invalid && (description.dirty || description.touched)}"
@@ -130,7 +130,7 @@
                     class="form-control" 
                     name="input-img-url" 
                     id="input-img-url" 
-                    [(ngModel)]="productFormInput.img_url" 
+                    [(ngModel)]="productFormInput.image_url" 
                     #img_url="ngModel" 
                     required
                     [ngClass]="{'border-danger-subtle bg-danger-subtle':img_url.invalid && (img_url.dirty || img_url.touched)}"

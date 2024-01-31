@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ordenesData } from '../../data/ordenes';
 import { OrderService } from '../../services/order-service.service';
-import { Order } from '../../interfaces/orden';
+import { Order } from '../../interfaces/order';
 @Component({
   selector: 'app-list-ordenes',
   templateUrl: './list-ordenes.component.html',
@@ -17,12 +16,14 @@ export class ListOrdenesComponent implements OnInit{
     }
 
     loadList(){
-        this.orderList = this.orderService.getOrdenes();
+        this.orderService.getOrders().subscribe(
+            (res)=>this.orderList=res
+        );
     }
 
-    checkListItem(id:any){
-        if(confirm(`Esta seguro que desea cancelar la orden número ${id}?`)){
-            this.orderService.checkOrder(id);
+    deleteListItem(id:any){
+        if(confirm(`Esta seguro que desea borrar la orden número ${id}?`)){
+            this.orderService.deleteOrder(id);
             this.loadList();
         }
     }
