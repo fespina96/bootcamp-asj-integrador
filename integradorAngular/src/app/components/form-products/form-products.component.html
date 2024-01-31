@@ -18,7 +18,7 @@
                         class="form-control" 
                         name="input-sku-code" 
                         id="input-sku-code" 
-                        [(ngModel)]="productFormInput.sku_code" 
+                        [(ngModel)]="productFormInput.skuCode" 
                         #skuCode="ngModel" 
                         minlength="4" 
                         required
@@ -35,7 +35,7 @@
                         class="form-select" 
                         name="input-supplier" 
                         id="input-supplier" 
-                        [(ngModel)]="productFormInput.supplier_id" 
+                        [(ngModel)]="productFormInput.supplierId" 
                         required
                         minlength="1"
                         #supplierSelect="ngModel"
@@ -56,7 +56,7 @@
                         class="form-select" 
                         name="input-category" 
                         id="input-category" 
-                        [(ngModel)]="productFormInput.product_category_id" 
+                        [(ngModel)]="productFormInput.productCategoryId" 
                         required
                         minlength="1"
                         #category="ngModel"
@@ -130,7 +130,7 @@
                     class="form-control" 
                     name="input-img-url" 
                     id="input-img-url" 
-                    [(ngModel)]="productFormInput.image_url" 
+                    [(ngModel)]="productFormInput.imageUrl" 
                     #img_url="ngModel" 
                     required
                     [ngClass]="{'border-danger-subtle bg-danger-subtle':img_url.invalid && (img_url.dirty || img_url.touched)}"

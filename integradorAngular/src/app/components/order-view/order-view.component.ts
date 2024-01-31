@@ -12,16 +12,16 @@ export class OrderViewComponent {
 
     orderDetail:Order = {
         id:"",
-        emision_date:"",
-        estimated_delivery_date:"",
-        delivery_date:"",
+        emisionDate:"",
+        estimatedDeliveryDate:"",
+        deliveryDate:"",
         address:"",
-        supplier_id:"",
+        supplierId:"",
         total:"",
-        order_state_id:"",
-        created_at:"",
-        updated_at:"",
-        deleted_at:""
+        orderStateId:"",
+        createdAt:"",
+        updatedAt:"",
+        deletedAt:""
     }
 
     orderProducts:any = [];

@@ -13,16 +13,16 @@ export class ProductViewComponent implements OnInit{
 
     productDetail:Product = {
         id:"",
-        sku_code:"",
-        supplier_id:"",
-        product_category_id:"",
+        skuCode:"",
+        supplierId:"",
+        productCategoryId:"",
         name:"",
         description:"",
         price:"",
-        image_url:"",
-        created_at:"",
-        updated_at:"",
-        deleted_at:""
+        imageUrl:"",
+        createdAt:"",
+        updatedAt:"",
+        deletedAt:""
     }
 
     ngOnInit(): void {

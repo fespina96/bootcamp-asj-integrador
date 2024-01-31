@@ -13,21 +13,21 @@
         <form #supplierForm="ngForm" (ngSubmit)="formProcedure(supplierForm)">
             <div class="form-row">
                 <div class="form-group col-2">
-                    <label for="input-code" [ngClass]="{'text-danger':supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)}">Código</label>
+                    <label for="input-code" [ngClass]="{'text-danger':suppCod.invalid && (suppCod.dirty || suppCod.touched)}">Código</label>
                     <input 
                         type="text" 
                         class="form-control" 
                         name="input-code" 
                         id="input-code" 
                         [(ngModel)]="suppFormInput.code"
-                        #supp_cod="ngModel" 
+                        #suppCod="ngModel" 
                         minlength="4"
                         required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)}"
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':suppCod.invalid && (suppCod.dirty || suppCod.touched)}"
                     >
-                    <div *ngIf="supp_cod.invalid && (supp_cod.dirty || supp_cod.touched)" class="alert alert-danger small">
-                        <div *ngIf="supp_cod.errors?.['required']">Código requerido.</div>
-                        <div *ngIf="supp_cod.errors?.['minlength']">El largo del código debe ser 4 caracteres o más.</div>
+                    <div *ngIf="suppCod.invalid && (suppCod.dirty || suppCod.touched)" class="alert alert-danger small">
+                        <div *ngIf="suppCod.errors?.['required']">Código requerido.</div>
+                        <div *ngIf="suppCod.errors?.['minlength']">El largo del código debe ser 4 caracteres o más.</div>
                     </div>
                 </div>
                 <div class="form-group col-8">
@@ -53,7 +53,7 @@
                         class="form-control" 
                         name="input-supplier-category" 
                         id="input-supplier-category" 
-                        [(ngModel)]="suppFormInput.supplier_category_id"
+                        [(ngModel)]="suppFormInput.supplierCategoryId"
                         #supplierCategory="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCategory.invalid && (supplierCategory.dirty || supplierCategory.touched)}"
@@ -124,7 +124,7 @@
                         class="form-select" 
                         name="input-country" 
                         id="input-country" 
-                        [(ngModel)]="suppFormInput.country_id" 
+                        [(ngModel)]="suppFormInput.countryId" 
                         (ngModelChange)="countryChange()"
                         #supplierCountry="ngModel" 
                         required
@@ -143,7 +143,7 @@
                         class="form-select" 
                         name="input-state" 
                         id="input-state" 
-                        [(ngModel)]="suppFormInput.state_id"
+                        [(ngModel)]="suppFormInput.stateId"
                         #supplierState="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierState.invalid && (supplierState.dirty || supplierState.touched)}"
@@ -181,7 +181,7 @@
                         class="form-control" 
                         name="input-zip-code" 
                         id="input-zip-code" 
-                        [(ngModel)]="suppFormInput.zip_code"
+                        [(ngModel)]="suppFormInput.zipCode"
                         #zipCode="ngModel" 
                         minlength="4"
                         required
@@ -219,7 +219,7 @@
                         class="form-select" 
                         name="input-condition" 
                         id="input-condition" 
-                        [(ngModel)]="suppFormInput.condition_id"
+                        [(ngModel)]="suppFormInput.conditionId"
                         #supplierCondition="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCondition.invalid && (supplierCondition.dirty || supplierCondition.touched)}"
@@ -240,7 +240,7 @@
                         class="form-control" 
                         name="input-contact-name" 
                         id="input-contact-name" 
-                        [(ngModel)]="suppFormInput.contact_name"
+                        [(ngModel)]="suppFormInput.contactName"
                         #contactName="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':contactName.invalid && (contactName.dirty || contactName.touched)}"
@@ -256,7 +256,7 @@
                         class="form-control" 
                         name="input-contact-name" 
                         id="input-contact-name" 
-                        [(ngModel)]="suppFormInput.contact_surname"
+                        [(ngModel)]="suppFormInput.contactSurname"
                         #contactSurname="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':contactSurname.invalid && (contactSurname.dirty || contactSurname.touched)}"
@@ -272,7 +272,7 @@
                         class="form-control" 
                         name="input-contact-phone" 
                         id="input-contact-phone" 
-                        [(ngModel)]="suppFormInput.contact_phone"
+                        [(ngModel)]="suppFormInput.contactPhone"
                         #contactPhone="ngModel" 
                         required
                         minlength="7"
@@ -290,7 +290,7 @@
                         class="form-control" 
                         name="input-contact-phone" 
                         id="input-contact-phone" 
-                        [(ngModel)]="suppFormInput.contact_email"
+                        [(ngModel)]="suppFormInput.contactEmail"
                         ngModel email
                         #contactEmail="ngModel" 
                         required
@@ -308,7 +308,7 @@
                         class="form-control" 
                         name="input-contact-role" 
                         id="input-contact-role" 
-                        [(ngModel)]="suppFormInput.contact_role"
+                        [(ngModel)]="suppFormInput.contactRole"
                         #contactRole="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':contactRole.invalid && (contactRole.dirty || contactRole.touched)}"
@@ -325,7 +325,7 @@
                 class="form-control" 
                 name="input-logo-img-url" 
                 id="input-logo-img-url" 
-                [(ngModel)]="suppFormInput.logo_image_url" 
+                [(ngModel)]="suppFormInput.logoImageUrl" 
                 #logoImgUrl="ngModel" 
                 required
                 [ngClass]="{'border-danger-subtle bg-danger-subtle':logoImgUrl.invalid && (logoImgUrl.dirty || logoImgUrl.touched)}"

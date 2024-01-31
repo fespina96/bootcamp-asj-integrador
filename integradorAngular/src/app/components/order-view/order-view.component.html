@@ -11,12 +11,12 @@
     </div>
     <div class="card-body shadow">
         <div><span class="fw-bold ">Número de Orden:</span> {{orderDetail.id}}</div>
-        <div><span class="fw-bold ">Estado:</span> {{orderDetail.order_state_id}}</div>
-        <div><span class="fw-bold ">Proveedor:</span> {{orderDetail.supplier_id}}</div>
+        <div><span class="fw-bold ">Estado:</span> {{orderDetail.orderStateId}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{orderDetail.supplierId}}</div>
         <div><span class="fw-bold ">Dirección de entrega:</span> {{orderDetail.address}}</div>
-        <div><span class="fw-bold ">Fecha de Emisión:</span> {{orderDetail.emision_date|date}}</div>
-        <div><span class="fw-bold ">Fecha de Entrega Estimada:</span> {{orderDetail.estimated_delivery_date|date}}</div>
-        <div><span class="fw-bold ">Fecha Entregada:</span> {{orderDetail.delivery_date|date}}</div>
+        <div><span class="fw-bold ">Fecha de Emisión:</span> {{orderDetail.emisionDate|date}}</div>
+        <div><span class="fw-bold ">Fecha de Entrega Estimada:</span> {{orderDetail.estimatedDeliveryDate|date}}</div>
+        <div><span class="fw-bold ">Fecha Entregada:</span> {{orderDetail.deliveryDate|date}}</div>
         <div class="card col-4">
             <div class="card-header fw-bold ">Productos</div>
             <div class="card-body ">
@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of orderProducts">
-                            <td>{{item.product_id}}</td>
+                            <td>{{item.productId}}</td>
                             <td>{{item.quantity}}</td>
                         </tr>
                     </tbody>

@@ -7,22 +7,22 @@ import { SupplierService } from '../../services/supplier.service';
 
 @Component({
     selector: 'app-form-productos',
-    templateUrl: './form-productos.component.html',
-    styleUrl: './form-productos.component.css'
+    templateUrl: './form-products.component.html',
+    styleUrl: './form-products.component.css'
 })
 export class FormProductosComponent implements OnInit{
     productFormInput:Product = {
         id:"",
-        sku_code:"",
-        supplier_id:"",
-        product_category_id:"",
+        skuCode:"",
+        supplierId:"",
+        productCategoryId:"",
         name:"",
         description:"",
         price:"",
-        image_url:"",
-        created_at:"",
-        updated_at:"",
-        deleted_at:""
+        imageUrl:"",
+        createdAt:"",
+        updatedAt:"",
+        deletedAt:""
     };
 
     provList:any = [];

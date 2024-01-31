@@ -23,10 +23,10 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of productList;index as i;">
-                        <td><img src="{{item.image_url}}" alt="Imagen {{item.name}}" style="height: 100px;"></td>
-                        <td>{{item.sku_code}}</td>
-                        <td>{{item.supplier_id}}</td>
-                        <td>{{item.product_category_id}}</td>
+                        <td><img src="{{item.imageUrl}}" alt="Imagen {{item.name}}" style="height: 100px;"></td>
+                        <td>{{item.skuCode}}</td>
+                        <td>{{item.supplierId}}</td>
+                        <td>{{item.productCategoryId}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.price | currency : '$'}}</td>
                         <td>

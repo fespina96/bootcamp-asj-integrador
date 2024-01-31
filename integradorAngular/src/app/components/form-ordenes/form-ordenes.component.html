@@ -18,7 +18,7 @@
                         class="form-select" 
                         name="input-supplier" 
                         id="input-supplier" 
-                        [(ngModel)]="orderFormInput.supplier_id"
+                        [(ngModel)]="orderFormInput.supplierId"
                         (change)="changeSupplier()"
                         #supplierSelect="ngModel" 
                         required
@@ -54,7 +54,7 @@
                         class="form-control" 
                         name="input-emision-date" 
                         id="input-emision-date" 
-                        [(ngModel)]="orderFormInput.emision_date"
+                        [(ngModel)]="orderFormInput.emisionDate"
                         (change)="emisionChange()"
                         required
                         #emisionDate="ngModel" 
@@ -72,7 +72,7 @@
                         class="form-control" 
                         name="input-estimated-delivery-date" 
                         id="input-estimated-delivery-date" 
-                        [(ngModel)]="orderFormInput.estimated_delivery_date"
+                        [(ngModel)]="orderFormInput.estimatedDeliveryDate"
                         [min]="minDate"
                         required
                         #estimatedDeliveryDate="ngModel" 
@@ -100,9 +100,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of prodList">
-                                    <td>{{item.product_id}}</td>
+                                    <td>{{item.productId}}</td>
                                     <td>{{item.quantity}}</td>
-                                    <td><a class="btn btn-sm btn-danger" (click)="deleteOrderProduct(item.product_id)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><a class="btn btn-sm btn-danger" (click)="deleteOrderProduct(item.productId)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -112,7 +112,7 @@
                                 <label for="productSelect">Producto</label>
                                 <select class="form-select " id="productSelect" name="productSelect" [(ngModel)]="selectedProduct">
                                     <option value="" selected disabled>Elija un producto</option>
-                                    <option *ngFor="let item of prodList" value="{{item.product_id}}">{{item.product_id}}</option>
+                                    <option *ngFor="let item of prodList" value="{{item.productId}}">{{item.productId}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-4">

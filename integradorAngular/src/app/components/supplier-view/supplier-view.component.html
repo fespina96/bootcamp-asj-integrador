@@ -16,9 +16,9 @@
             <div class="card-body ">
                 <div><span class="fw-bold ">Codigo:</span> {{supplierDetail.code}}</div>
                 <div><span class="fw-bold ">Nombre Proveedor:</span> {{supplierDetail.name}}</div>
-                <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplier_category_id}}</div>
+                <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplierCategoryId}}</div>
                 <div class="fw-bold ">Logo del Proveedor:</div>
-                <div><img src="{{supplierDetail.logo_image_url}}" alt="" style="height: 100px;"></div>
+                <div><img src="{{supplierDetail.logoImageUrl}}" alt="" style="height: 100px;"></div>
             </div>
         </div>
 
@@ -35,9 +35,9 @@
             <div class="fw-bold card-header ">Informacion Postal</div>
             <div class="card-body ">            
                 <div><span class="fw-bold ">Calle: </span>{{supplierDetail.address}}</div>
-                <div><span class="fw-bold ">Codigo Postal: </span>{{supplierDetail.zip_code}}</div>
-                <div><span class="fw-bold ">Provincia: </span>{{supplierDetail.state_id}}</div>
-                <div><span class="fw-bold ">País: </span>{{supplierDetail.country_id}}</div>
+                <div><span class="fw-bold ">Codigo Postal: </span>{{supplierDetail.zipCode}}</div>
+                <div><span class="fw-bold ">Provincia: </span>{{supplierDetail.stateId}}</div>
+                <div><span class="fw-bold ">País: </span>{{supplierDetail.countryId}}</div>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="fw-bold card-header ">Datos Fiscales</div>
             <div class="card-body ">
                 <div><span class="fw-bold ">CUIT: </span>{{supplierDetail.cuit}}</div>
-                <div><span class="fw-bold ">Condición IVA: </span>{{supplierDetail.condition_id}}</div>
+                <div><span class="fw-bold ">Condición IVA: </span>{{supplierDetail.conditionId}}</div>
             </div>
 
         </div>
@@ -53,10 +53,10 @@
         <div class="card col-3 m-2">
             <div class="fw-bold card-header ">Informacion Contacto de Referencia</div>
             <div class="card-body ">
-                <div><span class="fw-bold ">Rol: </span>{{supplierDetail.contact_role}}</div>
-                <div><span class="fw-bold ">Nombre: </span>{{supplierDetail.contact_surname}}, {{supplierDetail.contact_name}}</div>
-                <div><span class="fw-bold ">E-Mail: </span>{{supplierDetail.contact_email}}</div>
-                <div><span class="fw-bold ">Teléfono: </span>{{supplierDetail.contact_phone}}</div>
+                <div><span class="fw-bold ">Rol: </span>{{supplierDetail.contactRole}}</div>
+                <div><span class="fw-bold ">Nombre: </span>{{supplierDetail.contactSurname}}, {{supplierDetail.contactName}}</div>
+                <div><span class="fw-bold ">E-Mail: </span>{{supplierDetail.contactEmail}}</div>
+                <div><span class="fw-bold ">Teléfono: </span>{{supplierDetail.contactPhone}}</div>
             </div>
         </div>
         </div>

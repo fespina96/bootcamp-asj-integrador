@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { Error404Component } from './components/error-404/error-404.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
-import { FormProductosComponent } from './components/form-productos/form-productos.component';
+import { FormProductosComponent } from './components/form-products/form-products.component';
 import { ListSuppliersComponent } from './components/list-suppliers/list-suppliers.component';
 import { FormSuppliersComponent } from './components/form-suppliers/form-suppliers.component';
 import { ListOrdenesComponent } from './components/list-ordenes/list-ordenes.component';

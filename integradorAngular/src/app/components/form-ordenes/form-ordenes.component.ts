@@ -14,16 +14,16 @@ import { ProductService } from '../../services/product-service.service';
 export class FormOrdenesComponent {
     orderFormInput:Order = {
         id:"",
-        emision_date:"",
-        estimated_delivery_date:"",
-        delivery_date:"",
+        emisionDate:"",
+        estimatedDeliveryDate:"",
+        deliveryDate:"",
         address:"",
-        supplier_id:"",
+        supplierId:"",
         total:"",
-        order_state_id:"",
-        created_at:"",
-        updated_at:"",
-        deleted_at:""
+        orderStateId:"",
+        createdAt:"",
+        updatedAt:"",
+        deletedAt:""
     };
 
     provList:any = [];
@@ -32,7 +32,7 @@ export class FormOrdenesComponent {
 
     minDate = new Date();
 
-    prodList:{ order_id:any; product_id: any; quantity:any }[]=[];
+    prodList:{ orderId:any; productId: any; quantity:any }[]=[];
 
     selectedProduct = "";
     selectedProductQty = "";
@@ -52,11 +52,11 @@ export class FormOrdenesComponent {
             );
         }else{
             //LOGICA FORM AÑADIR
-            this.orderFormInput.emision_date = new Date(`${this.currentDay.getFullYear()}-${('0' + (this.currentDay.getMonth()+1)).slice(-2)}-${('0' + this.currentDay.getDate()).slice(-2)}`);
-            let estimatedDateMin = new Date(this.orderFormInput.emision_date);
+            this.orderFormInput.emisionDate = new Date(`${this.currentDay.getFullYear()}-${('0' + (this.currentDay.getMonth()+1)).slice(-2)}-${('0' + this.currentDay.getDate()).slice(-2)}`);
+            let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
             estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-            this.orderFormInput.estimated_delivery_date = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
-            this.minDate = this.orderFormInput.estimated_delivery_date;
+            this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+            this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
         this.provList = this.provService.getSuppliers();
     }
@@ -75,31 +75,31 @@ export class FormOrdenesComponent {
     }
 
     emisionChange(){
-        let estimatedDateMin = new Date(this.orderFormInput.emision_date);
+        let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
         estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-        this.orderFormInput.estimated_delivery_date = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
-        this.minDate = this.orderFormInput.estimated_delivery_date;
+        this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+        this.minDate = this.orderFormInput.estimatedDeliveryDate;
     }
 
     changeSupplier(){
         this.selectedProduct = "";
         this.prodList = [];
-        this.prodService.getProductsBySupplierId(this.orderFormInput.supplier_id).subscribe(
+        this.prodService.getProductsBySupplierId(this.orderFormInput.supplierId).subscribe(
             (res)=>this.prodList = res
         );
     }
 
     addProductToOrder(prodId:string,prodQty:any){
         if(prodQty>0 && prodId!=""){
-                let item = this.prodList.find(item=>item.product_id==prodId);
-                item? item.quantity+=prodQty:this.prodList.push({order_id:"",product_id:prodId,quantity:prodQty});
+                let item = this.prodList.find(item=>item.productId==prodId);
+                item? item.quantity+=prodQty:this.prodList.push({orderId:"",productId:prodId,quantity:prodQty});
                 alert("Producto añadido correctamente.")
         }
     }
 
     deleteOrderProduct(id:any){
         if(id.length>=4){
-            this.prodList = this.prodList.filter(item=>item.product_id!=id);
+            this.prodList = this.prodList.filter(item=>item.productId!=id);
         }
     }
 

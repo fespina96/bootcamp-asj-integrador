@@ -1,4 +1,4 @@
 export interface ItemOrder {
-    supplier_id:string,
+    supplierId:string,
     qty:number
 }

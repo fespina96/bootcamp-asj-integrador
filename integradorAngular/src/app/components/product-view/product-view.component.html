@@ -7,13 +7,13 @@
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-shopping-bag me-1"></i>
-        Información Producto {{productDetail.sku_code}}
+        Información Producto {{productDetail.skuCode}}
     </div>
     <div class="card-body shadow">
-        <div><span class="fw-bold ">Codigo SKU:</span> {{productDetail.sku_code}}</div>
+        <div><span class="fw-bold ">Codigo SKU:</span> {{productDetail.skuCode}}</div>
         <div><span class="fw-bold ">Nombre Producto:</span> {{productDetail.name}}</div>
-        <div><span class="fw-bold ">Categoría:</span> {{productDetail.product_category_id}}</div>
-        <div><span class="fw-bold ">Proveedor:</span> {{productDetail.supplier_id}}</div>
+        <div><span class="fw-bold ">Categoría:</span> {{productDetail.productCategoryId}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{productDetail.supplierId}}</div>
         <div class="fw-bold ">Imagen del Producto:</div>
         <div><img src="{{productDetail.image_url}}" alt="" style="height: 300px;"></div>
         <div><span class="fw-bold ">Precio:</span> {{productDetail.price|currency:"$"}}</div>

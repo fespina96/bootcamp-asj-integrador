@@ -18,25 +18,25 @@ export class FormSuppliersComponent implements OnInit{
         id:"",
         code:"",
         name:"",
-        supplier_category_id:"",
-        logo_image_url:"",
+        supplierCategoryId:"",
+        logoImageUrl:"",
         email:"",
         phone:"",
         website:"",
         address:"",
-        zip_code:"",
+        zipCode:"",
         cuit:"",
-        condition_id:"",
-        country_id:"",
-        state_id:"",
-        contact_name:"",
-        contact_surname:"",
-        contact_email:"",
-        contact_phone:"",
-        contact_role:"",
-        created_at:"",
-        updated_at:"",
-        deleted_at:""
+        conditionId:"",
+        countryId:"",
+        stateId:"",
+        contactName:"",
+        contactSurname:"",
+        contactEmail:"",
+        contactPhone:"",
+        contactRole:"",
+        createdAt:"",
+        updatedAt:"",
+        deletedAt:""
     };
 
     countryList:any = [];
@@ -50,8 +50,8 @@ export class FormSuppliersComponent implements OnInit{
     }
 
     countryChange():void{
-        this.suppFormInput.state_id = "";
-        this.countriesService.getCountryStatesById(this.suppFormInput.country_id).subscribe(
+        this.suppFormInput.stateId = "";
+        this.countriesService.getCountryStatesById(this.suppFormInput.countryId).subscribe(
             (res)=>this.stateList=res
         );
     }

@@ -3,9 +3,9 @@ import { Supplier } from '../../interfaces/supplier';
 import { SupplierService } from '../../services/supplier.service';
 
 @Component({
-  selector: 'app-list-suppliers',
-  templateUrl: './list-suppliers.component.html',
-  styleUrl: './list-suppliers.component.css'
+    selector: 'app-list-suppliers',
+    templateUrl: './list-suppliers.component.html',
+    styleUrl: './list-suppliers.component.css'
 })
 export class ListSuppliersComponent implements OnInit{
     
