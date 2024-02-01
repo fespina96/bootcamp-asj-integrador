@@ -22,11 +22,11 @@ export class OrderService {
         return this.http.get(this.orderUrl+"/"+id);
     }
 
-    addOrder(newOrder:Order):Observable<any>{
+    addOrder(newOrder?:Order):Observable<any>{
         return this.http.post(this.orderUrl,newOrder);
     }
 
-    editOrder(id:any,orderEditInput:Order):Observable<any>{
+    editOrder(id:any,orderEditInput?:Order):Observable<any>{
         return this.http.put(this.orderUrl+"/"+id,orderEditInput);
     }
 

@@ -11,11 +11,11 @@ export class CountriesService {
 
     constructor(private http:HttpClient) { }
 
-    getCountryStatesById(id:number|""):Observable<any>{
+    getCountryStatesById(id:any):Observable<any>{
         return this.http.get(this.countriesUrl+"/"+id+"/states");
     }
 
-    getStateById(id:number):Observable<any>{
+    getStateById(id:any):Observable<any>{
         return this.http.get(this.statesUrl+"/"+id);
     }
 
@@ -23,7 +23,7 @@ export class CountriesService {
         return this.http.get(this.countriesUrl);
     }
 
-    getCountryById(id:number):Observable<any>{
+    getCountryById(id:any):Observable<any>{
         return this.http.get(this.countriesUrl+"/"+id);
     }
 }

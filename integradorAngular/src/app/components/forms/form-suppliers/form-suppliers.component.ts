@@ -50,8 +50,8 @@ export class FormSuppliersComponent implements OnInit{
     }
 
     countryChange():void{
-        this.suppFormInput.stateId = "";
-        this.countriesService.getCountryStatesById(this.suppFormInput.countryId).subscribe(
+        this.suppFormInput.state.id = undefined;
+        this.countriesService.getCountryStatesById(this.suppFormInput.country.id).subscribe(
             (res)=>this.stateList=res
         );
     }

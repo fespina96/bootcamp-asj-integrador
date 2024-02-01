@@ -23,11 +23,11 @@ export class ProductService {
         return this.http.get(this.productUrl+"/"+id);
     }
 
-    addProduct(productoNuevo:Product):Observable<any>{
+    addProduct(productoNuevo?:Product):Observable<any>{
         return this.http.post(this.productUrl,productoNuevo);
     }
 
-    editProduct(id:any,productEditInput:Product):Observable<any>{
+    editProduct(id:any,productEditInput?:Product):Observable<any>{
         return this.http.put(this.productUrl+"/"+id,productEditInput);
     }
 

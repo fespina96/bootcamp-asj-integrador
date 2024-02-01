@@ -14,7 +14,7 @@ export class ProductCategoryService {
         return this.http.get(this.productCategoryUrl);
     }
 
-    getProductCategoryById(id:number):Observable<any>{
+    getProductCategoryById(id:any):Observable<any>{
         return this.http.get(this.productCategoryUrl+"/"+id);
     }
     

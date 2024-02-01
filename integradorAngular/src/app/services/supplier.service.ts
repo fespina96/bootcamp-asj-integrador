@@ -27,7 +27,7 @@ export class SupplierService {
         return this.http.post(this.supplierUrl,newSupplier);
     }
 
-    editSupplier(id:any,supplierEditInput:Supplier):Observable<any>{
+    editSupplier(id:any,supplierEditInput?:Supplier):Observable<any>{
         return this.http.put(this.supplierUrl+"/"+id,supplierEditInput);
     }
 

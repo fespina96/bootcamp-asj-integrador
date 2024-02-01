@@ -15,7 +15,7 @@ export class SupplierCategoryService {
         return this.http.get(this.supplierCategoryUrl);
     }
 
-    getSupplierCategoryById(id:number):Observable<any>{
+    getSupplierCategoryById(id:any):Observable<any>{
         return this.http.get(this.supplierCategoryUrl+"/"+id);
     }
     
