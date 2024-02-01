@@ -30,6 +30,7 @@ import { SupplierCategoryService } from './services/supplier-category.service';
 import { OrderService } from './services/order-service.service';
 import { CountriesService } from './services/countries.service';
 import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { RouterModule } from '@angular/router';
         RouterModule,
         FormsModule,
         NgbModule,
-        HttpClientModule
+        HttpClientModule,
+        AppRoutingModule
     ],
     providers: [
         ProductService,
