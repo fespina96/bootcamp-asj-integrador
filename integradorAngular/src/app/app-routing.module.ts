@@ -6,7 +6,7 @@ import { ListProductsComponent } from './components/lists/list-products/list-pro
 import { FormProductsComponent } from './components/forms/form-products/form-products.component';
 import { ListSuppliersComponent } from './components/lists/list-suppliers/list-suppliers.component';
 import { FormSuppliersComponent } from './components/forms/form-suppliers/form-suppliers.component';
-import { ListOrdenesComponent } from './components/lists/list-ordenes/list-ordenes.component';
+import { ListOrdersComponent } from './components/lists/list-orders/list-orders.component';
 import { FormOrdenesComponent } from './components/forms/form-ordenes/form-ordenes.component';
 import { ProductViewComponent } from './components/views/product-view/product-view.component';
 import { SupplierViewComponent } from './components/views/supplier-view/supplier-view.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'proveedor/:id' , component: SupplierViewComponent},
     { path: 'form-proveedores' , component: FormSuppliersComponent},
     { path: 'form-proveedores/:editId' , component: FormSuppliersComponent},
-    { path: 'ordenes' , component: ListOrdenesComponent},
+    { path: 'ordenes' , component: ListOrdersComponent},
     { path: 'orden/:id' , component: OrderViewComponent},
     { path: 'form-ordenes' , component: FormOrdenesComponent},
     { path: 'form-ordenes/:editId' , component: FormOrdenesComponent},

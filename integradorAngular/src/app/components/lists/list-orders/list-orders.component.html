@@ -1,9 +1,12 @@
 <h1 class="mt-4">Listado de Ordenes de Compra</h1>
-<ol class="breadcrumb mb-4">
+<ol class="breadcrumb mb-1">
     <li class="breadcrumb-item active fst-italic">Listados</li>
     <li class="breadcrumb-item ">Ordenes de Compra</li>
 </ol>
-<div class="card mb-4">
+<div>
+    <a class="btn btn-primary fw-bold btn-alta shadow mb-2" routerLink="/form-ordenes"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
+</div>
+<div class="card mb-4 shadow ">
     <div class="card-header" id="list-title">
         <i class="fas fa-shopping-bag me-1"></i>
         Ordenes de Compra
@@ -35,4 +38,3 @@
         <div class="alert alert-danger fw-bold text-center h5" *ngIf="orderList.length==0">Listado vacio, agregue un nuevo item.</div>
     </div>
 </div>
-<a class="btn btn-primary fw-bold btn-alta" routerLink="/form-ordenes"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>

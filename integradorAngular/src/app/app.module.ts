@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Error404Component } from './components/template/error-404/error-404.component';
 import { ListProductsComponent } from './components/lists/list-products/list-products.component';
 import { FormProductsComponent } from './components/forms/form-products/form-products.component';
-import { ListOrdenesComponent } from './components/lists/list-ordenes/list-ordenes.component';
+import { ListOrdersComponent } from './components/lists/list-orders/list-orders.component';
 import { ListSuppliersComponent } from './components/lists/list-suppliers/list-suppliers.component';
 import { FormOrdenesComponent } from './components/forms/form-ordenes/form-ordenes.component';
 import { FormSuppliersComponent } from './components/forms/form-suppliers/form-suppliers.component';
@@ -43,7 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
         Error404Component,
         ListProductsComponent,
         FormProductsComponent,
-        ListOrdenesComponent,
+        ListOrdersComponent,
         ListSuppliersComponent,
         FormOrdenesComponent,
         FormSuppliersComponent,

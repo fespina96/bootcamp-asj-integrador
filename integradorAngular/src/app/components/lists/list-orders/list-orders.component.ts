@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../../services/order-service.service';
 import { Order } from '../../../interfaces/order';
 @Component({
-    selector: 'app-list-ordenes',
-    templateUrl: './list-ordenes.component.html',
-    styleUrl: './list-ordenes.component.css'
+    selector: 'app-list-ordenrs',
+    templateUrl: './list-orders.component.html',
+    styleUrl: './list-orders.component.css'
 })
-export class ListOrdenesComponent implements OnInit{
+export class ListOrdersComponent implements OnInit{
     constructor(private orderService:OrderService){}
 
     orderList:Array<Order> = []
