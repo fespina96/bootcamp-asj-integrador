@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OrderService {
 
-    private orderUrl  ="http://locahost:8080/order"
+    private orderUrl  ="http://localhost:8080/order"
 
-    private orderProductsUrl  ="http://locahost:8080/products-per-order"
+    private orderProductsUrl  ="http://localhost:8080/products-per-order"
 
     constructor(private http:HttpClient) { }
 
