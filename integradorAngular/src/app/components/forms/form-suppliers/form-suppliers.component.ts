@@ -66,7 +66,9 @@ export class FormSuppliersComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
-        this.countryList = this.countriesService.getCountries();
+        this.countriesService.getCountries().subscribe(
+            (res)=>this.countryList=res    
+        );
         this.suppService.getConditions().subscribe(
             (res)=>this.conditionList=res
         );
