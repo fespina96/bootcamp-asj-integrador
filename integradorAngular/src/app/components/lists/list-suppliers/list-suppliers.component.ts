@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Supplier } from '../../../interfaces/supplier';
 import { SupplierService } from '../../../services/supplier.service';
+declare var $: any;
 
 @Component({
     selector: 'app-list-suppliers',
@@ -21,6 +22,9 @@ export class ListSuppliersComponent implements OnInit{
         this.suppService.getSuppliers().subscribe(
             (res)=>this.suppList=res
         );
+        $(document).ready(function() {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        })
     }
 
     deleteListItem(id:any){
