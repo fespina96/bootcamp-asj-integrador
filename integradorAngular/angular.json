@@ -41,6 +41,7 @@
                 "src/styles.css"
             ],
             "scripts": [
+                "node_modules/@popperjs/core/dist/umd/popper.min.js",
                 "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
                 "src/js/scripts.js",
                 "node_modules/simple-datatables/dist/umd/simple-datatables.js",

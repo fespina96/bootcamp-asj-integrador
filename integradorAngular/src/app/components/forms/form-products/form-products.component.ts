@@ -6,11 +6,11 @@ import { Product } from '../../../interfaces/product';
 import { SupplierService } from '../../../services/supplier.service';
 
 @Component({
-    selector: 'app-form-productos',
+    selector: 'app-form-products',
     templateUrl: './form-products.component.html',
     styleUrl: './form-products.component.css'
 })
-export class FormProductosComponent implements OnInit{
+export class FormProductsComponent implements OnInit{
     productFormInput:Product = {
         id:undefined,
         skuCode:"",
