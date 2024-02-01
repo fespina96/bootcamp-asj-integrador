@@ -1,10 +1,11 @@
 <h1 class="mt-4">Listado de Proveedores</h1>
-<ol class="breadcrumb mb-4">
+
+<ol class="breadcrumb mb-1">
     <li class="breadcrumb-item active fst-italic">Listados</li>
     <li class="breadcrumb-item ">Proveedores</li>
 </ol>
-<div>
-    <a class="btn btn-primary fw-bold btn-alta float-end " routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
+<div class="">
+    <a class="btn btn-primary fw-bold btn-alta mb-2" routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
 </div>
 <div class="card mb-4 shadow">
     <div class="card-header" id="list-title">
@@ -29,8 +30,8 @@
                     <td><img src="{{item.logoImageUrl}}" alt="Logo {{item.name}}" style="height: 80px;"></td>
                     <td>{{item.code}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.country.name}}<br>
-                        {{item.state.name}}
+                    <td>{{item.state.name}},<br>
+                        {{item.country.name}}
                     </td>
                     <td>
                         <button class="btn btn-sm btn-secondary m-1" placement="top" ngbTooltip="{{item.website}}">
