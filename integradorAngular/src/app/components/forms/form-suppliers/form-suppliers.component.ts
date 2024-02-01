@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Supplier } from '../../interfaces/supplier';
+import { Supplier } from '../../../interfaces/supplier';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SupplierService } from '../../services/supplier.service';
-import { CountriesService } from '../../services/countries.service';
+import { SupplierService } from '../../../services/supplier.service';
+import { CountriesService } from '../../../services/countries.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -15,10 +15,10 @@ export class FormSuppliersComponent implements OnInit{
     constructor(private route:ActivatedRoute, private suppService:SupplierService, private router:Router, private countriesService:CountriesService){}
 
     suppFormInput:Supplier = {
-        id:"",
+        id:undefined,
         code:"",
         name:"",
-        supplierCategoryId:"",
+        supplierCategory:{id:undefined,name:""},
         logoImageUrl:"",
         email:"",
         phone:"",
@@ -26,17 +26,17 @@ export class FormSuppliersComponent implements OnInit{
         address:"",
         zipCode:"",
         cuit:"",
-        conditionId:"",
-        countryId:"",
-        stateId:"",
+        condition:{id:undefined,name:""},
+        country:{id:undefined,name:""},
+        state:{id:undefined,name:""},
         contactName:"",
         contactSurname:"",
         contactEmail:"",
         contactPhone:"",
         contactRole:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     };
 
     countryList:any = [];

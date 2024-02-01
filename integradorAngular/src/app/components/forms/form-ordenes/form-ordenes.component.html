@@ -18,14 +18,14 @@
                         class="form-select" 
                         name="input-supplier" 
                         id="input-supplier" 
-                        [(ngModel)]="orderFormInput.supplierId"
+                        [(ngModel)]="orderFormInput.supplier.id"
                         (change)="changeSupplier()"
                         #supplierSelect="ngModel" 
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
                         >
                         <option value="" selected disabled>Seleccione un proveedor</option>
-                        <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
+                        <option *ngFor="let item of suppList" value="{{item.id}}">{{item.name}}</option>
                     </select>
                     <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
                         <div *ngIf="supplierSelect.errors?.['required']">Proveedor requerido.</div>

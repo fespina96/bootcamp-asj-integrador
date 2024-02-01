@@ -11,8 +11,8 @@
     </div>
     <div class="card-body shadow">
         <div><span class="fw-bold ">Número de Orden:</span> {{orderDetail.id}}</div>
-        <div><span class="fw-bold ">Estado:</span> {{orderDetail.orderStateId}}</div>
-        <div><span class="fw-bold ">Proveedor:</span> {{orderDetail.supplierId}}</div>
+        <div><span class="fw-bold ">Estado:</span> {{orderDetail.orderState.name}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{orderDetail.supplier.name}}</div>
         <div><span class="fw-bold ">Dirección de entrega:</span> {{orderDetail.address}}</div>
         <div><span class="fw-bold ">Fecha de Emisión:</span> {{orderDetail.emisionDate|date}}</div>
         <div><span class="fw-bold ">Fecha de Entrega Estimada:</span> {{orderDetail.estimatedDeliveryDate|date}}</div>

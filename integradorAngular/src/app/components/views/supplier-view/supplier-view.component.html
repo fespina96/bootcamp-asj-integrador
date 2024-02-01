@@ -16,7 +16,7 @@
             <div class="card-body ">
                 <div><span class="fw-bold ">Codigo:</span> {{supplierDetail.code}}</div>
                 <div><span class="fw-bold ">Nombre Proveedor:</span> {{supplierDetail.name}}</div>
-                <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplierCategoryId}}</div>
+                <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplierCategory.name}}</div>
                 <div class="fw-bold ">Logo del Proveedor:</div>
                 <div><img src="{{supplierDetail.logoImageUrl}}" alt="" style="height: 100px;"></div>
             </div>
@@ -36,8 +36,8 @@
             <div class="card-body ">            
                 <div><span class="fw-bold ">Calle: </span>{{supplierDetail.address}}</div>
                 <div><span class="fw-bold ">Codigo Postal: </span>{{supplierDetail.zipCode}}</div>
-                <div><span class="fw-bold ">Provincia: </span>{{supplierDetail.stateId}}</div>
-                <div><span class="fw-bold ">País: </span>{{supplierDetail.countryId}}</div>
+                <div><span class="fw-bold ">Provincia: </span>{{supplierDetail.state.name}}</div>
+                <div><span class="fw-bold ">País: </span>{{supplierDetail.country.name}}</div>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
             <div class="fw-bold card-header ">Datos Fiscales</div>
             <div class="card-body ">
                 <div><span class="fw-bold ">CUIT: </span>{{supplierDetail.cuit}}</div>
-                <div><span class="fw-bold ">Condición IVA: </span>{{supplierDetail.conditionId}}</div>
+                <div><span class="fw-bold ">Condición IVA: </span>{{supplierDetail.condition.name}}</div>
             </div>
 
         </div>

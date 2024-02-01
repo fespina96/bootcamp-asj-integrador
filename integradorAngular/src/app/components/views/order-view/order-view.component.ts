@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderService } from '../../services/order-service.service';
-import { Order } from '../../interfaces/order';
+import { OrderService } from '../../../services/order-service.service';
+import { Order } from '../../../interfaces/order';
 @Component({
     selector: 'app-order-view',
     templateUrl: './order-view.component.html',
@@ -11,17 +11,17 @@ export class OrderViewComponent {
     constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router){}
 
     orderDetail:Order = {
-        id:"",
-        emisionDate:"",
-        estimatedDeliveryDate:"",
-        deliveryDate:"",
+        id:undefined,
+        emisionDate:undefined,
+        estimatedDeliveryDate:undefined,
+        deliveryDate:undefined,
         address:"",
-        supplierId:"",
-        total:"",
-        orderStateId:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        supplier:{id:undefined,name:""},
+        total:undefined,
+        orderState:{id:undefined,name:""},
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     }
 
     orderProducts:any = [];

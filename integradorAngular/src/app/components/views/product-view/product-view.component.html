@@ -12,8 +12,8 @@
     <div class="card-body shadow">
         <div><span class="fw-bold ">Codigo SKU:</span> {{productDetail.skuCode}}</div>
         <div><span class="fw-bold ">Nombre Producto:</span> {{productDetail.name}}</div>
-        <div><span class="fw-bold ">Categoría:</span> {{productDetail.productCategoryId}}</div>
-        <div><span class="fw-bold ">Proveedor:</span> {{productDetail.supplierId}}</div>
+        <div><span class="fw-bold ">Categoría:</span> {{productDetail.productCategory.name}}</div>
+        <div><span class="fw-bold ">Proveedor:</span> {{productDetail.supplier.name}}</div>
         <div class="fw-bold ">Imagen del Producto:</div>
         <div><img src="{{productDetail.imageUrl}}" alt="" style="height: 300px;"></div>
         <div><span class="fw-bold ">Precio:</span> {{productDetail.price|currency:"$"}}</div>

@@ -1,8 +1,8 @@
 export interface Supplier {
-    id:number|"",
+    id?:number,
     code:string,
     name:string,
-    supplierCategoryId:number|"",
+    supplierCategory:{id?:number,name:string},
     logoImageUrl:string,
     email:string,
     phone:string,
@@ -10,15 +10,15 @@ export interface Supplier {
     address:string,
     zipCode:string,
     cuit:string,
-    conditionId:number|"",
-    countryId:number|"",
-    stateId:number|"",
+    condition:{id?:number,name:string},
+    country:{id?:number,name:string},
+    state:{id?:number,name:string},
     contactName:string,
     contactSurname:string,
     contactEmail:string,
     contactPhone:string,
     contactRole:string,
-    createdAt:Date|"",
-    updatedAt:Date|"",
-    deletedAt:Date|""
+    createdAt?:Date,
+    updatedAt?:Date,
+    deletedAt?:Date
 }

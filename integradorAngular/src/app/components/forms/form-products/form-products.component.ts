@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { ProductService } from '../../services/product-service.service';
-import { Product } from '../../interfaces/product';
-import { SupplierService } from '../../services/supplier.service';
+import { ProductService } from '../../../services/product-service.service';
+import { Product } from '../../../interfaces/product';
+import { SupplierService } from '../../../services/supplier.service';
 
 @Component({
     selector: 'app-form-productos',
@@ -12,17 +12,17 @@ import { SupplierService } from '../../services/supplier.service';
 })
 export class FormProductosComponent implements OnInit{
     productFormInput:Product = {
-        id:"",
+        id:undefined,
         skuCode:"",
-        supplierId:"",
-        productCategoryId:"",
+        supplier:{id:undefined,name:""},
+        productCategory:{id:undefined,name:""},
         name:"",
         description:"",
-        price:"",
+        price:undefined,
         imageUrl:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     };
 
     provList:any = [];

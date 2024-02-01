@@ -25,8 +25,8 @@
                 <tr *ngFor="let item of productList;index as i;">
                         <td><img src="{{item.imageUrl}}" alt="Imagen {{item.name}}" style="height: 100px;"></td>
                         <td>{{item.skuCode}}</td>
-                        <td>{{item.supplierId}}</td>
-                        <td>{{item.productCategoryId}}</td>
+                        <td>{{item.supplier.name}}</td>
+                        <td>{{item.productCategory.name}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.price | currency : '$'}}</td>
                         <td>

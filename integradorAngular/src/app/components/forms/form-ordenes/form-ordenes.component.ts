@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderService } from '../../services/order-service.service';
-import { SupplierService } from '../../services/supplier.service';
-import { Order } from '../../interfaces/order';
+import { OrderService } from '../../../services/order-service.service';
+import { SupplierService } from '../../../services/supplier.service';
+import { Order } from '../../../interfaces/order';
 import { NgForm } from '@angular/forms';
-import { ProductService } from '../../services/product-service.service';
+import { ProductService } from '../../../services/product-service.service';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -13,20 +13,20 @@ import { ProductService } from '../../services/product-service.service';
 })
 export class FormOrdenesComponent {
     orderFormInput:Order = {
-        id:"",
-        emisionDate:"",
-        estimatedDeliveryDate:"",
-        deliveryDate:"",
+        id:undefined,
+        emisionDate:undefined,
+        estimatedDeliveryDate:undefined,
+        deliveryDate:undefined,
         address:"",
-        supplierId:"",
-        total:"",
-        orderStateId:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        supplier:{id:undefined,name:""},
+        total:undefined,
+        orderState:{id:undefined,name:""},
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     };
 
-    provList:any = [];
+    suppList:any = [];
 
     currentDay = new Date();
 
@@ -58,7 +58,7 @@ export class FormOrdenesComponent {
             this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
-        this.provList = this.provService.getSuppliers();
+        this.suppList = this.provService.getSuppliers();
     }
 
     formProcedure(form:NgForm){
@@ -75,16 +75,18 @@ export class FormOrdenesComponent {
     }
 
     emisionChange(){
-        let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
-        estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-        this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
-        this.minDate = this.orderFormInput.estimatedDeliveryDate;
+        if(this.orderFormInput.emisionDate!=undefined){
+            let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
+            estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
+            this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+            this.minDate = this.orderFormInput.estimatedDeliveryDate;
+        }
     }
 
     changeSupplier(){
         this.selectedProduct = "";
         this.prodList = [];
-        this.prodService.getProductsBySupplierId(this.orderFormInput.supplierId).subscribe(
+        this.prodService.getProductsBySupplierId(this.orderFormInput.supplier.id).subscribe(
             (res)=>this.prodList = res
         );
     }

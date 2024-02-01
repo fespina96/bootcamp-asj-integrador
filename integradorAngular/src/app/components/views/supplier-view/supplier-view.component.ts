@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SupplierService } from '../../services/supplier.service';
-import { Supplier } from '../../interfaces/supplier';
+import { SupplierService } from '../../../services/supplier.service';
+import { Supplier } from '../../../interfaces/supplier';
 @Component({
   selector: 'app-supplier-view',
   templateUrl: './supplier-view.component.html',
@@ -11,10 +11,10 @@ export class SupplierViewComponent {
     constructor(private route:ActivatedRoute, private supplierService:SupplierService, private router:Router){}
 
     supplierDetail:Supplier = {
-        id:"",
+        id:undefined,
         code:"",
         name:"",
-        supplierCategoryId:"",
+        supplierCategory:{id:undefined,name:""},
         logoImageUrl:"",
         email:"",
         phone:"",
@@ -22,17 +22,17 @@ export class SupplierViewComponent {
         address:"",
         zipCode:"",
         cuit:"",
-        conditionId:"",
-        countryId:"",
-        stateId:"",
+        condition:{id:undefined,name:""},
+        country:{id:undefined,name:""},
+        state:{id:undefined,name:""},
         contactName:"",
         contactSurname:"",
         contactEmail:"",
         contactPhone:"",
         contactRole:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     }
 
     ngOnInit(): void {

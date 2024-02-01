@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../services/product-service.service';
-import { Product } from '../../interfaces/product';
+import { ProductService } from '../../../services/product-service.service';
+import { Product } from '../../../interfaces/product';
 
 @Component({
     selector: 'app-product-view',
@@ -12,17 +12,17 @@ export class ProductViewComponent implements OnInit{
     constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router){}
 
     productDetail:Product = {
-        id:"",
+        id:undefined,
         skuCode:"",
-        supplierId:"",
-        productCategoryId:"",
+        supplier:{id:undefined,name:""},
+        productCategory:{id:undefined,name:""},
         name:"",
         description:"",
-        price:"",
+        price:undefined,
         imageUrl:"",
-        createdAt:"",
-        updatedAt:"",
-        deletedAt:""
+        createdAt:undefined,
+        updatedAt:undefined,
+        deletedAt:undefined
     }
 
     ngOnInit(): void {

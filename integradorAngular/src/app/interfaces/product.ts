@@ -1,13 +1,13 @@
 export interface Product{
-    id:number|"",
+    id?:number,
     skuCode:string,
-    supplierId:string,
-    productCategoryId:number|"",
+    supplier:{id?:number,name:string},
+    productCategory:{id?:number,name:string},
     name:string,
     description:string,
-    price:number|"",
+    price?:number,
     imageUrl:string,
-    createdAt:Date|"",
-    updatedAt:Date|"",
-    deletedAt:Date|""
+    createdAt?:Date,
+    updatedAt?:Date,
+    deletedAt?:Date
 }

@@ -15,6 +15,7 @@
                     <th>Logo</th>
                     <th>Código</th>
                     <th>Razón Social</th>
+                    <th>Región</th>
                     <th>Contacto</th>
                     <th>Contacto Interno</th>
                     <th>Acciones</th>
@@ -25,17 +26,17 @@
                     <td><img src="{{item.logoImageUrl}}" alt="Logo {{item.name}}" style="height: 80px;"></td>
                     <td>{{item.code}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.countryId}}<br>
-                        {{item.stateId}}
+                    <td>{{item.country.name}}<br>
+                        {{item.state.name}}
                     </td>
                     <td>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.website}}">
+                        <button class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.website}}">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.email}}">
+                        <button class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.email}}">
                             <i class="fa fa-eye"></i>
                         </button>
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.phone}}">
+                        <button class="btn btn-sm btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="{{item.phone}}">
                             <i class="fa fa-eye"></i>
                         </button>
                     </td>

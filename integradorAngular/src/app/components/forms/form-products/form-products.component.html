@@ -35,7 +35,7 @@
                         class="form-select" 
                         name="input-supplier" 
                         id="input-supplier" 
-                        [(ngModel)]="productFormInput.supplierId" 
+                        [(ngModel)]="productFormInput.supplier.id" 
                         required
                         minlength="1"
                         #supplierSelect="ngModel"
@@ -56,7 +56,7 @@
                         class="form-select" 
                         name="input-category" 
                         id="input-category" 
-                        [(ngModel)]="productFormInput.productCategoryId" 
+                        [(ngModel)]="productFormInput.productCategory.id" 
                         required
                         minlength="1"
                         #category="ngModel"
