@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,6 +16,11 @@ export class SupplierService {
 
     constructor(private http:HttpClient) { }
 
+    headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    });
+
     getSuppliers():Observable<any>{
         return this.http.get(this.supplierUrl);
     }
@@ -26,7 +30,9 @@ export class SupplierService {
     }
 
     addSupplier(newSupplier:Supplier):Observable<any>{
-        return this.http.post(this.supplierUrl,JSON.stringify(newSupplier));
+        return this.http.post(this.supplierUrl,JSON.stringify(newSupplier),{
+            headers: this.headers
+        });
     }
 
     editSupplier(id:any,supplierEditInput?:Supplier):Observable<any>{
