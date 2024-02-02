@@ -91,6 +91,8 @@ export class FormSuppliersComponent implements OnInit{
                 this.suppService.addSupplier(this.suppFormInput);
             }
         }
+
+        console.log(formInput);
     }
 
     addRubroModal(){

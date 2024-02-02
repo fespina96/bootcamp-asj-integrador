@@ -101,7 +101,6 @@ export class FormOrdenesComponent {
                 let product:any;
                 this.prodService.getProductById(prodId).subscribe(
                     (res)=>{
-                        console.log(res);
                         product=res;
                         let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
                         item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
