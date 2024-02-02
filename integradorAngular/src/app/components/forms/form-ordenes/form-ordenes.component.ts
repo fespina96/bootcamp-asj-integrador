@@ -58,7 +58,9 @@ export class FormOrdenesComponent {
             this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
-        this.suppList = this.provService.getSuppliers();
+        this.provService.getSuppliers().subscribe(
+            (res)=>this.suppList=res
+        );
     }
 
     formProcedure(form:NgForm){
