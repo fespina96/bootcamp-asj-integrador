@@ -61,10 +61,7 @@ export class FormSuppliersComponent implements OnInit{
         if(routeSnapshot){
             //LOGICA FORM EDITAR
             this.suppService.getSupplierById(routeSnapshot).subscribe(
-                (res)=>this.suppFormInput=res,
-                (complete)=>this.countriesService.getCountryStatesById(this.suppFormInput.country.id).subscribe(
-                    (res)=>this.stateList=res
-                )
+                (res)=>this.suppFormInput=res
             );
         }else{
             //LOGICA FORM AÑADIR
