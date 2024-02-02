@@ -11,7 +11,9 @@
     </div>
     <div class="card-body">
         <form #orderForm="ngForm" (ngSubmit)="formProcedure(orderForm)">
-            <div class="form-row">
+            <div class="card form-row shadow mb-3 ">
+                <div class="card-header">Datos de la orden</div>
+                <div class="card-body d-flex justify-content-evenly ">
                 <div class="form-group col-2">
                     <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
                     <select 
@@ -84,8 +86,9 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="form-row">
-                <div class="card w-100 ">
+                <div class="card shadow mb-3 w-100 ">
                     <div class="card-header">
                         <div>Productos de la orden</div>
                     </div>
@@ -107,44 +110,26 @@
                             </tbody>
                         </table>
                         <div *ngIf="prodList.length==0" class="alert alert-danger text-center"><h5>Ingrese un producto a la orden.</h5></div>
-                        <div class="form-row">
-                            <div class="form-group col-8">
+                        <div class="form-row d-flex justify-content-evenly ">
+                            <div class="form-group col-7">
                                 <label for="productSelect">Producto</label>
                                 <select class="form-select " id="productSelect" name="productSelect" [(ngModel)]="selectedProduct">
                                     <option value="" selected disabled>Elija un producto</option>
                                     <option *ngFor="let item of prodList" value="{{item.productId}}">{{item.productId}}</option>
                                 </select>
                             </div>
-                            <div class="form-group col-4">
+                            <div class="form-group col-2">
                                 <label for="productQty">Cantidad</label>
-                                <input class="form-control" type="number" id="productQty" name="productQty" [(ngModel)]="selectedProductQty">
+                                <input class="form-control text-center " type="number" id="productQty" name="productQty" [(ngModel)]="selectedProductQty">
                             </div>
-                            <a class="btn btn-sm btn-primary " (click)="addProductToOrder(selectedProduct,selectedProductQty)"><i class="fa fa-plus" aria-hidden="true"></i> Añadir a la orden</a>
+                            <div class="d-flex align-items-center"><a class="btn btn-sm btn-primary" (click)="addProductToOrder(selectedProduct,selectedProductQty)"><i class="fa fa-plus" aria-hidden="true"></i> Añadir a la orden</a></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-2">
-                    <label for="input-total" [ngClass]="{'text-danger':orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)}">Total</label>
-                    <input 
-                        type="number" 
-                        class="form-control" 
-                        name="input-total" 
-                        id="input-total" 
-                        [(ngModel)]="orderFormInput.total"
-                        #orderTotal="ngModel" 
-                        required
-                        [ngClass]="{'border-danger-subtle bg-danger-subtle':orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)}"
-                    >
-                    <div *ngIf="orderTotal.invalid && (orderTotal.dirty || orderTotal.touched)" class="alert alert-danger small ">
-                        <div *ngIf="orderTotal.errors?.['required']">Total requerido.</div>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
-            <button type="reset" (click)="clearOrder()" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
-            <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+            <button type="submit" class="btn btn-success shadow fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" (click)="clearOrder()" class="btn btn-secondary shadow fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/productos" class="btn btn-danger shadow fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
         </form>
     </div>
     

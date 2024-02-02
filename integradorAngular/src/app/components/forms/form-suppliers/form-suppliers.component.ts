@@ -39,6 +39,8 @@ export class FormSuppliersComponent implements OnInit{
         deletedAt:undefined
     };
 
+    categoryList:any = [];
+
     countryList:any = [];
 
     stateList:any = [];
@@ -72,6 +74,9 @@ export class FormSuppliersComponent implements OnInit{
         this.suppService.getConditions().subscribe(
             (res)=>this.conditionList=res
         );
+        this.suppService.getSupplierCategories().subscribe(
+            (res)=>this.categoryList=res
+        )
 
     }
 
@@ -86,5 +91,9 @@ export class FormSuppliersComponent implements OnInit{
                 this.suppService.addSupplier(this.suppFormInput);
             }
         }
+    }
+
+    addRubroModal(){
+        alert("nueva categoria");
     }
 }

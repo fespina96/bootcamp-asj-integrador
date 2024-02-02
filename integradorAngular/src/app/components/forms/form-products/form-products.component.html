@@ -4,14 +4,14 @@
     <li class="breadcrumb-item active fst-italic">Productos</li>
     <li class="breadcrumb-item ">Alta</li>
 </ol>
-<div class="card mb-4">
+<div class="card shadow mb-4">
     <div class="card-header">
         <i class="fas fa-building me-1"></i>
         Información Nuevo Producto
     </div>
-    <div class="card-body shadow">
+    <div class="card-body">
         <form #productForm="ngForm" (ngSubmit)="formProcedure(productForm)">
-            <div class="form-row">
+            <div class="form-row d-flex justify-content-evenly ">
                 <div class="form-group col-2 me-1">
                     <label for="input-sku-code" [ngClass]="{'text-danger':skuCode.invalid && (skuCode.dirty || skuCode.touched)}">Codigo SKU</label>
                     <input 
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="form-group col-2 me-1">
-                    <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">supplierSelect</label>
+                    <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
                     <select 
                         class="form-select" 
                         name="input-supplier" 
@@ -41,11 +41,11 @@
                         #supplierSelect="ngModel"
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
                     >
-                        <option value="" selected disabled>Seleccione un supplierSelect</option>
+                        <option value="undefined" selected disabled>Seleccione un proveedor</option>
                         <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
                     </select>
                     <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
-                        <div *ngIf="supplierSelect.errors?.['required']">supplierSelect requerido.</div>
+                        <div *ngIf="supplierSelect.errors?.['required']">proveedor requerido.</div>
                     </div>
                 </div>
                 <div class="form-group col-2">
@@ -62,16 +62,16 @@
                         #category="ngModel"
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':category.invalid && (category.dirty || category.touched)}"
                     >
-                        <option value="" selected disabled>Seleccione una categoría</option>
+                        <option value="undefined" selected disabled>Seleccione una categoría</option>
                         <option *ngFor="let item of catList" value="{{item.id}}">{{item.name}}</option>
                     </select>
                     <div *ngIf="category.invalid && (category.dirty || category.touched)" class="alert alert-danger small ">
                         <div *ngIf="category.errors?.['required']">Categoría requerida.</div>
                     </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-center me-1 flex-column ">
-                    <div class="invisible" style="height:15px;" (click)="addCategoryModal()"><label>Add</label></div>
-                    <a class="btn btn-sm btn-primary"><i class="fas fa-plus"></i></a>
+                <div class="m-1">
+                    <div class="invisible" style="height:2rem;" (click)="addCategoryModal()"><label>Add</label></div>
+                    <a class="btn btn-sm btn-primary" ngbTooltip="Agregar Categoría"><i class="fas fa-plus"></i></a>
                 </div>
                 <div class="form-group col-5">
                     <label for="input-product-name" [ngClass]="{'text-danger':productName.invalid && (productName.dirty || productName.touched)}">Nombre Producto</label>
@@ -90,8 +90,8 @@
                     </div>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-9 me-1">
+            <div class="form-row d-flex justify-content-evenly ">
+                <div class="form-group col-9">
                     <label for="input-desc" [ngClass]="{'text-danger':description.invalid && (description.dirty || description.touched)}">Descripción</label>
                     <input 
                         type="text" 
@@ -123,30 +123,33 @@
                         <div *ngIf="price.errors?.['required']">Precio requerido.</div>
                     </div>
                 </div>
-                <div class="form-group col-12">
-                    <label for="input-img-url" [ngClass]="{'text-danger':img_url.invalid && (img_url.dirty || img_url.touched)}">URL Imagen</label>
-                    <input 
-                    type="text"
-                    class="form-control" 
-                    name="input-img-url" 
-                    id="input-img-url" 
-                    [(ngModel)]="productFormInput.imageUrl" 
-                    #img_url="ngModel" 
-                    required
-                    [ngClass]="{'border-danger-subtle bg-danger-subtle':img_url.invalid && (img_url.dirty || img_url.touched)}"
-                    >
-                    <div *ngIf="img_url.invalid && (img_url.dirty || img_url.touched)" class="alert alert-danger small">
-                        <div *ngIf="img_url.errors?.['required']">Imagen requerida.</div>
-                    </div>
-                    <div *ngIf="!img_url.invalid && (img_url.dirty || img_url.touched)">
-                        <div>Imagen ingresada:</div>
-                        <img src="{{img_url.value}}" alt="Error al cargar imagen." style="height: 200px;">
-                    </div>
-                </div>
             </div>
-            <button type="submit" class="btn btn-success fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
-            <button type="reset" class="btn btn-secondary  fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
-            <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+            <div class="form-row d-flex justify-content-evenly ">
+                    <div class="form-group col-11">
+                        <label for="input-img-url" [ngClass]="{'text-danger':img_url.invalid && (img_url.dirty || img_url.touched)}">URL Imagen</label>
+                        <input 
+                        type="text"
+                        class="form-control" 
+                        name="input-img-url" 
+                        id="input-img-url" 
+                        [(ngModel)]="productFormInput.imageUrl" 
+                        #img_url="ngModel" 
+                        required
+                        [ngClass]="{'border-danger-subtle bg-danger-subtle':img_url.invalid && (img_url.dirty || img_url.touched)}"
+                        >
+                        <div *ngIf="img_url.invalid && (img_url.dirty || img_url.touched)" class="alert alert-danger small">
+                            <div *ngIf="img_url.errors?.['required']">Imagen requerida.</div>
+                        </div>
+                        <div *ngIf="!img_url.invalid && (img_url.dirty || img_url.touched)">
+                            <div>Imagen ingresada:</div>
+                            <img src="{{img_url.value}}" alt="Error al cargar imagen." style="height: 200px;">
+                        </div>
+                    </div>
+                
+            </div>
+            <button type="submit" class="btn btn-success shadow fw-bold me-2" ><i class="fa fa-plus" aria-hidden="true"></i> Confirmar</button>
+            <button type="reset" class="btn btn-secondary shadow fw-bold me-2" ><i class="fa fa-arrow-rotate-left" aria-hidden="true"></i> Reiniciar</button>
+            <button type="reset" routerLink="/productos" class="btn btn-danger fw-bold shadow"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
         </form>
     </div>
     

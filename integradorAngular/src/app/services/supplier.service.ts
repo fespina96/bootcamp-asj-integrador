@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class SupplierService {
 
+    private supplierCategoryUrl = 'http://localhost:8080/supplier-category'
+
     private supplierUrl = "http://localhost:8080/supplier";
 
     private conditionUrl = "http://localhost:8080/condition";
@@ -41,5 +43,13 @@ export class SupplierService {
 
     getConditionById(id:any):Observable<any>{
         return this.http.get(this.conditionUrl+"/"+id);
+    }
+
+    getSupplierCategories():Observable<any>{
+        return this.http.get(this.supplierCategoryUrl);
+    }
+
+    getSupplierCategoryById(id:any):Observable<any>{
+        return this.http.get(this.supplierCategoryUrl+"/"+id);
     }
 }

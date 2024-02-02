@@ -24,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product-service.service';
 import { ProductCategoryService } from './services/product-category.service';
 import { SupplierService } from './services/supplier.service';
-import { SupplierCategoryService } from './services/supplier-category.service';
 import { OrderService } from './services/order-service.service';
 import { CountriesService } from './services/countries.service';
 import { RouterModule } from '@angular/router';
@@ -66,7 +65,6 @@ registerLocaleData(localeEs,'es');
         ProductService,
         ProductCategoryService,
         SupplierService,
-        SupplierCategoryService,
         OrderService,
         CountriesService,
         {provide:LOCALE_ID,useValue:'es'}

@@ -35,7 +35,7 @@ export class FormOrdenesComponent {
     prodList:{ orderId:any; productId: any; quantity:any }[]=[];
 
     selectedProduct = "";
-    selectedProductQty = "";
+    selectedProductQty = 1;
 
     constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:SupplierService, private prodService:ProductService){}
 
