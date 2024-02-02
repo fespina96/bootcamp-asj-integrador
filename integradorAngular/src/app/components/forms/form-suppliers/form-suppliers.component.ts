@@ -85,10 +85,14 @@ export class FormSuppliersComponent implements OnInit{
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO PRODUCTO
-                this.suppService.editSupplier(routeSnapshot,this.suppFormInput);
+                this.suppService.editSupplier(routeSnapshot,this.suppFormInput).subscribe(
+                    (res)=>console.log(res)
+                );
             }else{
                 //AÑADO PRODUCTO
-                this.suppService.addSupplier(this.suppFormInput);
+                this.suppService.addSupplier(this.suppFormInput).subscribe(
+                    (res)=>console.log(res)
+                );;
             }
         }
 
