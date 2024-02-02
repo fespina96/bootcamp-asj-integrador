@@ -115,7 +115,7 @@
                                 <label for="productSelect">Producto</label>
                                 <select class="form-select " id="productSelect" name="productSelect" [(ngModel)]="selectedProduct">
                                     <option value="" selected disabled>Elija un producto</option>
-                                    <option *ngFor="let item of suppProdList" value="{{item.productId}}">{{item.productId}}</option>
+                                    <option *ngFor="let item of suppProdList" value="{{item.id}}">{{item.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-2">
