@@ -32,7 +32,9 @@ export class FormOrdenesComponent {
 
     minDate = new Date();
 
-    prodList:{ orderId:any; productId: any; quantity:any }[]=[];
+    orderProdList:{ orderId:any; productId: any; quantity:any }[]=[];
+
+    suppProdList:any = [];
 
     selectedProduct = "";
     selectedProductQty = 1;
@@ -87,28 +89,28 @@ export class FormOrdenesComponent {
 
     changeSupplier(){
         this.selectedProduct = "";
-        this.prodList = [];
+        this.suppProdList = [];
         this.prodService.getProductsBySupplierId(this.orderFormInput.supplier.id).subscribe(
-            (res)=>this.prodList = res
+            (res)=>this.suppProdList = res
         );
     }
 
     addProductToOrder(prodId:string,prodQty:any){
         if(prodQty>0 && prodId!=""){
-                let item = this.prodList.find(item=>item.productId==prodId);
-                item? item.quantity+=prodQty:this.prodList.push({orderId:"",productId:prodId,quantity:prodQty});
+                let item = this.suppProdList.find((item: { productId: string; })=>item.productId==prodId);
+                item? item.quantity+=prodQty:this.suppProdList.push({orderId:"",productId:prodId,quantity:prodQty});
                 alert("Producto añadido correctamente.")
         }
     }
 
     deleteOrderProduct(id:any){
         if(id.length>=4){
-            this.prodList = this.prodList.filter(item=>item.productId!=id);
+            this.suppProdList = this.suppProdList.filter((item: { productId: any; })=>item.productId!=id);
         }
     }
 
     clearOrder(){
-        this.prodList = [];
-        this.prodList = [];
+        this.suppProdList = [];
+        this.orderProdList = [];
     }
 }
