@@ -26,7 +26,7 @@ export class SupplierService {
     }
 
     addSupplier(newSupplier:Supplier):Observable<any>{
-        return this.http.post(this.supplierUrl,newSupplier);
+        return this.http.post(this.supplierUrl,JSON.stringify(newSupplier));
     }
 
     editSupplier(id:any,supplierEditInput?:Supplier):Observable<any>{
