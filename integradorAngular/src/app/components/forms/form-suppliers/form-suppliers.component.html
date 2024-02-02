@@ -130,7 +130,7 @@
                         required
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierCountry.invalid && (supplierCountry.dirty || supplierCountry.touched)}"
                     >
-                        <option value="" disabled selected>Seleccione un país</option>
+                        <option value="undefined" disabled selected>Seleccione un país</option>
                         <option *ngFor="let country of countryList" value="{{country.id}}" >{{country.name}}</option>
                     </select>
                     <div *ngIf="supplierCountry.invalid && (supplierCountry.dirty || supplierCountry.touched)" class="alert alert-danger small">
