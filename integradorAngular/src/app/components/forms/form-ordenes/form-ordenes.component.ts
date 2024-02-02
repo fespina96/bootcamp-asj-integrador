@@ -100,11 +100,15 @@ export class FormOrdenesComponent {
         if(prodQty>0 && prodId!=null){
                 let product:any;
                 this.prodService.getProductById(prodId).subscribe(
-                    (res)=>{console.log(res);product=res}
+                    (res)=>{
+                        console.log(res);
+                        product=res;
+                        let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
+                        item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
+                        alert("Producto añadido correctamente.")
+                    }
                 )
-                let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
-                item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
-                alert("Producto añadido correctamente.")
+                
         }
     }
 
