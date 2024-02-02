@@ -30,7 +30,6 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
-import { ProductPipe } from './pipes/product.pipe';
 registerLocaleData(localeEs,'es');
 
 @NgModule({
@@ -52,8 +51,7 @@ registerLocaleData(localeEs,'es');
         ProductViewComponent,
         SupplierViewComponent,
         OrderViewComponent,
-        FormCategoryComponent,
-        ProductPipe
+        FormCategoryComponent
     ],
     imports: [
         BrowserModule,

@@ -32,7 +32,7 @@ export class FormOrdenesComponent {
 
     minDate = new Date();
 
-    orderProdList:{ orderId:any; productId: any; quantity:any }[]=[];
+    orderProdList:{ orderId:any; product: {id:number,name:string}; quantity:any }[]=[];
 
     suppProdList:any = [];
 
@@ -96,17 +96,21 @@ export class FormOrdenesComponent {
         );
     }
 
-    addProductToOrder(prodId:string,prodQty:any){
-        if(prodQty>0 && prodId!=""){
-                let item = this.orderProdList.find((item: { productId: string; })=>item.productId==prodId);
-                item? item.quantity+=prodQty:this.orderProdList.push({orderId:"",productId:prodId,quantity:prodQty});
+    addProductToOrder(prodId:any,prodQty:any){
+        if(prodQty>0 && prodId!=null){
+                let product:any;
+                this.prodService.getProductById(prodId).subscribe(
+                    (res)=>product=res
+                )
+                let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
+                item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
                 alert("Producto añadido correctamente.")
         }
     }
 
     deleteOrderProduct(id:any){
         if(id.length>=4){
-            this.suppProdList = this.suppProdList.filter((item: { productId: any; })=>item.productId!=id);
+            this.orderProdList = this.orderProdList.filter((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id!=id);
         }
     }
 
