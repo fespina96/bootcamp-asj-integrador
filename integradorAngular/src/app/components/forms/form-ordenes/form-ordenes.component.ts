@@ -90,6 +90,7 @@ export class FormOrdenesComponent {
     changeSupplier(){
         this.selectedProduct = "";
         this.suppProdList = [];
+        this.orderProdList = [];
         this.prodService.getProductsBySupplierId(this.orderFormInput.supplier.id).subscribe(
             (res)=>this.suppProdList = res
         );
@@ -97,8 +98,8 @@ export class FormOrdenesComponent {
 
     addProductToOrder(prodId:string,prodQty:any){
         if(prodQty>0 && prodId!=""){
-                let item = this.suppProdList.find((item: { productId: string; })=>item.productId==prodId);
-                item? item.quantity+=prodQty:this.suppProdList.push({orderId:"",productId:prodId,quantity:prodQty});
+                let item = this.orderProdList.find((item: { productId: string; })=>item.productId==prodId);
+                item? item.quantity+=prodQty:this.orderProdList.push({orderId:"",productId:prodId,quantity:prodQty});
                 alert("Producto añadido correctamente.")
         }
     }
