@@ -41,13 +41,14 @@ export class OrderViewComponent {
 
     cancelOrder(id:any){
         if(confirm(`Esta seguro que desea borrar la orden Nº ${id}?`)){
-            this.orderService.deleteOrder(id);
-            this.router.navigateByUrl("/ordenes");
+            this.orderService.deleteOrder(id)
         }
     }
 
     orderDelivered(id:any){
-        this.orderService.orderDelivered(id);
-        this.router.navigateByUrl("/ordenes");
+        this.orderService.orderDelivered(id).subscribe(
+            (res)=>console.log(res),
+            (complete)=>this.router.navigateByUrl("/ordenes")
+        );;
     }
 }
