@@ -119,7 +119,7 @@ export class FormOrdenesComponent {
                             quantity:prodQty
                         }
                         );
-                        this.orderFormInput.total+=product.price;
+                        this.orderFormInput.total+=(product.price*prodQty);
                         alert("Producto añadido correctamente.")
                     }
                 )
@@ -129,7 +129,15 @@ export class FormOrdenesComponent {
 
     deleteOrderProduct(id:any){
         if(id!=null){
-            this.orderProdList = this.orderProdList.filter((item:OrderListItem)=>item.product.id!=id);
+            let selectedProduct:any = this.orderProdList.find((item:OrderListItem)=>item.product.id==id);
+            let product:Product;
+            this.prodService.getProductById(selectedProduct?.product.id).subscribe(
+                (res)=>{
+                        product=res;
+                        this.orderFormInput.total-=(product.price*selectedProduct.quantity);
+                        this.orderProdList = this.orderProdList.filter((item:OrderListItem)=>item.product.id!=id);
+                        alert("Producto borrado correctamente.")
+                        });
         }
     }
 
@@ -148,12 +156,10 @@ export class FormOrdenesComponent {
                         item.id.orderId = lastOrderId;
                         // Now, you can add the order product
                         this.orderService.addOrderProducts(item).subscribe(
-                            (res) => console.log(res),
-                            (error) => console.error('Error adding order products:', error)
+                            (res) => {}
                         );
                     });
-                },
-                (error) => console.error('Error getting last order ID:', error)
+                }
             );
         }
     }
