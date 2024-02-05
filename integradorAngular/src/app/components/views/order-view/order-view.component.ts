@@ -17,7 +17,7 @@ export class OrderViewComponent {
         deliveryDate:undefined,
         address:"",
         supplier:{id:undefined,name:""},
-        total:undefined,
+        total:0,
         orderState:{id:undefined,name:""},
         createdAt:undefined,
         updatedAt:undefined,
