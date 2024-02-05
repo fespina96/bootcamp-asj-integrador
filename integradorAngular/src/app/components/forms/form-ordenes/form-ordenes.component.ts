@@ -140,21 +140,21 @@ export class FormOrdenesComponent {
 
     addProductsToLastOrder(){
         if(this.orderProdList.length!=0){
-            var lastOrderId:number;
             this.orderService.getLastOrderId().subscribe(
-                (res)=>lastOrderId=res,
-                (complete)=>{
-                    this.orderProdList.forEach((item)=>{
-                        item.order.id=lastOrderId;
-                        item.id.orderId=lastOrderId;
-                    })
-                }
-            )
-            this.orderProdList.forEach(
-                (item)=>this.orderService.addOrderProducts(item).subscribe(
-                    (res)=>console.log(res)
-                )
-            )
+                (res) => {
+                    const lastOrderId = res;
+                    this.orderProdList.forEach((item) => {
+                        item.order.id = lastOrderId;
+                        item.id.orderId = lastOrderId;
+                        // Now, you can add the order product
+                        this.orderService.addOrderProducts(item).subscribe(
+                            (res) => console.log(res),
+                            (error) => console.error('Error adding order products:', error)
+                        );
+                    });
+                },
+                (error) => console.error('Error getting last order ID:', error)
+            );
         }
     }
 }
