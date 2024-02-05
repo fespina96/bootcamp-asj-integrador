@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { ProductService } from '../../../services/product-service.service';
 import { last } from 'rxjs';
 import { Product } from '../../../interfaces/product';
+import { OrderListItem } from '../../../interfaces/order-list-item';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -34,7 +35,7 @@ export class FormOrdenesComponent {
 
     minDate = "";
 
-    orderProdList:{ orderId:any; product: {id:number|undefined,name:string}; quantity:any }[]=[];
+    orderProdList:OrderListItem[]=[];
 
     suppProdList:any = [];
 
@@ -110,8 +111,14 @@ export class FormOrdenesComponent {
                 this.prodService.getProductById(prodId).subscribe(
                     (res)=>{
                         product=res;
-                        let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
-                        item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
+                        let item = this.orderProdList.find((item:OrderListItem)=>item.product.id==prodId);
+                        item? item.quantity+=prodQty:this.orderProdList.push({
+                            id:{productId:product.id,orderId:undefined},
+                            product:{id:product.id,name:product.name},
+                            order:{id:undefined},
+                            quantity:prodQty
+                        }
+                        );
                         this.orderFormInput.total+=product.price;
                         alert("Producto añadido correctamente.")
                     }
@@ -121,8 +128,8 @@ export class FormOrdenesComponent {
     }
 
     deleteOrderProduct(id:any){
-        if(id.length>=4){
-            this.orderProdList = this.orderProdList.filter((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id!=id);
+        if(id!=null){
+            this.orderProdList = this.orderProdList.filter((item:OrderListItem)=>item.product.id!=id);
         }
     }
 
@@ -137,7 +144,10 @@ export class FormOrdenesComponent {
             this.orderService.getLastOrderId().subscribe(
                 (res)=>lastOrderId=res,
                 (complete)=>{
-                    this.orderProdList.forEach((item)=>item.orderId=lastOrderId)
+                    this.orderProdList.forEach((item)=>{
+                        item.order.id=lastOrderId;
+                        item.id.orderId=lastOrderId;
+                    })
                 }
             )
             this.orderProdList.forEach(
