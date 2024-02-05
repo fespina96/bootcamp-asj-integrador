@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <a class="btn btn-success  m-2" (click)="orderDelivered(orderDetail.id)"><i class="fas fa-check"></i>Marcar Entregada</a>
-        <a class="btn btn-danger m-2" (click)="cancelOrder(orderDetail.id)"><i class="fas fa-times"></i>Cancelar Orden</a>
+        <a *ngIf="orderDetail.deliveryDate==null||orderDetail.deliveryDate==undefined" class="btn btn-success  m-2" (click)="orderDelivered(orderDetail.id)"><i class="fas fa-check"></i>Marcar Entregada</a>
+        <a *ngIf="orderDetail.deletedAt==null||orderDetail.deletedAt==undefined" class="btn btn-danger m-2" (click)="cancelOrder(orderDetail.id)"><i class="fas fa-times"></i>Cancelar Orden</a>
     </div>
 </div>
