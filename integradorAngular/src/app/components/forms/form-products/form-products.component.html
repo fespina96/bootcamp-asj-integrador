@@ -42,7 +42,7 @@
                         [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
                     >
                         <option value="undefined" selected disabled>Seleccione un proveedor</option>
-                        <option *ngFor="let item of provList" value="{{item.cod}}">{{item.raz_social}}</option>
+                        <option *ngFor="let item of provList" value="{{item.id}}">{{item.name}}</option>
                     </select>
                     <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
                         <div *ngIf="supplierSelect.errors?.['required']">proveedor requerido.</div>
