@@ -34,7 +34,7 @@ export class FormOrdenesComponent {
 
     minDate = "";
 
-    orderProdList:{ orderId:any; product: {id:number,name:string}; quantity:any }[]=[];
+    orderProdList:{ orderId:any; product: {id:number|undefined,name:string}; quantity:any }[]=[];
 
     suppProdList:any = [];
 
