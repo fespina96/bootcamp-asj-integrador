@@ -58,7 +58,7 @@ export class FormOrdenesComponent {
             this.orderFormInput.emisionDate = new Date(`${this.currentDay.getFullYear()}-${('0' + (this.currentDay.getMonth()+1)).slice(-2)}-${('0' + this.currentDay.getDate()).slice(-2)}`);
             let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
             estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-            this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+            this.orderFormInput.estimatedDeliveryDate = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`;
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
         this.provService.getSuppliers().subscribe(
