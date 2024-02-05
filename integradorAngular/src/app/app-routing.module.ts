@@ -7,7 +7,7 @@ import { FormProductsComponent } from './components/forms/form-products/form-pro
 import { ListSuppliersComponent } from './components/lists/list-suppliers/list-suppliers.component';
 import { FormSuppliersComponent } from './components/forms/form-suppliers/form-suppliers.component';
 import { ListOrdersComponent } from './components/lists/list-orders/list-orders.component';
-import { FormOrdenesComponent } from './components/forms/form-ordenes/form-ordenes.component';
+import { FormOrdersComponent } from './components/forms/form-orders/form-orders.component';
 import { ProductViewComponent } from './components/views/product-view/product-view.component';
 import { SupplierViewComponent } from './components/views/supplier-view/supplier-view.component';
 import { OrderViewComponent } from './components/views/order-view/order-view.component';
@@ -25,8 +25,8 @@ const routes: Routes = [
     { path: 'form-proveedores/:editId' , component: FormSuppliersComponent},
     { path: 'ordenes' , component: ListOrdersComponent},
     { path: 'orden/:id' , component: OrderViewComponent},
-    { path: 'form-ordenes' , component: FormOrdenesComponent},
-    { path: 'form-ordenes/:editId' , component: FormOrdenesComponent},
+    { path: 'form-ordenes' , component: FormOrdersComponent},
+    { path: 'form-ordenes/:editId' , component: FormOrdersComponent},
 
     { path: '**' , component: Error404Component},
 ];

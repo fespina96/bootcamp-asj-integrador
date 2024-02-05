@@ -39,10 +39,15 @@ export class OrderViewComponent {
         );
     }
 
-    cancelarOrden(id:any){
+    cancelOrder(id:any){
         if(confirm(`Esta seguro que desea borrar la orden Nº ${id}?`)){
             this.orderService.deleteOrder(id);
             this.router.navigateByUrl("/ordenes");
         }
+    }
+
+    orderDelivered(id:any){
+        this.orderService.orderDelivered(id);
+        this.router.navigateByUrl("/ordenes");
     }
 }

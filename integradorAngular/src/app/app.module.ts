@@ -12,7 +12,7 @@ import { ListProductsComponent } from './components/lists/list-products/list-pro
 import { FormProductsComponent } from './components/forms/form-products/form-products.component';
 import { ListOrdersComponent } from './components/lists/list-orders/list-orders.component';
 import { ListSuppliersComponent } from './components/lists/list-suppliers/list-suppliers.component';
-import { FormOrdenesComponent } from './components/forms/form-ordenes/form-ordenes.component';
+import { FormOrdersComponent } from './components/forms/form-orders/form-orders.component';
 import { FormSuppliersComponent } from './components/forms/form-suppliers/form-suppliers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
@@ -45,7 +45,7 @@ registerLocaleData(localeEs,'es');
         FormProductsComponent,
         ListOrdersComponent,
         ListSuppliersComponent,
-        FormOrdenesComponent,
+        FormOrdersComponent,
         FormSuppliersComponent,
         LoginComponent,
         ProductViewComponent,

@@ -42,6 +42,15 @@ export class OrderService {
         return this.http.delete(this.orderUrl+"/"+id);
     }
 
+    orderDelivered(id:any):Observable<any>{
+        let orderState = {
+            id:3
+        };
+        return this.http.patch(this.orderUrl+"/"+id,JSON.stringify(orderState),{
+            headers: this.headers
+        });
+    }
+
     getOrderProductsById(id:any):Observable<any>{
         return this.http.get(this.orderProductsUrl+"/"+id);
     }

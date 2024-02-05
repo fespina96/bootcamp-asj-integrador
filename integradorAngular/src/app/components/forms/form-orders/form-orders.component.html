@@ -125,7 +125,7 @@
                             <div class="d-flex align-items-center"><a class="btn btn-sm btn-primary" (click)="addProductToOrder(selectedProduct,selectedProductQty)"><i class="fa fa-plus" aria-hidden="true"></i> Añadir a la orden</a></div>
                         </div>
                         <div>
-                            Total:{{orderFormInput.total|currency}}
+                            Total:{{orderFormInput.total|currency:'$'}}
                         </div>
                     </div>
                 </div>

@@ -10,11 +10,11 @@ import { Product } from '../../../interfaces/product';
 import { OrderListItem } from '../../../interfaces/order-list-item';
 
 @Component({
-    selector: 'app-form-ordenes',
-    templateUrl: './form-ordenes.component.html',
-    styleUrl: './form-ordenes.component.css'
+    selector: 'app-form-orders',
+    templateUrl: './form-orders.component.html',
+    styleUrl: './form-orders.component.css'
 })
-export class FormOrdenesComponent {
+export class FormOrdersComponent {
     orderFormInput:Order = {
         id:undefined,
         emisionDate:undefined,
