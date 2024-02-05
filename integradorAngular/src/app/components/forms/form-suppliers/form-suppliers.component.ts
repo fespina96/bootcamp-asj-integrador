@@ -86,12 +86,14 @@ export class FormSuppliersComponent implements OnInit{
             if(routeSnapshot){
                 //EDITO PRODUCTO
                 this.suppService.editSupplier(routeSnapshot,this.suppFormInput).subscribe(
-                    (res)=>console.log(res)
+                    (res)=>console.log(res),
+                    (complete)=>this.router.navigateByUrl("/proveedores")
                 );
             }else{
                 //AÑADO PRODUCTO
                 this.suppService.addSupplier(this.suppFormInput).subscribe(
-                    (res)=>console.log(res)
+                    (res)=>console.log(res),
+                    (complete)=>this.router.navigateByUrl("/proveedores")
                 );;
             }
         }
