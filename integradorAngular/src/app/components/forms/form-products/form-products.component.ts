@@ -58,10 +58,16 @@ export class FormProductsComponent implements OnInit{
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO PRODUCTO
-                this.productService.editProduct(routeSnapshot,this.productFormInput);
+                this.productService.editProduct(routeSnapshot,this.productFormInput).subscribe(
+                    (res)=>console.log(res),
+                    (complete)=>alert("Producto editado correctamente.")
+                );
             }else{
                 //AÑADO PRODUCTO
-                this.productService.addProduct(this.productFormInput);
+                this.productService.addProduct(this.productFormInput).subscribe(
+                    (res)=>console.log(res),
+                    (complete)=>alert("Producto añadido correctamente.")
+                );
             }
         }
     }

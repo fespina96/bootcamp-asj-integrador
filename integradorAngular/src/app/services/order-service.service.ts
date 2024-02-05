@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../interfaces/order';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +14,10 @@ export class OrderService {
 
     constructor(private http:HttpClient) { }
 
+    headers = new HttpHeaders({
+        "Content-Type": "application/json"
+    });
+
     getOrders():Observable<any>{
         return this.http.get(this.orderUrl);
     }
@@ -23,11 +27,15 @@ export class OrderService {
     }
 
     addOrder(newOrder?:Order):Observable<any>{
-        return this.http.post(this.orderUrl,newOrder);
+        return this.http.post(this.orderUrl,JSON.stringify(newOrder),{
+            headers: this.headers
+        });
     }
 
     editOrder(id:any,orderEditInput?:Order):Observable<any>{
-        return this.http.put(this.orderUrl+"/"+id,orderEditInput);
+        return this.http.put(this.orderUrl+"/"+id,JSON.stringify(orderEditInput),{
+            headers: this.headers
+        });
     }
 
     deleteOrder(id:any):Observable<any>{
