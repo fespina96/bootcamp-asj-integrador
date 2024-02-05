@@ -45,7 +45,9 @@ export class FormProductsComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
-        this.provList = this.provService.getSuppliers();
+        this.provService.getSuppliers().subscribe(
+            (res)=> this.provList=res
+        );
         this.productService.getProductCategories().subscribe(
             (res)=>this.catList=res
         )
