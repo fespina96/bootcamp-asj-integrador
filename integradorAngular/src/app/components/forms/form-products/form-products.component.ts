@@ -60,13 +60,13 @@ export class FormProductsComponent implements OnInit{
                 //EDITO PRODUCTO
                 this.productService.editProduct(routeSnapshot,this.productFormInput).subscribe(
                     (res)=>console.log(res),
-                    (complete)=>alert("Producto editado correctamente.")
+                    (complete)=>this.router.navigateByUrl("/productos")
                 );
             }else{
                 //AÑADO PRODUCTO
                 this.productService.addProduct(this.productFormInput).subscribe(
                     (res)=>console.log(res),
-                    (complete)=>alert("Producto añadido correctamente.")
+                    (complete)=>this.router.navigateByUrl("/productos")
                 );
             }
         }

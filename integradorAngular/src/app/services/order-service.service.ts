@@ -42,7 +42,17 @@ export class OrderService {
         return this.http.delete(this.orderUrl+"/"+id);
     }
 
-    getOrderProductsById(id:any){
-        return this.http.get(this.orderProductsUrl+"/"+id)
+    getOrderProductsById(id:any):Observable<any>{
+        return this.http.get(this.orderProductsUrl+"/"+id);
+    }
+
+    addOrderProducts(orderProducts:any):Observable<any>{
+        return this.http.post(this.orderProductsUrl,JSON.stringify(orderProducts),{
+            headers: this.headers
+        });
+    }
+
+    getLastOrderId():Observable<any>{
+        return this.http.get(this.orderUrl+"/lastOrderId");
     }
 }

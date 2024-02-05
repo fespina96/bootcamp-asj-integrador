@@ -5,6 +5,7 @@ import { SupplierService } from '../../../services/supplier.service';
 import { Order } from '../../../interfaces/order';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../../services/product-service.service';
+import { last } from 'rxjs';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -30,7 +31,7 @@ export class FormOrdenesComponent {
 
     currentDay = new Date();
 
-    minDate = new Date();
+    minDate = "";
 
     orderProdList:{ orderId:any; product: {id:number,name:string}; quantity:any }[]=[];
 
@@ -70,10 +71,16 @@ export class FormOrdenesComponent {
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
                 //EDITO ORDEN
-                this.orderService.editOrder(routeSnapshot,this.orderFormInput);
+                this.orderService.editOrder(routeSnapshot,this.orderFormInput).subscribe(
+                    (res)=>console.log(res),
+                    (complete)=>{this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                );
             }else{
                 //AÑADO ORDEN
-                this.orderService.addOrder(this.orderFormInput);
+                this.orderService.addOrder(this.orderFormInput).subscribe(
+                    (res)=>console.log(res),
+                    (complete)=>{this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                );
             }
         }
     }
@@ -82,7 +89,7 @@ export class FormOrdenesComponent {
         if(this.orderFormInput.emisionDate!=undefined){
             let estimatedDateMin = new Date(this.orderFormInput.emisionDate);
             estimatedDateMin.setDate(estimatedDateMin.getDate() + 3);
-            this.orderFormInput.estimatedDeliveryDate = new Date(`${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`);
+            this.orderFormInput.estimatedDeliveryDate = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`;
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
     }
@@ -120,5 +127,22 @@ export class FormOrdenesComponent {
     clearOrder(){
         this.suppProdList = [];
         this.orderProdList = [];
+    }
+
+    addProductsToLastOrder(){
+        if(this.orderProdList.length!=0){
+            var lastOrderId:number;
+            this.orderService.getLastOrderId().subscribe(
+                (res)=>lastOrderId=res,
+                (complete)=>{
+                    this.orderProdList.forEach((item)=>item.orderId=lastOrderId)
+                }
+            )
+            this.orderProdList.forEach(
+                (item)=>this.orderService.addOrderProducts(item).subscribe(
+                    (res)=>console.log(res)
+                )
+            )
+        }
     }
 }

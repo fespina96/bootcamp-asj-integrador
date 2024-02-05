@@ -1,8 +1,8 @@
 export interface Order {
     id?:number,
-    emisionDate?:Date,
-    estimatedDeliveryDate?:Date,
-    deliveryDate?:Date,
+    emisionDate?:Date|string,
+    estimatedDeliveryDate?:Date|string,
+    deliveryDate?:Date|string,
     address:string,
     supplier:{id?:number,name:string},
     total?:number,
