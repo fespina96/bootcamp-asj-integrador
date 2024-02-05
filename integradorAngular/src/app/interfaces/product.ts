@@ -5,7 +5,7 @@ export interface Product{
     productCategory:{id?:number,name:string},
     name:string,
     description:string,
-    price?:number,
+    price:number,
     imageUrl:string,
     createdAt?:Date,
     updatedAt?:Date,

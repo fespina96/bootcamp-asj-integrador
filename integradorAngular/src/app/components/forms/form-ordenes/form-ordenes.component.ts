@@ -6,6 +6,7 @@ import { Order } from '../../../interfaces/order';
 import { NgForm } from '@angular/forms';
 import { ProductService } from '../../../services/product-service.service';
 import { last } from 'rxjs';
+import { Product } from '../../../interfaces/product';
 
 @Component({
     selector: 'app-form-ordenes',
@@ -20,8 +21,8 @@ export class FormOrdenesComponent {
         deliveryDate:undefined,
         address:"",
         supplier:{id:undefined,name:""},
-        total:undefined,
-        orderState:{id:undefined,name:""},
+        total:0,
+        orderState:{id:1,name:""},
         createdAt:undefined,
         updatedAt:undefined,
         deletedAt:undefined
@@ -105,12 +106,13 @@ export class FormOrdenesComponent {
 
     addProductToOrder(prodId:any,prodQty:any){
         if(prodQty>0 && prodId!=null){
-                let product:any;
+                let product:Product;
                 this.prodService.getProductById(prodId).subscribe(
                     (res)=>{
                         product=res;
                         let item = this.orderProdList.find((item: { orderId:any; product: {id:any,name:string}; quantity:any })=>item.product.id==prodId);
                         item? item.quantity+=prodQty:this.orderProdList.push({orderId:"", product: {id:product.id,name:product.name}, quantity:prodQty});
+                        this.orderFormInput.total+=product.price;
                         alert("Producto añadido correctamente.")
                     }
                 )

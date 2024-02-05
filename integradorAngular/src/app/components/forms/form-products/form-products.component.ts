@@ -18,7 +18,7 @@ export class FormProductsComponent implements OnInit{
         productCategory:{id:undefined,name:""},
         name:"",
         description:"",
-        price:undefined,
+        price:0,
         imageUrl:"",
         createdAt:undefined,
         updatedAt:undefined,

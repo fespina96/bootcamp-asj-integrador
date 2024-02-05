@@ -5,7 +5,7 @@ export interface Order {
     deliveryDate?:Date|string,
     address:string,
     supplier:{id?:number,name:string},
-    total?:number,
+    total:number,
     orderState:{id?:number,name:string},
     createdAt?:Date,
     updatedAt?:Date,
