@@ -5,8 +5,8 @@
 </ol>
 <div>
     <a class="btn btn-primary fw-bold btn-alta shadow mb-2 me-2" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
-    <a *ngIf="!mode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
-    <a *ngIf="mode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
+    <a *ngIf="!mode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
+    <a *ngIf="mode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
 </div>
 <div class="card mb-4 shadow">
     <div class="card-header" id="list-title">
