@@ -13,6 +13,8 @@ export class ListSuppliersComponent implements OnInit{
 
     suppList:Array<Supplier> = []
 
+    mode=true;
+
     ngOnInit(): void {
         this.loadList();
     }
@@ -21,6 +23,14 @@ export class ListSuppliersComponent implements OnInit{
         this.suppService.getSuppliers().subscribe(
             (res)=>this.suppList=res
         );
+        this.mode=true;
+    }
+
+    loadDeletedList(){
+        this.suppService.getDeletedSuppliers().subscribe(
+            (res)=>this.suppList=res
+        );
+        this.mode=false;
     }
 
     deleteListItem(id:any){
@@ -28,6 +38,15 @@ export class ListSuppliersComponent implements OnInit{
             this.suppService.deleteSupplier(id).subscribe(
                 (res)=>console.log(res),
                 (complete)=>this.loadList()
+            );
+        }
+    }
+
+    undoDeleteListItem(id:any){
+        if(confirm(`Esta seguro que desea restablecer el proveedor?`)){
+            this.suppService.undoDeleteSupplier(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadDeletedList()
             );
         }
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product-service.service';
 import { Product } from '../../../interfaces/product';
+import { FilterOptions } from '../../../interfaces/filter-options';
 
 @Component({
     selector: 'app-list-products',
@@ -13,9 +14,17 @@ export class ListProductsComponent implements OnInit{
 
     productList:Array<Product> = []
 
-    mode=true;
+    activeMode=true;
 
-    defaultImage = "/assets/img/default.jpg"
+    filteringMode=false;
+
+    defaultImage = "/assets/img/default.jpg";
+
+    activeFilters:FilterOptions = {
+        name:"",
+        desc:"",
+        category:""
+    }
 
     ngOnInit(): void {
         this.loadList();
@@ -25,14 +34,14 @@ export class ListProductsComponent implements OnInit{
         this.productService.getProducts().subscribe(
             (res)=>this.productList=res
         );
-        this.mode=true;
+        this.activeMode=true;
     }
 
     loadDeletedList(){
         this.productService.getDeletedProducts().subscribe(
             (res)=>this.productList=res
         );
-        this.mode=false;
+        this.activeMode=false;
     }
 
     deleteListItem(id:any){
@@ -51,5 +60,15 @@ export class ListProductsComponent implements OnInit{
                 (complete)=>this.loadDeletedList()
             );
         }
+    }
+
+    toggleFilter(){
+        this.filteringMode=!this.filteringMode;
+    }
+
+    filterList(){
+        this.productService.getFilteredProducts(this.activeFilters).subscribe(
+            (res)=>this.productList=res
+        )
     }
 }

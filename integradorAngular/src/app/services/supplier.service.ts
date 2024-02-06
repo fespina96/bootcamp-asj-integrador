@@ -24,6 +24,10 @@ export class SupplierService {
         return this.http.get(this.supplierUrl);
     }
 
+    getDeletedSuppliers():Observable<any>{
+        return this.http.get(this.supplierUrl+"/deleted");
+    }
+
     getSupplierById(id:any):Observable<any>{
         return this.http.get(this.supplierUrl+"/"+id);
     }

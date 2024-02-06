@@ -3,6 +3,7 @@ import { Product } from '../interfaces/product';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { FilterOptions } from '../interfaces/filter-options';
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +22,12 @@ export class ProductService {
 
     getProducts():Observable<any>{
         return this.http.get(this.productUrl);
+    }
+
+    getFilteredProducts(filterOptions:FilterOptions):Observable<any>{
+        return this.http.post(this.productUrl+"/filtered",JSON.stringify(filterOptions),{
+            headers: this.headers
+        });
     }
 
     getDeletedProducts():Observable<any>{

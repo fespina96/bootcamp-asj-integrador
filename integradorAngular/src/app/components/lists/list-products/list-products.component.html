@@ -5,8 +5,29 @@
 </ol>
 <div>
     <a class="btn btn-primary fw-bold btn-alta shadow mb-2 me-2" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
-    <a *ngIf="!mode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
-    <a *ngIf="mode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
+    <a *ngIf="!activeMode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
+    <a *ngIf="activeMode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
+    <a class="btn btn-outline-secondary fw-bold btn-alta shadow mb-2 me-2" (click)="toggleFilter()"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
+</div>
+<div *ngIf="filteringMode">
+    <form>
+        <div class="row">
+            <div class="col-4">
+                <label for="nameFilter">Nombre de Producto</label>
+                <input class="form-control " type="text" id="nameFilter" [(ngModel)]="activeFilters.name">
+            </div>
+            <div class="col-4">
+                <label for="descFilter">Descripción</label>
+                <input class="form-control " type="text" id="descFilter" [(ngModel)]="activeFilters.desc">
+            </div>
+            <div class="col-4">
+                <label for="categoryFilter">Categoría</label>
+                <input class="form-control " type="text" id="categoryFilter" [(ngModel)]="activeFilters.category">
+            </div>
+
+        </div>
+        <button class="btn btn-outline-primary my-2">Filtrar</button>
+    </form>
 </div>
 <div class="card mb-4 shadow">
     <div class="card-header" id="list-title">
