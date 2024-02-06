@@ -78,7 +78,12 @@ export class ListProductsComponent implements OnInit{
         }
     }
 
-    sortList(){
-        this.productList = this.productList.sort((a:Product,b:Product)=>a.price - b.price);
+    sortList(input:any){
+        if(input=='asc'){
+            this.productList = this.productList.sort((a:Product,b:Product)=>a.price - b.price);
+        }else if(input=='desc'){
+            this.productList = this.productList.sort((a:Product,b:Product)=>b.price - a.price);
+        }
+        
     }
 }
