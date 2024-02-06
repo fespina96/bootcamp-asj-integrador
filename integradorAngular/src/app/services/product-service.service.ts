@@ -30,6 +30,12 @@ export class ProductService {
         });
     }
 
+    getFilteredDeletedProducts(filterOptions:FilterOptions):Observable<any>{
+        return this.http.post(this.productUrl+"/filtered/deleted",JSON.stringify(filterOptions),{
+            headers: this.headers
+        });
+    }
+
     getDeletedProducts():Observable<any>{
         return this.http.get(this.productUrl+'/deleted');
     }

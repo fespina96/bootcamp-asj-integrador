@@ -67,8 +67,18 @@ export class ListProductsComponent implements OnInit{
     }
 
     filterList(){
-        this.productService.getFilteredProducts(this.activeFilters).subscribe(
-            (res)=>this.productList=res
-        )
+        if(this.activeMode){
+            this.productService.getFilteredProducts(this.activeFilters).subscribe(
+                (res)=>this.productList=res
+            )
+        }else{
+            this.productService.getFilteredDeletedProducts(this.activeFilters).subscribe(
+                (res)=>this.productList=res
+            )
+        }
+    }
+
+    sortList(){
+        this.productList = this.productList.sort((a:Product,b:Product)=>a.price - b.price);
     }
 }
