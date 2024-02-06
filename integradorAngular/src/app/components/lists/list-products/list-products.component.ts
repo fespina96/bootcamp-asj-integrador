@@ -30,8 +30,10 @@ export class ListProductsComponent implements OnInit{
 
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el producto?`)){
-            this.productService.deleteProduct(id);
-            this.loadList();
+            this.productService.deleteProduct(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadList()
+            );
         }
     }
 }

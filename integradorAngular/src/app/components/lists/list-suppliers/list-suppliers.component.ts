@@ -25,8 +25,10 @@ export class ListSuppliersComponent implements OnInit{
 
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el proveedor?`)){
-            this.suppService.deleteSupplier(id);
-            this.loadList();
+            this.suppService.deleteSupplier(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadList()
+            );
         }
     }
 }

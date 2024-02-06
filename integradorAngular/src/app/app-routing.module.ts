@@ -17,16 +17,17 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'productos' , component: ListProductsComponent},
     { path: 'producto/:id' , component: ProductViewComponent},
-    { path: 'form-productos' , component: FormProductsComponent},
-    { path: 'form-productos/:editId' , component: FormProductsComponent},
+    { path: 'form-productos' , component: FormProductsComponent, children: [
+        { path: 'form-productos/:editId' , component: FormProductsComponent}
+    ]},
     { path: 'proveedores' , component: ListSuppliersComponent},
     { path: 'proveedor/:id' , component: SupplierViewComponent},
-    { path: 'form-proveedores' , component: FormSuppliersComponent},
-    { path: 'form-proveedores/:editId' , component: FormSuppliersComponent},
+    { path: 'form-proveedores' , component: FormSuppliersComponent, children: [
+        { path: ':editId' , component: FormSuppliersComponent}
+    ]},
     { path: 'ordenes' , component: ListOrdersComponent},
     { path: 'orden/:id' , component: OrderViewComponent},
     { path: 'form-ordenes' , component: FormOrdersComponent},
-    { path: 'form-ordenes/:editId' , component: FormOrdersComponent},
 
     { path: '**' , component: Error404Component},
 ];

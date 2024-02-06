@@ -1,4 +1,39 @@
 <div class="d-flex justify-content-center align-items-center flex-column p-4">
     <h2 class="text-center fw-bold">¡BIENVENIDO!</h2>
-    <h3 class="text-center ">Seleccione un listado</h3>
+    <h3 class="text-center ">Seleccione una opción</h3>
+</div>
+<div class="row m-4 justify-content-center align-items-center">
+    <div class="col-xl-4 col-md-8">
+        <div class="card bg-success bg-gradient text-white mb-4">
+            <div class="card-body">
+                <div class="h4">Productos: <span class="float-end h2">{{prodTotal}}</span></div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" routerLink="/productos">Ver Detalle</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-8">
+        <div class="card bg-primary bg-gradient text-white mb-4">
+            <div class="card-body">
+                <div class="h4">Proveedores: <span class="float-end h2">{{suppTotal}}</span></div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" routerLink="/proveedores">Ver Detalle</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-md-8">
+        <div class="card bg-secondary bg-gradient  text-white mb-4">
+            <div class="card-body">
+                <div class="h4">Ordenes: <span class="float-end h2">{{orderTotal}}</span></div>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <a class="small text-white stretched-link" routerLink="/ordenes">Ver Detalle</a>
+                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            </div>
+        </div>
+    </div>
 </div>

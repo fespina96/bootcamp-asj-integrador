@@ -23,8 +23,10 @@ export class ListOrdersComponent implements OnInit{
 
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea borrar la orden número ${id}?`)){
-            this.orderService.deleteOrder(id);
-            this.loadList();
+            this.orderService.deleteOrder(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadList()
+            );
         }
     }
 }
