@@ -14,15 +14,15 @@
         <div class="row">
             <div class="col-4">
                 <label for="nameFilter">Nombre de Producto</label>
-                <input class="form-control " type="text" id="nameFilter" [(ngModel)]="activeFilters.name">
+                <input class="form-control " type="text" id="nameFilter" name="nameFilter" [(ngModel)]="activeFilters.name">
             </div>
             <div class="col-4">
                 <label for="descFilter">Descripción</label>
-                <input class="form-control " type="text" id="descFilter" [(ngModel)]="activeFilters.desc">
+                <input class="form-control " type="text" id="descFilter" name="descFilter" [(ngModel)]="activeFilters.desc">
             </div>
             <div class="col-4">
                 <label for="categoryFilter">Categoría</label>
-                <input class="form-control " type="text" id="categoryFilter" [(ngModel)]="activeFilters.category">
+                <input class="form-control " type="text" id="categoryFilter" name="categoryFilter" [(ngModel)]="activeFilters.category">
             </div>
 
         </div>
