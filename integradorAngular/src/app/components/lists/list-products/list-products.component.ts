@@ -13,7 +13,9 @@ export class ListProductsComponent implements OnInit{
 
     productList:Array<Product> = []
 
-    defaultImage = "./src/assets/img/default.jpg"
+    mode=true;
+
+    defaultImage = "/assets/img/default.jpg"
 
     ngOnInit(): void {
         this.loadList();
@@ -23,11 +25,14 @@ export class ListProductsComponent implements OnInit{
         this.productService.getProducts().subscribe(
             (res)=>this.productList=res
         );
-        this.productList.sort(function(a, b) {
-            var textA = a.name.toUpperCase();
-            var textB = b.name.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        })
+        this.mode=true;
+    }
+
+    loadDeletedList(){
+        this.productService.getDeletedProducts().subscribe(
+            (res)=>this.productList=res
+        );
+        this.mode=false;
     }
 
     deleteListItem(id:any){
@@ -43,7 +48,7 @@ export class ListProductsComponent implements OnInit{
         if(confirm(`Esta seguro que desea restablecer el producto?`)){
             this.productService.undoDeleteProduct(id).subscribe(
                 (res)=>console.log(res),
-                (complete)=>this.loadList()
+                (complete)=>this.loadDeletedList()
             );
         }
     }

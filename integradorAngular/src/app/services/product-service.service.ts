@@ -23,6 +23,10 @@ export class ProductService {
         return this.http.get(this.productUrl);
     }
 
+    getDeletedProducts():Observable<any>{
+        return this.http.get(this.productUrl+'/deleted');
+    }
+
     getProductById(id:any):Observable<any>{
         return this.http.get(this.productUrl+"/"+id);
     }
@@ -59,4 +63,6 @@ export class ProductService {
     getProductCategoryById(id:any):Observable<any>{
         return this.http.get(this.productCategoryUrl+"/"+id);
     }
+
+
 }
