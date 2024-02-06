@@ -7,7 +7,7 @@
     <a class="btn btn-primary fw-bold btn-alta shadow mb-2 me-2" routerLink="/form-productos"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
     <a *ngIf="!activeMode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
     <a *ngIf="activeMode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
-    <a class="btn btn-outline-secondary fw-bold btn-alta shadow mb-2 me-2" (click)="toggleFilter()"><i class="fa fa-filter" aria-hidden="true"></i> Filtrar</a>
+    <a class="btn btn-outline-secondary fw-bold btn-alta shadow mb-2 me-2" (click)="toggleFilter()"><i class="fa fa-filter" aria-hidden="true"></i> Filtrado</a>
 </div>
 <div *ngIf="filteringMode">
     <form>
@@ -26,7 +26,7 @@
             </div>
 
         </div>
-        <button class="btn btn-outline-primary my-2">Filtrar</button>
+        <button class="btn btn-outline-primary my-2" (click)="filterList()">Filtrar</button>
     </form>
 </div>
 <div class="card mb-4 shadow">
