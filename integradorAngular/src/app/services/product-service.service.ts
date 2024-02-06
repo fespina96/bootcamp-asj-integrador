@@ -43,6 +43,11 @@ export class ProductService {
         return this.http.delete(this.productUrl+"/"+id);
     }
 
+    undoDeleteProduct(id:any):Observable<any>{
+        return this.http.delete(this.productUrl+"/undo/"+id);
+    }
+
+
     getProductsBySupplierId(id:any):Observable<any>{
         return this.http.get(this.productUrl+"/supplier/"+id);
     }

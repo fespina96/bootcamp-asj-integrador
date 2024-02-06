@@ -44,6 +44,10 @@ export class SupplierService {
         return this.http.delete(this.supplierUrl+"/"+id);
     }
 
+    undoDeleteSupplier(id:any):Observable<any>{
+        return this.http.delete(this.supplierUrl+"/undo/"+id);
+    }
+
     getConditions():Observable<any>{
         return this.http.get(this.conditionUrl);
     }

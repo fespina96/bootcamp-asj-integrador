@@ -42,6 +42,10 @@ export class OrderService {
         return this.http.delete(this.orderUrl+"/"+id);
     }
 
+    undoDeleteOrder(id:any):Observable<any>{
+        return this.http.delete(this.orderUrl+"/undo/"+id);
+    }
+
     orderDelivered(id:any):Observable<any>{
         let orderState = {
             id:3

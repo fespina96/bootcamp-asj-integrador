@@ -29,4 +29,13 @@ export class ListOrdersComponent implements OnInit{
             );
         }
     }
+
+    undoDeleteListItem(id:any){
+        if(confirm(`Esta seguro que desea deshacer el eliminado de la orden número ${id}?`)){
+            this.orderService.undoDeleteOrder(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadList()
+            );
+        }
+    }
 }

@@ -13,6 +13,8 @@ export class ListProductsComponent implements OnInit{
 
     productList:Array<Product> = []
 
+    defaultImage = "./src/assets/img/default.jpg"
+
     ngOnInit(): void {
         this.loadList();
     }
@@ -31,6 +33,15 @@ export class ListProductsComponent implements OnInit{
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el producto?`)){
             this.productService.deleteProduct(id).subscribe(
+                (res)=>console.log(res),
+                (complete)=>this.loadList()
+            );
+        }
+    }
+
+    undoDeleteListItem(id:any){
+        if(confirm(`Esta seguro que desea restablecer el producto?`)){
+            this.productService.undoDeleteProduct(id).subscribe(
                 (res)=>console.log(res),
                 (complete)=>this.loadList()
             );
