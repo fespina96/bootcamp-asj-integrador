@@ -12,6 +12,8 @@ export class OrderService {
 
     private orderProductsUrl  ="http://localhost:8080/products-per-order"
 
+    private orderStatesUrl  ="http://localhost:8080/order-state"
+
     constructor(private http:HttpClient) { }
 
     headers = new HttpHeaders({
@@ -20,6 +22,10 @@ export class OrderService {
 
     getOrders():Observable<any>{
         return this.http.get(this.orderUrl);
+    }
+
+    getOrderStates():Observable<any>{
+        return this.http.get(this.orderStatesUrl);
     }
 
     getOrderById(id:any):Observable<any>{

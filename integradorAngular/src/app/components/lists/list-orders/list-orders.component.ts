@@ -9,10 +9,15 @@ import { Order } from '../../../interfaces/order';
 export class ListOrdersComponent implements OnInit{
     constructor(private orderService:OrderService){}
 
-    orderList:Array<Order> = []
+    orderList:Array<Order> = [];
+
+    orderStateList:Array<{id:"",name:""}> = [];
 
     ngOnInit(): void {
         this.loadList();
+        this.orderService.getOrderStates().subscribe(
+            (res)=>this.orderStateList=res
+        )
     }
 
     loadList(){
@@ -31,7 +36,7 @@ export class ListOrdersComponent implements OnInit{
     }
 
     undoDeleteListItem(id:any){
-        if(confirm(`Esta seguro que desea deshacer el eliminado de la orden número ${id}?`)){
+        if(confirm(`Esta seguro que desea restablecer la orden número ${id}?`)){
             this.orderService.undoDeleteOrder(id).subscribe(
                 (res)=>console.log(res),
                 (complete)=>this.loadList()
