@@ -43,4 +43,10 @@ export class ListOrdersComponent implements OnInit{
             );
         }
     }
+
+    orderStateChange(id:any){
+        this.orderService.getOrdersByOrderStateId(id).subscribe(
+            (res)=>this.orderList=res
+        );
+    }
 }

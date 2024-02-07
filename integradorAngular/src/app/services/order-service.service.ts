@@ -24,6 +24,10 @@ export class OrderService {
         return this.http.get(this.orderUrl);
     }
 
+    getOrdersByOrderStateId(id:any):Observable<any>{
+        return this.http.get(this.orderUrl+"/order-state/"+id);
+    }
+
     getOrderStates():Observable<any>{
         return this.http.get(this.orderStatesUrl);
     }
