@@ -11,6 +11,8 @@ export class ListOrdersComponent implements OnInit{
 
     orderList:Array<Order> = [];
 
+    selectedState="";
+
     orderStateList:Array<{id:"",name:""}> = [];
 
     ngOnInit(): void {
@@ -44,9 +46,12 @@ export class ListOrdersComponent implements OnInit{
         }
     }
 
-    orderStateChange(id:any){
-        this.orderService.getOrdersByOrderStateId(id).subscribe(
-            (res)=>this.orderList=res
-        );
+    orderStateChange(){
+        if(this.selectedState!=""){
+            this.orderService.getOrdersByOrderStateId(this.selectedState).subscribe(
+                (res)=>this.orderList=res
+            );
+        }
+
     }
 }
