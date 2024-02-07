@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 <div class="form-row d-flex justify-content-evenly ">
-                    <div class="form-group col-5">
+                    <div class="form-group col-4">
                         <label for="input-district" [ngClass]="{'text-danger':supplierDistrict.invalid && (supplierDistrict.dirty || supplierDistrict.touched)}">Localidad</label>
                         <input 
                             type="text" 
@@ -188,7 +188,7 @@
                             <div *ngIf="supplierDistrict.errors?.['required']">Localidad requerida.</div>
                         </div>
                     </div>
-                    <div class="form-group col-5">
+                    <div class="form-group col-4">
                         <label for="input-address" [ngClass]="{'text-danger':supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)}">Calle y Altura</label>
                         <input 
                             type="text" 
@@ -204,7 +204,7 @@
                             <div *ngIf="supplierAddress.errors?.['required']">Dirección requerida.</div>
                         </div>
                     </div>
-                    <div class="form-group col-1">
+                    <div class="form-group col-2">
                         <label for="input-zip-code" [ngClass]="{'text-danger':zipCode.invalid && (zipCode.dirty || zipCode.touched)}">Codigo Postal</label>
                         <input 
                             type="text" 
@@ -387,5 +387,4 @@
             <button type="reset" routerLink="/proveedores" class="btn btn-danger shadow fw-bold"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
         </form>
     </div>
-    
 </div>

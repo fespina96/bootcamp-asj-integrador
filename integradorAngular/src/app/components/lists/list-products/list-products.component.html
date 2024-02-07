@@ -9,7 +9,7 @@
     <a *ngIf="activeMode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
     <a class="btn btn-outline-secondary fw-bold btn-alta shadow mb-2 me-2" (click)="toggleFilter()"><i class="fa fa-filter" aria-hidden="true"></i> Filtrado</a>
 </div>
-<div *ngIf="filteringMode">
+<div #collapse="ngbCollapse" [(ngbCollapse)]="filteringMode">
     <form>
         <div class="row">
             <div class="col-4">
