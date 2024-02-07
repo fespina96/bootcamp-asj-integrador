@@ -31,6 +31,8 @@ export class FormOrdersComponent {
 
     suppList:any = [];
 
+    supplierLogo = "";
+
     currentDay = new Date();
 
     minDate = "";
@@ -42,7 +44,7 @@ export class FormOrdersComponent {
     selectedProduct = "";
     selectedProductQty = 1;
 
-    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private provService:SupplierService, private prodService:ProductService){}
+    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private suppService:SupplierService, private prodService:ProductService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -63,7 +65,7 @@ export class FormOrdersComponent {
             this.orderFormInput.estimatedDeliveryDate = `${estimatedDateMin.getFullYear()}-${('0' + (estimatedDateMin.getMonth()+1)).slice(-2)}-${('0' + estimatedDateMin.getDate()).slice(-2)}`;
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
-        this.provService.getSuppliers().subscribe(
+        this.suppService.getSuppliers().subscribe(
             (res)=>this.suppList=res
         );
     }
@@ -103,6 +105,9 @@ export class FormOrdersComponent {
         this.prodService.getProductsBySupplierId(this.orderFormInput.supplier.id).subscribe(
             (res)=>this.suppProdList = res
         );
+        this.suppService.getSupplierById(this.orderFormInput.supplier.id).subscribe(
+            (res)=>this.supplierLogo=res.logoImageUrl
+        )
     }
 
     addProductToOrder(prodId:any,prodQty:any){
