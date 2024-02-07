@@ -51,7 +51,8 @@ export class ListOrdersComponent implements OnInit{
             this.orderService.getOrdersByOrderStateId(this.selectedState).subscribe(
                 (res)=>this.orderList=res
             );
+        }else{
+            this.loadList();
         }
-
     }
 }
