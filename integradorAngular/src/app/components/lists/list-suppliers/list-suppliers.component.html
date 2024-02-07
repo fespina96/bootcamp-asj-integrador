@@ -6,8 +6,24 @@
 </ol>
 <div class="">
     <a class="btn btn-primary fw-bold btn-alta shadow mb-2 me-2" routerLink="/form-proveedores"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
-    <a *ngIf="!mode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
-    <a *ngIf="mode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
+    <a *ngIf="!activeMode" class="btn btn-success  fw-bold btn-alta shadow mb-2 me-2" (click)="loadList()"><i class="fa fa-eye" aria-hidden="true"></i> Ver Activos</a>
+    <a *ngIf="activeMode" class="btn btn-secondary  fw-bold btn-alta shadow mb-2 me-2" (click)="loadDeletedList()"><i class="fa fa-eye-slash" aria-hidden="true"></i> Ver Inactivos</a>
+    <a class="btn btn-outline-secondary fw-bold btn-alta shadow mb-2 me-2" (click)="toggleFilter()"><i class="fa fa-filter" aria-hidden="true"></i> Filtrado</a>
+</div>
+<div *ngIf="filteringMode">
+    <form>
+        <div class="row">
+            <div class="col-4">
+                <label for="nameFilter">Código</label>
+                <input class="form-control " type="text" id="nameFilter" name="nameFilter" [(ngModel)]="activeFilters.code">
+            </div>
+            <div class="col-4">
+                <label for="descFilter">Nombre</label>
+                <input class="form-control " type="text" id="descFilter" name="descFilter" [(ngModel)]="activeFilters.name">
+            </div>
+        </div>
+        <a class="btn btn-outline-primary my-2" (click)="filterList()">Filtrar</a>
+    </form>
 </div>
 <div class="card mb-4 shadow">
     <div class="card-header" id="list-title">
@@ -19,9 +35,9 @@
             <thead>
                 <tr>
                     <th>Logo</th>
-                    <th>Código</th>
-                    <th>Razón Social</th>
-                    <th>Región</th>
+                    <th>Código <a (click)="sortListByCode('desc')"> <i class="fa fa-angle-down"></i></a> <a (click)="sortListByCode('asc')"> <i class="fa fa-angle-up"></i></a></th>
+                    <th>Razón Social <a (click)="sortListByName('desc')"> <i class="fa fa-angle-down"></i></a> <a (click)="sortListByName('asc')"> <i class="fa fa-angle-up"></i></a></th>
+                    <th>Región <a (click)="sortListByRegion('desc')"> <i class="fa fa-angle-down"></i></a> <a (click)="sortListByRegion('asc')"> <i class="fa fa-angle-up"></i></a></th>
                     <th>Contacto</th>
                     <th>Contacto Interno</th>
                     <th>Acciones</th>

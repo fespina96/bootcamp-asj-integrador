@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product-service.service';
 import { Product } from '../../../interfaces/product';
-import { FilterOptions } from '../../../interfaces/filter-options';
+import { ProductFilterOptions } from '../../../interfaces/product-filter-options';
 
 @Component({
     selector: 'app-list-products',
@@ -20,7 +20,7 @@ export class ListProductsComponent implements OnInit{
 
     defaultImage = "/assets/img/default.jpg";
 
-    activeFilters:FilterOptions = {
+    activeFilters:ProductFilterOptions = {
         name:"",
         desc:"",
         category:""

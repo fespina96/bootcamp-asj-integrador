@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Supplier } from '../interfaces/supplier';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SupplierFilterOptions } from '../interfaces/supplier-filter-options';
 
 @Injectable({
     providedIn: 'root'
@@ -66,5 +67,17 @@ export class SupplierService {
 
     getSupplierCategoryById(id:any):Observable<any>{
         return this.http.get(this.supplierCategoryUrl+"/"+id);
+    }
+
+    getFilteredSuppliers(filterOptions:SupplierFilterOptions):Observable<any>{
+        return this.http.post(this.supplierUrl+"/filtered",JSON.stringify(filterOptions),{
+            headers: this.headers
+        });
+    }
+
+    getFilteredDeletedSuppliers(filterOptions:SupplierFilterOptions):Observable<any>{
+        return this.http.post(this.supplierUrl+"/filtered/deleted",JSON.stringify(filterOptions),{
+            headers: this.headers
+        });
     }
 }
