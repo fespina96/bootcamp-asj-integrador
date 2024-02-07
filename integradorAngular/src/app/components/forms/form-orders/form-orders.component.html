@@ -74,30 +74,32 @@
                         <div>Productos de la orden</div>
                     </div>
                     <div class="card-body">
-                    <div class="form-group col-3">
-                        <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
-                        <select 
-                            class="form-select" 
-                            name="input-supplier" 
-                            id="input-supplier" 
-                            [(ngModel)]="orderFormInput.supplier.id"
-                            (change)="changeSupplier()"
-                            #supplierSelect="ngModel" 
-                            required
-                            [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
-                            >
-                            <option value="undefined" selected disabled>Seleccione un proveedor</option>
-                            <option *ngFor="let item of suppList" value="{{item.id}}">{{item.name}}</option>
-                        </select>
-                        
-                        <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
-                            <div *ngIf="supplierSelect.errors?.['required']">Proveedor requerido.</div>
+                        <div class="form-row">
+                            <div class="form-group col-3">
+                                <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
+                                <select 
+                                    class="form-select" 
+                                    name="input-supplier" 
+                                    id="input-supplier" 
+                                    [(ngModel)]="orderFormInput.supplier.id"
+                                    (change)="changeSupplier()"
+                                    #supplierSelect="ngModel" 
+                                    required
+                                    [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}"
+                                    >
+                                    <option value="undefined" selected disabled>Seleccione un proveedor</option>
+                                    <option *ngFor="let item of suppList" value="{{item.id}}">{{item.name}}</option>
+                                </select>
+                                
+                                <div *ngIf="supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)" class="alert alert-danger small ">
+                                    <div *ngIf="supplierSelect.errors?.['required']">Proveedor requerido.</div>
+                                </div>
+                                
+                            </div>
+                            <div class="m-1">
+                                <img style="height: 3rem;" src="{{supplierLogo}}" alt="">
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="m-1">
-                        <img style="height: 3rem;" src="{{supplierLogo}}" alt="">
-                    </div>
                         <table class="table table-hover text-center">
                             <thead>
                                 <tr>
