@@ -5,10 +5,12 @@
 </ol>
 <div>
     <a class="btn btn-primary fw-bold btn-alta shadow mb-2" routerLink="/form-ordenes"><i class="fa fa-plus" aria-hidden="true"></i> Alta</a>
-    <select class="form-select w-25 ">
-        <option value="" selected disabled>Estado</option>
-        <option *ngFor="let item of orderStateList" value="{{item.id}}" (change)="orderStateChange(item.id)">{{item.name}}</option>
-    </select>
+    <span>
+        <select class="form-select w-25 ">
+            <option value="" selected disabled>Estado</option>
+            <option *ngFor="let item of orderStateList" value="{{item.id}}" (change)="orderStateChange(item.id)">{{item.name}}</option>
+        </select>
+    </span>
 </div>
 <div class="card mb-4 shadow ">
     <div class="card-header" id="list-title">
