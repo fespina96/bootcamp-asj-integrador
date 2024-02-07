@@ -173,6 +173,22 @@
                 </div>
                 <div class="form-row d-flex justify-content-evenly ">
                     <div class="form-group col-4">
+                        <label for="input-district" [ngClass]="{'text-danger':supplierDistrict.invalid && (supplierDistrict.dirty || supplierDistrict.touched)}">Calle y Altura</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="input-district" 
+                            id="input-district" 
+                            [(ngModel)]="suppFormInput.district"
+                            #supplierDistrict="ngModel" 
+                            required
+                            [ngClass]="{'border-danger-subtle bg-danger-subtle':supplierDistrict.invalid && (supplierDistrict.dirty || supplierDistrict.touched)}"
+                        >
+                        <div *ngIf="supplierDistrict.invalid && (supplierDistrict.dirty || supplierDistrict.touched)" class="alert alert-danger small">
+                            <div *ngIf="supplierDistrict.errors?.['required']">Localidad requerida.</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-4">
                         <label for="input-address" [ngClass]="{'text-danger':supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)}">Calle y Altura</label>
                         <input 
                             type="text" 

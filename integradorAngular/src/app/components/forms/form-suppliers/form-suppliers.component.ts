@@ -25,6 +25,7 @@ export class FormSuppliersComponent implements OnInit{
         website:"",
         address:"",
         zipCode:"",
+        district:"",
         cuit:"",
         condition:{id:undefined,name:""},
         country:{id:undefined,name:""},

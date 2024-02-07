@@ -9,6 +9,7 @@ export interface Supplier {
     website:string,
     address:string,
     zipCode:string,
+    district:string,
     cuit:string,
     condition:{id?:number,name:string},
     country:{id?:number,name:string},

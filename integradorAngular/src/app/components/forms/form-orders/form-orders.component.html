@@ -74,8 +74,8 @@
                         <div>Productos de la orden</div>
                     </div>
                     <div class="card-body">
-                        <div class="form-row d-flex justify-content-evenly">
-                            <div class="form-group col-3">
+                        <div class="form-row">
+                            <div class="form-group col-3 ms-2">
                                 <label for="input-supplier" [ngClass]="{'text-danger':supplierSelect.invalid && (supplierSelect.dirty || supplierSelect.touched)}">Proveedor</label>
                                 <select 
                                     class="form-select" 
@@ -96,7 +96,7 @@
                                 </div>
                                 
                             </div>
-                            <div class="m-1">
+                            <div class="m-1 d-flex justify-content-evenly align-items-center ">
                                 <img style="height: 3rem;" src="{{supplierLogo}}" alt="">
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                             <div class="d-flex align-items-center"><a class="btn btn-sm btn-primary" (click)="addProductToOrder(selectedProduct,selectedProductQty)"><i class="fa fa-plus" aria-hidden="true"></i> Añadir a la orden</a></div>
                         </div>
                         <div>
-                            Total:{{orderFormInput.total|currency:'$'}}
+                            Total: {{orderFormInput.total|currency:'$'}}
                         </div>
                     </div>
                 </div>

@@ -21,6 +21,7 @@ export class SupplierViewComponent {
         website:"",
         address:"",
         zipCode:"",
+        district:"",
         cuit:"",
         condition:{id:undefined,name:""},
         country:{id:undefined,name:""},
