@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/product';
-import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProductFilterOptions } from '../interfaces/product-filter-options';
@@ -77,7 +76,7 @@ export class ProductService {
         return this.http.get(this.productCategoryUrl+"/"+id);
     }
 
-    addProductCategory(input:{name:string,description:string}):Observable<any>{
+    addProductCategory(input:any):Observable<any>{
         return this.http.post(this.productCategoryUrl,JSON.stringify(input),{
             headers: this.headers
         });

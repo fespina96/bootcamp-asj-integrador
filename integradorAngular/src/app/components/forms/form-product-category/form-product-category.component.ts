@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductService } from '../../../services/product-service.service';
 import { NgForm } from '@angular/forms';
+import { ProductCategory } from '../../../interfaces/product-category';
 
 @Component({
     selector: 'app-form-product-category',
@@ -16,13 +17,12 @@ export class FormCategoryComponent {
         return this._NgbActiveModal;
     }
 
-    categoryInput = {
+    categoryInput:ProductCategory={
         name:"",
         description:""
-    }
+    };
 
     formProcedure(formInput:NgForm){
-        console.log(this.categoryInput);
         if(formInput.valid && formInput.touched){
             this.productService.addProductCategory(this.categoryInput).subscribe(
                 (res)=>console.log(res),
