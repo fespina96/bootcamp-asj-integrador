@@ -1,0 +1,10 @@
+<div class="modal-header bg-primary text-white ">
+	<h4 class="modal-title">Agregar Categoría</h4>
+</div>
+<div class="modal-body">
+    <label for="categoryInput">Nombre de la categoría</label>
+    <input class="form-control" id="categoryInput" name="categoryInput" type="text" [(ngModel)]="categoryInput.name">
+    <label for="categoryDesc">Descripción</label>
+    <input class="form-control" id="categoryDesc" name="categoryDesc" type="text" [(ngModel)]="categoryInput.description">
+    <a class="btn btn-primary mt-2" (click)="addCategory()">Agregar</a>
+</div>

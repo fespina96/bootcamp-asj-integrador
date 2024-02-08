@@ -15,11 +15,11 @@ import { ListSuppliersComponent } from './components/lists/list-suppliers/list-s
 import { FormOrdersComponent } from './components/forms/form-orders/form-orders.component';
 import { FormSuppliersComponent } from './components/forms/form-suppliers/form-suppliers.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/template/login/login.component';
 import { ProductViewComponent } from './components/views/product-view/product-view.component';
 import { SupplierViewComponent } from './components/views/supplier-view/supplier-view.component';
 import { OrderViewComponent } from './components/views/order-view/order-view.component';
-import { FormCategoryComponent } from './components/forms/form-category/form-category.component';
+import { FormCategoryComponent } from './components/forms/form-product-category/form-product-category.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product-service.service';
 import { ProductCategoryService } from './services/product-category.service';
@@ -30,6 +30,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import { NgbdToastGlobal } from './components/template/toast/toast-global.component';
+import { ToastsContainer } from './components/template/toast/toast-container.component';
 registerLocaleData(localeEs,'es');
 
 @NgModule({
@@ -51,7 +53,9 @@ registerLocaleData(localeEs,'es');
         ProductViewComponent,
         SupplierViewComponent,
         OrderViewComponent,
-        FormCategoryComponent
+        FormCategoryComponent,
+        NgbdToastGlobal,
+        ToastsContainer
     ],
     imports: [
         BrowserModule,

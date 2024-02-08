@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SupplierService } from '../../../services/supplier.service';
 import { Supplier } from '../../../interfaces/supplier';
 @Component({
-  selector: 'app-supplier-view',
-  templateUrl: './supplier-view.component.html',
-  styleUrl: './supplier-view.component.css'
+    selector: 'app-supplier-view',
+    templateUrl: './supplier-view.component.html',
+    styleUrl: './supplier-view.component.css'
 })
 export class SupplierViewComponent {
     constructor(private route:ActivatedRoute, private supplierService:SupplierService, private router:Router){}

@@ -4,11 +4,14 @@ import { NgForm } from '@angular/forms';
 import { ProductService } from '../../../services/product-service.service';
 import { Product } from '../../../interfaces/product';
 import { SupplierService } from '../../../services/supplier.service';
+import { ToastService } from '../../../services/toast.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormCategoryComponent } from '../form-product-category/form-product-category.component';
 
 @Component({
     selector: 'app-form-products',
     templateUrl: './form-products.component.html',
-    styleUrl: './form-products.component.css'
+    styleUrl: './form-products.component.css',
 })
 export class FormProductsComponent implements OnInit{
     productFormInput:Product = {
@@ -29,7 +32,7 @@ export class FormProductsComponent implements OnInit{
 
     catList:any = [];
 
-    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private provService:SupplierService){}
+    constructor(private route:ActivatedRoute, private productService:ProductService, private router:Router, private suppService:SupplierService, public toastService:ToastService, private modalCall:NgbModal){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -45,7 +48,7 @@ export class FormProductsComponent implements OnInit{
         }else{
             //LOGICA FORM AÑADIR
         }
-        this.provService.getSuppliers().subscribe(
+        this.suppService.getSuppliers().subscribe(
             (res)=> this.provList=res
         );
         this.productService.getProductCategories().subscribe(
@@ -73,6 +76,9 @@ export class FormProductsComponent implements OnInit{
     }
 
     addCategoryModal(){
-        alert("nueva categoria");
+        this.modalCall.open(FormCategoryComponent, {
+            windowClass: 'modal-job-scrollable'
+        });
     }
+
 }

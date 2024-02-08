@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/template/login/login.component';
 import { LoginService } from './services/login.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';

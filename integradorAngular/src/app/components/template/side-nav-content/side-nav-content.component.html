@@ -1,7 +1,11 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4 w-100 ">
+            
             <router-outlet></router-outlet>
+            <div style="position:absolute;top:0;right:0" >
+                <ngbd-toast-global></ngbd-toast-global>
+            </div>
         </div>
         <hr class="hr-min">
     </main>

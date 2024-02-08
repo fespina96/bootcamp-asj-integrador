@@ -77,5 +77,9 @@ export class ProductService {
         return this.http.get(this.productCategoryUrl+"/"+id);
     }
 
-
+    addProductCategory(input:any):Observable<any>{
+        return this.http.post(this.productCategoryUrl,JSON.stringify({name:input.name,description:input.description}),{
+            headers: this.headers
+        });
+    }
 }
