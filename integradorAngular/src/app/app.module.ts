@@ -22,7 +22,6 @@ import { OrderViewComponent } from './components/views/order-view/order-view.com
 import { FormCategoryComponent } from './components/forms/form-product-category/form-product-category.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product-service.service';
-import { ProductCategoryService } from './services/product-category.service';
 import { SupplierService } from './services/supplier.service';
 import { OrderService } from './services/order-service.service';
 import { CountriesService } from './services/countries.service';
@@ -67,7 +66,6 @@ registerLocaleData(localeEs,'es');
     ],
     providers: [
         ProductService,
-        ProductCategoryService,
         SupplierService,
         OrderService,
         CountriesService,
