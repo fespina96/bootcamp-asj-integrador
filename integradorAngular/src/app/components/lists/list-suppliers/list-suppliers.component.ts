@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Supplier } from '../../../interfaces/supplier';
 import { SupplierService } from '../../../services/supplier.service';
 import { SupplierFilterOptions } from '../../../interfaces/supplier-filter-options';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     selector: 'app-list-suppliers',
@@ -10,7 +11,7 @@ import { SupplierFilterOptions } from '../../../interfaces/supplier-filter-optio
 })
 export class ListSuppliersComponent implements OnInit{
     
-    constructor(private suppService:SupplierService){}
+    constructor(private suppService:SupplierService, private toastService:ToastService){}
 
     suppList:Array<Supplier> = []
 
@@ -29,14 +30,22 @@ export class ListSuppliersComponent implements OnInit{
 
     loadList(){
         this.suppService.getSuppliers().subscribe(
-            (res)=>this.suppList=res
+            {
+                next:(data)=>{this.suppList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.activeMode=true;
     }
 
     loadDeletedList(){
         this.suppService.getDeletedSuppliers().subscribe(
-            (res)=>this.suppList=res
+            {
+                next:(data)=>{this.suppList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.activeMode=false;
     }
@@ -44,8 +53,11 @@ export class ListSuppliersComponent implements OnInit{
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el proveedor?`)){
             this.suppService.deleteSupplier(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Proveedor eliminado.",{ classname: 'bg-success', delay: 10000 });this.loadList()}
+                }
             );
         }
     }
@@ -53,8 +65,11 @@ export class ListSuppliersComponent implements OnInit{
     undoDeleteListItem(id:any){
         if(confirm(`Esta seguro que desea restablecer el proveedor?`)){
             this.suppService.undoDeleteSupplier(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadDeletedList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Proveedor restablecido.",{ classname: 'bg-success', delay: 10000 });this.loadDeletedList()}
+                }
             );
         }
     }
@@ -66,11 +81,19 @@ export class ListSuppliersComponent implements OnInit{
     filterList(){
         if(this.activeMode){
             this.suppService.getFilteredSuppliers(this.activeFilters).subscribe(
-                (res)=>this.suppList=res
+                {
+                    next:(data)=>{this.suppList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             )
         }else{
             this.suppService.getFilteredDeletedSuppliers(this.activeFilters).subscribe(
-                (res)=>this.suppList=res
+                {
+                    next:(data)=>{this.suppList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             )
         }
     }

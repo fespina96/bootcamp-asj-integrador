@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product-service.service';
 import { Product } from '../../../interfaces/product';
 import { ProductFilterOptions } from '../../../interfaces/product-filter-options';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     selector: 'app-list-products',
@@ -10,7 +11,7 @@ import { ProductFilterOptions } from '../../../interfaces/product-filter-options
 })
 export class ListProductsComponent implements OnInit{
     
-    constructor(private productService:ProductService){}
+    constructor(private productService:ProductService, private toastService:ToastService){}
 
     productList:Array<Product> = []
 
@@ -32,14 +33,22 @@ export class ListProductsComponent implements OnInit{
 
     loadList(){
         this.productService.getProducts().subscribe(
-            (res)=>this.productList=res
+            {
+                next:(data)=>{this.productList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.activeMode=true;
     }
 
     loadDeletedList(){
         this.productService.getDeletedProducts().subscribe(
-            (res)=>this.productList=res
+            {
+                next:(data)=>{this.productList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.activeMode=false;
     }
@@ -47,8 +56,11 @@ export class ListProductsComponent implements OnInit{
     deleteListItem(id:any){
         if(confirm(`Esta seguro que desea eliminar el producto?`)){
             this.productService.deleteProduct(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Producto eliminado.",{ classname: 'bg-success', delay: 10000 })}
+                }
             );
         }
     }
@@ -56,8 +68,11 @@ export class ListProductsComponent implements OnInit{
     undoDeleteListItem(id:any){
         if(confirm(`Esta seguro que desea restablecer el producto?`)){
             this.productService.undoDeleteProduct(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadDeletedList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Producto restablecido.",{ classname: 'bg-success', delay: 10000 });this.loadDeletedList()}
+                }
             );
         }
     }
@@ -69,11 +84,19 @@ export class ListProductsComponent implements OnInit{
     filterList(){
         if(this.activeMode){
             this.productService.getFilteredProducts(this.activeFilters).subscribe(
-                (res)=>this.productList=res
+                {
+                    next:(data)=>{this.productList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             )
         }else{
             this.productService.getFilteredDeletedProducts(this.activeFilters).subscribe(
-                (res)=>this.productList=res
+                {
+                    next:(data)=>{this.productList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             )
         }
     }

@@ -8,6 +8,7 @@ import { ProductService } from '../../../services/product-service.service';
 import { last } from 'rxjs';
 import { Product } from '../../../interfaces/product';
 import { OrderListItem } from '../../../interfaces/order-list-item';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     selector: 'app-form-orders',
@@ -44,7 +45,7 @@ export class FormOrdersComponent {
     selectedProduct = "";
     selectedProductQty = 1;
 
-    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private suppService:SupplierService, private prodService:ProductService){}
+    constructor(private route:ActivatedRoute, private orderService:OrderService, private router:Router, private suppService:SupplierService, private prodService:ProductService, private toastService:ToastService){}
 
     ngOnInit(): void {
         this.loadForm();
@@ -55,7 +56,11 @@ export class FormOrdersComponent {
         if(routeSnapshot){
             //LOGICA FORM EDITAR
             this.orderService.getOrderById(routeSnapshot).subscribe(
-                (res)=>this.orderFormInput = res
+                {
+                    next:(data)=>{this.orderFormInput=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             );
         }else{
             //LOGICA FORM AÑADIR
@@ -66,7 +71,11 @@ export class FormOrdersComponent {
             this.minDate = this.orderFormInput.estimatedDeliveryDate;
         }
         this.suppService.getSuppliers().subscribe(
-            (res)=>this.suppList=res
+            {
+                next:(data)=>{this.suppList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
     }
 
@@ -76,14 +85,20 @@ export class FormOrdersComponent {
             if(routeSnapshot){
                 //EDITO ORDEN
                 this.orderService.editOrder(routeSnapshot,this.orderFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>{this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Orden editada correctamente.",{ classname: 'bg-success', delay: 10000 });this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                    }
                 );
             }else{
                 //AÑADO ORDEN
                 this.orderService.addOrder(this.orderFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>{this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Orden añadida correctamente.",{ classname: 'bg-success', delay: 10000 });this.addProductsToLastOrder();this.router.navigateByUrl("/ordenes")}
+                    }
                 );
             }
         }
@@ -103,10 +118,18 @@ export class FormOrdersComponent {
         this.suppProdList = [];
         this.orderProdList = [];
         this.prodService.getProductsBySupplierId(this.orderFormInput.supplier.id).subscribe(
-            (res)=>this.suppProdList = res
+            {
+                next:(data)=>{this.suppProdList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.suppService.getSupplierById(this.orderFormInput.supplier.id).subscribe(
-            (res)=>this.supplierLogo=res.logoImageUrl
+            {
+                next:(data)=>{this.supplierLogo=data.logoImageUrl},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         )
     }
 
@@ -125,7 +148,7 @@ export class FormOrdersComponent {
                         }
                         );
                         this.orderFormInput.total+=(product.price*prodQty);
-                        alert("Producto añadido correctamente.")
+                        this.toastService.show("Producto añadida correctamente.",{ classname: 'bg-success', delay: 10000 });
                     }
                 )
                 
@@ -141,7 +164,7 @@ export class FormOrdersComponent {
                         product=res;
                         this.orderFormInput.total-=(product.price*selectedProduct.quantity);
                         this.orderProdList = this.orderProdList.filter((item:OrderListItem)=>item.product.id!=id);
-                        alert("Producto borrado correctamente.")
+                        this.toastService.show("Producto borrado correctamente.",{ classname: 'bg-success', delay: 10000 });
                         });
         }
     }
@@ -159,7 +182,6 @@ export class FormOrdersComponent {
                     this.orderProdList.forEach((item) => {
                         item.order.id = lastOrderId;
                         item.id.orderId = lastOrderId;
-                        // Now, you can add the order product
                         this.orderService.addOrderProducts(item).subscribe(
                             (res) => {}
                         );

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../../services/order-service.service';
 import { Order } from '../../../interfaces/order';
+import { ToastService } from '../../../services/toast.service';
 @Component({
     selector: 'app-list-ordenrs',
     templateUrl: './list-orders.component.html',
     styleUrl: './list-orders.component.css'
 })
 export class ListOrdersComponent implements OnInit{
-    constructor(private orderService:OrderService){}
+    constructor(private orderService:OrderService, private toastService:ToastService){}
 
     orderList:Array<Order> = [];
 
@@ -18,21 +19,32 @@ export class ListOrdersComponent implements OnInit{
     ngOnInit(): void {
         this.loadList();
         this.orderService.getOrderStates().subscribe(
-            (res)=>this.orderStateList=res
+            {
+                next:(data)=>{this.orderStateList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         )
     }
 
     loadList(){
         this.orderService.getOrders().subscribe(
-            (res)=>this.orderList=res
+            {
+                next:(data)=>{this.orderList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
     }
 
     deleteListItem(id:any){
-        if(confirm(`Esta seguro que desea borrar la orden número ${id}?`)){
+        if(confirm(`Esta seguro que desea cancelar la orden número ${id}?`)){
             this.orderService.deleteOrder(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Orden cancelada.",{ classname: 'bg-success', delay: 10000 });this.loadList();}
+                }
             );
         }
     }
@@ -40,8 +52,11 @@ export class ListOrdersComponent implements OnInit{
     undoDeleteListItem(id:any){
         if(confirm(`Esta seguro que desea restablecer la orden número ${id}?`)){
             this.orderService.undoDeleteOrder(id).subscribe(
-                (res)=>console.log(res),
-                (complete)=>this.loadList()
+                {
+                    next:(data)=>{console.log(data)},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{this.toastService.show("Orden restablecida.",{ classname: 'bg-success', delay: 10000 });this.loadList();}
+                }
             );
         }
     }
@@ -49,7 +64,11 @@ export class ListOrdersComponent implements OnInit{
     orderStateChange(){
         if(this.selectedState!=""){
             this.orderService.getOrdersByOrderStateId(this.selectedState).subscribe(
-                (res)=>this.orderList=res
+                {
+                    next:(data)=>{this.orderList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             );
         }else{
             this.loadList();

@@ -6,6 +6,7 @@ import { CountriesService } from '../../../services/countries.service';
 import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormSupplierCategoryComponent } from '../form-supplier-category/form-supplier-category.component';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
     selector: 'app-form-proveedores',
@@ -14,7 +15,7 @@ import { FormSupplierCategoryComponent } from '../form-supplier-category/form-su
 })
 export class FormSuppliersComponent implements OnInit{
 
-    constructor(private route:ActivatedRoute, private suppService:SupplierService, private router:Router, private countriesService:CountriesService, private modalCall:NgbModal){}
+    constructor(private route:ActivatedRoute, private suppService:SupplierService, private router:Router, private countriesService:CountriesService, private modalCall:NgbModal, private toastService:ToastService){}
 
 
     suppFormInput:Supplier = {
@@ -58,7 +59,11 @@ export class FormSuppliersComponent implements OnInit{
     countryChange():void{
         this.suppFormInput.state.id = undefined;
         this.countriesService.getCountryStatesById(this.suppFormInput.country.id).subscribe(
-            (res)=>this.stateList=res
+            {
+                next:(data)=>{this.stateList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
     }
 
@@ -67,19 +72,35 @@ export class FormSuppliersComponent implements OnInit{
         if(routeSnapshot){
             //LOGICA FORM EDITAR
             this.suppService.getSupplierById(routeSnapshot).subscribe(
-                (res)=>this.suppFormInput=res
+                {
+                    next:(data)=>{this.suppFormInput=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             );
         }else{
             //LOGICA FORM AÑADIR
         }
         this.countriesService.getCountries().subscribe(
-            (res)=>this.countryList=res    
+            {
+                next:(data)=>{this.countryList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            } 
         );
         this.suppService.getConditions().subscribe(
-            (res)=>this.conditionList=res
+            {
+                next:(data)=>{this.conditionList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            } 
         );
         this.suppService.getSupplierCategories().subscribe(
-            (res)=>this.categoryList=res
+            {
+                next:(data)=>{this.categoryList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         )
 
     }
@@ -88,21 +109,23 @@ export class FormSuppliersComponent implements OnInit{
         if(formInput.valid && formInput.touched){
             let routeSnapshot = this.route.snapshot.paramMap.get('editId');
             if(routeSnapshot){
-                //EDITO PRODUCTO
                 this.suppService.editSupplier(routeSnapshot,this.suppFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>this.router.navigateByUrl("/proveedores")
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Proveedor editado correctamente.",{ classname: 'bg-success', delay: 10000 });this.router.navigateByUrl("/proveedores");}
+                    }
                 );
             }else{
-                //AÑADO PRODUCTO
                 this.suppService.addSupplier(this.suppFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>this.router.navigateByUrl("/proveedores")
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Proveedor agregado correctamente.",{ classname: 'bg-success', delay: 10000 });this.router.navigateByUrl("/proveedores");}
+                    }
                 );;
             }
         }
-
-        console.log(formInput);
     }
 
     addRubroModal(){
@@ -111,7 +134,11 @@ export class FormSuppliersComponent implements OnInit{
         });
         modal.result.then(()=>
             this.suppService.getSupplierCategories().subscribe(
-            (res)=>this.categoryList=res
+                {
+                    next:(data)=>{this.categoryList=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
         ));
     }
 }

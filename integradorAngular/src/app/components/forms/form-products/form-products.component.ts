@@ -43,16 +43,28 @@ export class FormProductsComponent implements OnInit{
         if(routeSnapshot){
             //LOGICA FORM EDITAR
             this.productService.getProductById(routeSnapshot).subscribe(
-                (res)=>this.productFormInput=res
+                {
+                    next:(data)=>{this.productFormInput=data},
+                    error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                    complete:()=>{}
+                }
             );
         }else{
             //LOGICA FORM AÑADIR
         }
         this.suppService.getSuppliers().subscribe(
-            (res)=> this.provList=res
+            {
+                next:(data)=>{this.provList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         );
         this.productService.getProductCategories().subscribe(
-            (res)=>this.catList=res
+            {
+                next:(data)=>{this.catList=data},
+                error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                complete:()=>{}
+            }
         )
     }
 
@@ -62,14 +74,20 @@ export class FormProductsComponent implements OnInit{
             if(routeSnapshot){
                 //EDITO PRODUCTO
                 this.productService.editProduct(routeSnapshot,this.productFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>this.router.navigateByUrl("/productos")
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Producto editado correctamente.",{ classname: 'bg-success', delay: 10000 });this.router.navigateByUrl("/productos");}
+                    }
                 );
             }else{
                 //AÑADO PRODUCTO
                 this.productService.addProduct(this.productFormInput).subscribe(
-                    (res)=>console.log(res),
-                    (complete)=>this.router.navigateByUrl("/productos")
+                    {
+                        next:(data)=>{console.log(data)},
+                        error:(error)=>{this.toastService.show(error,{ classname: 'bg-danger text-light', delay: 15000 })},
+                        complete:()=>{this.toastService.show("Producto añadido correctamente.",{ classname: 'bg-success', delay: 10000 });this.router.navigateByUrl("/productos");}
+                    }
                 );
             }
         }
