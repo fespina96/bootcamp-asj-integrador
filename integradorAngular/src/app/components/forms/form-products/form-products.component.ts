@@ -79,7 +79,8 @@ export class FormProductsComponent implements OnInit{
         let modal = this.modalCall.open(FormCategoryComponent, {
             windowClass: 'modal-job-scrollable'
         });
-        modal.result.then(()=>        this.productService.getProductCategories().subscribe(
+        modal.result.then(()=>        
+            this.productService.getProductCategories().subscribe(
             (res)=>this.catList=res
         ));
     }
