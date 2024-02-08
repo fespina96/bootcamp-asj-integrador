@@ -31,6 +31,7 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { NgbdToastGlobal } from './components/template/toast/toast-global.component';
 import { ToastsContainer } from './components/template/toast/toast-container.component';
+import { FormSupplierCategoryComponent } from './components/forms/form-supplier-category/form-supplier-category.component';
 registerLocaleData(localeEs,'es');
 
 @NgModule({
@@ -54,7 +55,8 @@ registerLocaleData(localeEs,'es');
         OrderViewComponent,
         FormCategoryComponent,
         NgbdToastGlobal,
-        ToastsContainer
+        ToastsContainer,
+        FormSupplierCategoryComponent
     ],
     imports: [
         BrowserModule,

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SupplierService } from '../../../services/supplier.service';
 import { CountriesService } from '../../../services/countries.service';
 import { NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormSupplierCategoryComponent } from '../form-supplier-category/form-supplier-category.component';
 
 @Component({
     selector: 'app-form-proveedores',
@@ -12,7 +14,8 @@ import { NgForm } from '@angular/forms';
 })
 export class FormSuppliersComponent implements OnInit{
 
-    constructor(private route:ActivatedRoute, private suppService:SupplierService, private router:Router, private countriesService:CountriesService){}
+    constructor(private route:ActivatedRoute, private suppService:SupplierService, private router:Router, private countriesService:CountriesService, private modalCall:NgbModal){}
+
 
     suppFormInput:Supplier = {
         id:undefined,
@@ -103,6 +106,12 @@ export class FormSuppliersComponent implements OnInit{
     }
 
     addRubroModal(){
-        alert("nueva categoria");
+        let modal = this.modalCall.open(FormSupplierCategoryComponent, {
+            windowClass: 'modal-job-scrollable'
+        });
+        modal.result.then(()=>
+            this.suppService.getSupplierCategories().subscribe(
+            (res)=>this.categoryList=res
+        ));
     }
 }

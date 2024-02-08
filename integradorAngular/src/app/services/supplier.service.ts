@@ -3,6 +3,7 @@ import { Supplier } from '../interfaces/supplier';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SupplierFilterOptions } from '../interfaces/supplier-filter-options';
+import { SupplierCategory } from '../interfaces/supplier-category';
 
 @Injectable({
     providedIn: 'root'
@@ -63,6 +64,12 @@ export class SupplierService {
 
     getSupplierCategories():Observable<any>{
         return this.http.get(this.supplierCategoryUrl);
+    }
+
+    addSupplierCategory(input:SupplierCategory):Observable<any>{
+        return this.http.post(this.supplierCategoryUrl,JSON.stringify(input),{
+            headers: this.headers
+        });
     }
 
     getSupplierCategoryById(id:any):Observable<any>{

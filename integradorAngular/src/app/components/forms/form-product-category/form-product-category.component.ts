@@ -23,7 +23,6 @@ export class FormCategoryComponent {
     };
 
     formProcedure(formInput:NgForm){
-        console.log(JSON.stringify(this.categoryInput));
         if(formInput.valid && formInput.touched){
             this.productService.addProductCategory(this.categoryInput).subscribe(
                 (res)=>console.log(res),

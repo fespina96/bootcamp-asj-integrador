@@ -1,0 +1,22 @@
+<div class="modal-header bg-primary text-white ">
+	<h4 class="modal-title">Agregar Rubro</h4>
+</div>
+<div class="modal-body">
+    <form #supplierCategoryForm="ngForm" (ngSubmit)="formProcedure(supplierCategoryForm)">
+        <label for="categoryInput" [ngClass]="{'text-danger':categoryName.invalid && (categoryName.dirty || categoryName.touched)}">Nombre del rubro</label>
+        <input 
+            class="form-control" 
+            id="categoryInput" 
+            name="categoryInput" 
+            type="text" 
+            [(ngModel)]="categoryInput.name"
+            required
+            #categoryName="ngModel"
+            [ngClass]="{'border-danger-subtle bg-danger-subtle':categoryName.invalid && (categoryName.dirty || categoryName.touched)}"
+        >
+        <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)" class="alert alert-danger small">
+            <div *ngIf="categoryName.errors?.['required']">Nombre del rubro requerido.</div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Agregar</button>
+    </form>
+</div>
