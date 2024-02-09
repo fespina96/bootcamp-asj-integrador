@@ -6,13 +6,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="supplier_categories")
@@ -27,9 +28,11 @@ public class SupplierCategory {
 	@OneToMany(mappedBy="supplierCategory")
 	private List<Supplier> listSuppliers = new ArrayList<>();
 	
-	@Column(columnDefinition="date default CURRENT_TIMESTAMP()")
+	@Temporal(TemporalType.DATE)
 	private Date createdAt;
+	@Temporal(TemporalType.DATE)
 	private Date updatedAt;
+	@Temporal(TemporalType.DATE)
 	private Date deletedAt;
 
 	public SupplierCategory() {

@@ -18,7 +18,7 @@
                 <div><span class="fw-bold ">Nombre Proveedor:</span> {{supplierDetail.name}}</div>
                 <div><span class="fw-bold ">Rubro:</span> {{supplierDetail.supplierCategory.name}}</div>
                 <div class="fw-bold ">Logo del Proveedor:</div>
-                <div><img src="{{supplierDetail.logoImageUrl}}" alt="" style="height: 100px;"></div>
+                <div><img src="{{supplierDetail.logoImageUrl||defaultImage}}" alt="" style="height: 100px;"></div>
             </div>
         </div>
 

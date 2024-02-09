@@ -24,6 +24,8 @@ export class ListSuppliersComponent implements OnInit{
         name:""
     }
 
+    defaultImage = "/assets/img/default.jpg";
+
     ngOnInit(): void {
         this.loadList();
     }

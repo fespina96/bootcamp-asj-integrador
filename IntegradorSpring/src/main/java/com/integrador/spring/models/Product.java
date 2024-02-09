@@ -16,6 +16,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="products")
@@ -45,10 +47,12 @@ public class Product {
 	@JsonIgnore
 	@OneToMany(mappedBy="product")
 	private List<ProductsPerOrder> listOrders= new ArrayList<>();
-	
-	@Column(columnDefinition="date default CURRENT_TIMESTAMP()")
+
+	@Temporal(TemporalType.DATE)
 	private Date createdAt;
+	@Temporal(TemporalType.DATE)
 	private Date updatedAt;
+	@Temporal(TemporalType.DATE)
 	private Date deletedAt;
 	
 	

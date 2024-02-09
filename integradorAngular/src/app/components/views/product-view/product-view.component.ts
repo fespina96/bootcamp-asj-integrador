@@ -26,6 +26,8 @@ export class ProductViewComponent implements OnInit{
         deletedAt:undefined
     }
 
+    defaultImage = "/assets/img/default.jpg";
+
     ngOnInit(): void {
         this.loadProduct();
     }

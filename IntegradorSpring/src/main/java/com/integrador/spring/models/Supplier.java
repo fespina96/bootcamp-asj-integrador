@@ -16,6 +16,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="suppliers")
@@ -64,9 +66,11 @@ public class Supplier {
 	private String contactEmail;
 	private String contactRole;
 	
-	@Column(columnDefinition="date default CURRENT_TIMESTAMP()")
+	@Temporal(TemporalType.DATE)
 	private Date createdAt;
+	@Temporal(TemporalType.DATE)
 	private Date updatedAt;
+	@Temporal(TemporalType.DATE)
 	private Date deletedAt;
 
 	@OneToMany(mappedBy="supplier")
@@ -74,7 +78,7 @@ public class Supplier {
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="supplier")
-	private List<Product> listOrders = new ArrayList<>();
+	private List<Order> listOrders = new ArrayList<>();
 	
 	public Supplier() {
 		this.createdAt = new Date(System.currentTimeMillis());
