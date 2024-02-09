@@ -1,4 +1,3 @@
-BEGIN TRY
 INSERT INTO countries(id,name) VALUES 
     (1,'Afghanistan'),
     (2,'Aland Islands'),
@@ -5401,7 +5400,3 @@ INSERT INTO products_per_order (order_id,product_id,quantity) VALUES
 	(3,4,1),
 	(4,4,2),
 	(5,5,1);
-
-END TRY
-BEGIN CATCH
-END CATCH;
